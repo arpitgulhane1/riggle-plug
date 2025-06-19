@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-06-14T11:39:07 IST" name="Default suite" finished-at="2025-06-14T11:40:09 IST" duration-ms="61455">
+    <groups>
+    </groups>
+    <test started-at="2025-06-14T11:39:07 IST" name="Default test" finished-at="2025-06-14T11:40:09 IST" duration-ms="61455">
+      <class name="testCases.Tc_Brands">
+        <test-method is-config="true" signature="loadConfig()[pri:0, instance:testCases.Tc_Brands@2df3b89c]" started-at="2025-06-14T11:39:07 IST" name="loadConfig" finished-at="2025-06-14T11:39:07 IST" duration-ms="48" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loadConfig -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testCases.Tc_Brands@2df3b89c]" started-at="2025-06-14T11:39:07 IST" name="setup" finished-at="2025-06-14T11:39:16 IST" duration-ms="9069" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testSearchBrandAndClickProduct2()[pri:0, instance:testCases.Tc_Brands@2df3b89c]" started-at="2025-06-14T11:39:16 IST" name="testSearchBrandAndClickProduct2" finished-at="2025-06-14T11:40:09 IST" duration-ms="52113" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Exception in testSearchBrandAndClickProduct: element click intercepted: Element <button type="button" class="ant-btn ant-btn-primary" ant-click-animating-without-extra-node="false">...</button> is not clickable at point (1427, 150). Other element would receive the click: <div tabindex="-1" class="ant-modal-wrap ant-modal-centered">...</div>
+  (Session info: chrome=137.0.7151.104)
+Build info: version: '4.28.0', revision: 'ac342546e9'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [1fe668bb1678a37eb2e33397508d0c38, clickElement {id=f.8B148A6F4C8723D3171A7B6DDD074A34.d.69934773BCC13573A271107325C5B460.e.10}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.104, chrome: {chromedriverVersion: 137.0.7151.70 (dfa4dc56b2ab..., userDataDir: C:\Users\USER\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57787}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57787/devtoo..., se:cdpVersion: 137.0.7151.104, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (1fe668bb1678a37eb2e33397508d0c38)] -> xpath: //button[@class='ant-btn ant-btn-primary']]
+Session ID: 1fe668bb1678a37eb2e33397508d0c38]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Exception in testSearchBrandAndClickProduct: element click intercepted: Element <button type="button" class="ant-btn ant-btn-primary" ant-click-animating-without-extra-node="false">...</button> is not clickable at point (1427, 150). Other element would receive the click: <div tabindex="-1" class="ant-modal-wrap ant-modal-centered">...</div>
+  (Session info: chrome=137.0.7151.104)
+Build info: version: '4.28.0', revision: 'ac342546e9'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [1fe668bb1678a37eb2e33397508d0c38, clickElement {id=f.8B148A6F4C8723D3171A7B6DDD074A34.d.69934773BCC13573A271107325C5B460.e.10}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.104, chrome: {chromedriverVersion: 137.0.7151.70 (dfa4dc56b2ab..., userDataDir: C:\Users\USER\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57787}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57787/devtoo..., se:cdpVersion: 137.0.7151.104, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (1fe668bb1678a37eb2e33397508d0c38)] -> xpath: //button[@class='ant-btn ant-btn-primary']]
+Session ID: 1fe668bb1678a37eb2e33397508d0c38
+at org.testng.Assert.fail(Assert.java:111)
+at testCases.Tc_Brands.testSearchBrandAndClickProduct(Tc_Brands.java:97)
+at testCases.Tc_Brands.testSearchBrandAndClickProduct2(Tc_Brands.java:40)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSearchBrandAndClickProduct2 -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.Tc_Brands@2df3b89c]" started-at="2025-06-14T11:40:09 IST" name="tearDown" finished-at="2025-06-14T11:40:09 IST" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- testCases.Tc_Brands -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
