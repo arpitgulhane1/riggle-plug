@@ -7,11 +7,12 @@ import pageObjects.BrandsPage;
 import pageObjects.HomePage;
 import pageObjects.ProductsPage;
 import testBase.BaseClass;
+import utility.TestDataGenerator;
 
 public class Tc_Brands extends BaseClass {
 	 private String testBrandName;
 	 
-//	 @Test
+	 @Test
 	    public void testAddNewBrand() {
 	        try {
 	            loginToApp();
@@ -21,10 +22,10 @@ public class Tc_Brands extends BaseClass {
 	            BrandsPage bpage = new BrandsPage(driver);
 	            bpage.clickOnAddBrand();
 	            bpage.uploadBrandPhoto();
-	            testBrandName = bpage.getBrandName();  // Get and store random brand name
+	            testBrandName = TestDataGenerator.getRandomBrandName();  // Get and store random brand name
 	            bpage.addBrandName(testBrandName);
 	            bpage.enterCityName();
-//	            bpage.saveNewBrand();
+	            bpage.saveNewBrand();
 	            bpage.clickOnCloseAddBrandTemplate();
 	            
 	            System.out.println("Brand added successfully: " + testBrandName);
@@ -36,11 +37,12 @@ public class Tc_Brands extends BaseClass {
 
 	    @Test
 	    public void testSearchBrandAndClickProduct2() {
-	    	
+	    	for (int j=0 ; j<5 ; j++) {
 	    	testSearchBrandAndClickProduct();
-	    	
+	    	}
 	    }
 	    
+	    @Test
 	    public void testSearchBrandAndClickProduct() {
 	        try {
 	            loginToApp();
@@ -101,7 +103,7 @@ public class Tc_Brands extends BaseClass {
 	    
 	    
 	    
-	    
+	    // test
 	    
 	    
 	    
