@@ -18,12 +18,14 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import utility.BrandUtility;
+
 public class BrandsPage extends BasePage {
 
 	private static String[] brands;
-//	 private static String selectedBrandName; 			//  Cached random brand name
+	 private static String selectedBrandName; 			//  Cached random brand name
 
-	private String selectedBrandName ="Tata";
+//	private String selectedBrandName ="Tata";
 
 	public BrandsPage(WebDriver driver) {
 		super(driver);
@@ -31,7 +33,7 @@ public class BrandsPage extends BasePage {
 
 	@FindBy(xpath = "//input[@id='search']")
 	WebElement searchBrand;
-	@FindBy(xpath = "//span[normalize-space()='Add brand']")
+	@FindBy(xpath = "//span[normalize-space()='Add New Brand']")
 	WebElement addNewBrand;
 	@FindBy(xpath = "//input[@type='file']")
 	WebElement uploadBrandPhoto;
@@ -45,6 +47,8 @@ public class BrandsPage extends BasePage {
 
 	@FindBy(xpath = ".//span[contains(text(),'Product')]")
 	WebElement brandProduct;
+	@FindBy(xpath = ".//span[contains(text(),'Rate')]")
+	WebElement brandRate;
 	@FindBy(xpath = "//div[contains(@class,'ant-empty-description')]")
 	WebElement noBrandDataPresent;
 	@FindBy(xpath = "//div[contains(@class, 'ant-col ant-col-xs-24')]")
@@ -62,7 +66,8 @@ public class BrandsPage extends BasePage {
 	public void searchBrand() {
 		
 		searchBrand.clear();
-		searchBrand.sendKeys(selectedBrandName);
+		String bradName = BrandUtility.readJson("Brand", "BrandName");
+		searchBrand.sendKeys(bradName);
 //		wait.until(ExpectedConditions.visibilityOf(selectedBrandName));
 		try {
 			wait.until(ExpectedConditions.or(ExpectedConditions.visibilityOf(brandContainerData),
@@ -72,12 +77,13 @@ public class BrandsPage extends BasePage {
 		}
 	}
 
-	public void setBrandName(String name) {
-		this.selectedBrandName = name;
-	}
+//	public void setBrandName(String name) {
+//		this.selectedBrandName = name;
+//	}
 	
 	public void clickOnCloseAddBrandTemplate() {
 		closeAddBrandTemplate.click();
+		
 	}
 
 	public boolean isBrandDisplayed() {
@@ -97,6 +103,7 @@ public class BrandsPage extends BasePage {
 	}
 
 	public void addBrandName(String newbrandName) {
+		selectedBrandName = newbrandName;
 		brandName.sendKeys(newbrandName);
 	}
 
@@ -113,16 +120,40 @@ public class BrandsPage extends BasePage {
 
 	public void saveNewBrand() {
 		saveNewBrand.click();
+		System.out.println("selectedBrandName = "+ selectedBrandName);
+		BrandUtility.writeJson("Brand", "BrandName", selectedBrandName);				
 	}
 
 	public void clickOnBrandProduct() {
 		wait.until(ExpectedConditions.visibilityOf(brandProduct));
-		wait.until(driver -> brandAlreadyAdded.getText().equalsIgnoreCase(selectedBrandName));
+		String bradName = BrandUtility.readJson("Brand", "BrandName");
+		wait.until(driver -> brandAlreadyAdded.getText().equalsIgnoreCase(bradName));
+		
+		if (brandAlreadyAdded.getText().equalsIgnoreCase(bradName)) {
+			Actions action = new Actions(driver);
+			action.keyDown(Keys.CONTROL)
+			.click(brandProduct)
+			.keyUp(Keys.CONTROL)
+			.build()
+			.perform();
+			List<String> tabsId = new ArrayList<>(driver.getWindowHandles());
+			
+			if (tabsId.size() < 2) {
+				throw new RuntimeException("Brand not Found New tab did not open as expected");
+			}
+			driver.switchTo().window(tabsId.get(1));
+		}
+	}
+	
+	public void clickOnRateBrandPage() {
+		wait.until(ExpectedConditions.visibilityOf(brandRate));
+		String bradName = BrandUtility.readJson("Brand", "BrandName");
+		wait.until(driver -> brandAlreadyAdded.getText().equalsIgnoreCase(bradName));
 
-		if (brandAlreadyAdded.getText().equalsIgnoreCase(selectedBrandName)) {
+		if (brandAlreadyAdded.getText().equalsIgnoreCase(bradName)) {
 		  Actions action = new Actions(driver);
 		    action.keyDown(Keys.CONTROL)
-		          .click(brandProduct)
+		          .click(brandRate)
 		          .keyUp(Keys.CONTROL)
 		          .build()
 		          .perform();

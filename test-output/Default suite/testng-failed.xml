@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testCases.Tc_Brands">
+      <class name="testCases.BrandsNetworkTest">
         <methods>
           <include name="loadConfig"/>
+          <include name="TC_AddNewBrandAndVerifyNetworkPaheEmptyMessage"/>
           <include name="tearDown"/>
           <include name="setup"/>
-          <include name="testSearchBrandAndClickProduct2"/>
         </methods>
-      </class> <!-- testCases.Tc_Brands -->
+      </class> <!-- testCases.BrandsNetworkTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

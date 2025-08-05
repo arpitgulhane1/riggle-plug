@@ -57,10 +57,8 @@ public class Tc_Brands extends BaseClass {
 	            bpage.searchBrand();
 	            bpage.clickOnBrandProduct();
 	            
-	            for(int i=0 ; i<20 ; i++) {
-//	            Assert.assertTrue(bpage.isBrandDisplayed(), "❌ Brand not displayed: " + testBrandName);    // check same value which is add as brand 
-	            
-	            
+	            Assert.assertTrue(bpage.isBrandDisplayed(), "❌ Brand not displayed: " + testBrandName);    // check same value which is add as brand 
+	           
 	            prodPage.addProductButton();
 	            prodPage.addProductName();
 	            prodPage.addProductMRP();
@@ -92,7 +90,7 @@ public class Tc_Brands extends BaseClass {
 	            prodPage.addCess_Percentage();
 	            prodPage.addProduct_Description();
 	            prodPage.clickSubmitButton();
-	            }
+	            
 	            System.out.println("Brand search and product click successful.");
 	        } catch (Exception e) {
 	            System.err.println("❌ Error in brand search/product click: " + e.getMessage());
