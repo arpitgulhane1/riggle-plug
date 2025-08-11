@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 //import java.io.FileReader;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -17,6 +18,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import utility.BrandUtility;
 
@@ -39,6 +42,9 @@ public class BrandsPage extends BasePage {
 	WebElement uploadBrandPhoto;
 	@FindBy(xpath = "//input[@id='nest-messages_name']")
 	WebElement brandName;
+	@FindBy(xpath = "//div[@class= 'ant-form-item-control-input']")
+	WebElement brandNameToGettext;
+	
 	@FindBy(xpath = "//input[@id='nest-messages_cities']")
 	WebElement enterCityName;
 	@FindBy(xpath = "//span[@aria-label='close']") WebElement closeAddBrandTemplate;
@@ -56,6 +62,9 @@ public class BrandsPage extends BasePage {
 	
 	@FindBy(xpath = "//div[@class='ant-card ant-card-bordered ant-card-hoverable']//h4")
 	WebElement brandAlreadyAdded;
+	
+	@FindBy (xpath="//div[contains(@class, 'ant-space-item')]")
+	WebElement editBrand;
 
 	
 	
@@ -113,9 +122,9 @@ public class BrandsPage extends BasePage {
 		act.keyDown(Keys.ENTER).keyUp(Keys.ENTER).perform();
 		driver.findElement(By.xpath("//div[@id='rc_unique_0']")).click();
 
-		enterCityName.sendKeys("Pune");
-		act.keyDown(Keys.ENTER).keyUp(Keys.ENTER).perform();
-		driver.findElement(By.xpath("//div[@id='rc_unique_0']")).click();
+//		enterCityName.sendKeys("Pune");
+//		act.keyDown(Keys.ENTER).keyUp(Keys.ENTER).perform();
+//		driver.findElement(By.xpath("//div[@id='rc_unique_0']")).click();
 	}
 
 	public void saveNewBrand() {
@@ -123,6 +132,7 @@ public class BrandsPage extends BasePage {
 		System.out.println("selectedBrandName = "+ selectedBrandName);
 		BrandUtility.writeJson("Brand", "BrandName", selectedBrandName);				
 	}
+	
 
 	public void clickOnBrandProduct() {
 		wait.until(ExpectedConditions.visibilityOf(brandProduct));
@@ -184,4 +194,42 @@ public class BrandsPage extends BasePage {
 		return selectedBrandName;
 	}
 
+	public void clickEditNewBrand() {
+//		searchBrand.click();
+
+		editBrand.click();
+//		  String resultName = brandName.getText();
+//		  String resultCity =enterCityName.getText();
+//	        Assert.assertEquals(resultName, brandName);
+//	        Assert.assertEquals(resultCity, enterCityName);
+////		// TODO Auto-generated method stub
+//		
+	}
+	
+//	public boolean verifyAddBrandDetail() {
+//		String brandNameOld = BrandUtility.readJson("Brand", "BrandName");
+//		String listedBrandName = brandName.getText();
+//		return brandNameOld.equals(listedBrandName);		
+//	}
+	public boolean verifyAddBrandDetail() throws InterruptedException {
+	    String brandNameOld = BrandUtility.readJson("Brand", "BrandName");
+	    
+	    waitForElementVisible(addNewBrand, 5);
+	    String listedBrandName = brandNameToGettext.getText();
+	    
+	    System.out.println("✅ Brand name matches: " + listedBrandName);
+	    System.out.println("✅ Brand name matches: " + brandNameOld);
+
+	    Thread.sleep(2000);
+	    boolean isMatch = brandNameOld.trim().equals(listedBrandName.trim());
+	  
+
+	    if (!isMatch) {
+	        System.out.println("❌ Brand name mismatch! Expected: " + brandNameOld + ", Found: " + listedBrandName);
+	    } else {
+	        System.out.println("✅ Brand name matches: " + listedBrandName);
+	    }
+
+	    return isMatch;
+	}
 }

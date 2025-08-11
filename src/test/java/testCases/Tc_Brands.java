@@ -22,11 +22,17 @@ public class Tc_Brands extends BaseClass {
 	            BrandsPage bpage = new BrandsPage(driver);
 	            bpage.clickOnAddBrand();
 	            bpage.uploadBrandPhoto();
-	            testBrandName = TestDataGenerator.getRandomBrandName();  // Get and store random brand name
-	            bpage.addBrandName(testBrandName);
-	            bpage.enterCityName();
-	            bpage.saveNewBrand();
-	            bpage.clickOnCloseAddBrandTemplate();
+//	            testBrandName = TestDataGenerator.getRandomBrandName();  // Get and store random brand name
+//	            bpage.addBrandName(testBrandName);
+//	            bpage.enterCityName();
+//	            bpage.saveNewBrand();
+//	            
+//	            bpage.clickOnCloseAddBrandTemplate();
+	            bpage.searchBrand();
+	            Thread.sleep(2000);
+	            bpage.clickEditNewBrand();
+	            Thread.sleep(2000);
+	            Assert.assertTrue(bpage.verifyAddBrandDetail()); 
 	            
 	            System.out.println("Brand added successfully: " + testBrandName);
 	        } catch (Exception e) {
@@ -90,6 +96,7 @@ public class Tc_Brands extends BaseClass {
 	            prodPage.addCess_Percentage();
 	            prodPage.addProduct_Description();
 	            prodPage.clickSubmitButton();
+	           
 	            
 	            System.out.println("Brand search and product click successful.");
 	        } catch (Exception e) {

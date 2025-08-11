@@ -1,5 +1,10 @@
 {
   "Brand" : {
-    "BrandName" : "Larkin-Jakubowski"
+    "BrandName" : "VonRueden-Klocko",
+    "City" : "Hilll-Feeney"
+  },
+  "Product" : {
+    "ProductName" : "Hilll-Feeney",
+    "Mrp" : "Hilll-Feeney"
   }
 }

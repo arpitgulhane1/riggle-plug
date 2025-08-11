@@ -7,6 +7,7 @@ import pageObjects.Brand_RatePage;
 import pageObjects.BrandsPage;
 import pageObjects.HomePage;
 import testBase.BaseClass;
+import utility.TestDataGenerator;
 
 public class BrandsNetworkTest extends BaseClass{
 
@@ -23,13 +24,13 @@ public class BrandsNetworkTest extends BaseClass{
 	            homep.clickOnBrandsMenu();
 
 	            BrandsPage bpage = new BrandsPage(driver);
-//	            bpage.clickOnAddBrand();
-//	            bpage.uploadBrandPhoto();
-//	            String testBrandName = TestDataGenerator.getRandomBrandName();  // Get and store random brand name
-//	            bpage.addBrandName(testBrandName);
-//	            bpage.enterCityName();
-//	            bpage.saveNewBrand();
-//	            bpage.clickOnCloseAddBrandTemplate();
+	            bpage.clickOnAddBrand();
+	            bpage.uploadBrandPhoto();
+	            String testBrandName = TestDataGenerator.getRandomBrandName();  // Get and store random brand name
+	            bpage.addBrandName(testBrandName);
+	            bpage.enterCityName();
+	            bpage.saveNewBrand();
+	            bpage.clickOnCloseAddBrandTemplate();
 	            
 	            bpage.searchBrand();
 	            bpage.clickOnRateBrandPage();

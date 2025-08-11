@@ -1,29 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-08-05T11:49:04 IST" name="Default suite" finished-at="2025-08-05T11:49:13 IST" duration-ms="9622">
+  <suite started-at="2025-08-11T16:38:41 IST" name="Default suite" finished-at="2025-08-11T16:38:54 IST" duration-ms="13006">
     <groups>
     </groups>
-    <test started-at="2025-08-05T11:49:04 IST" name="Default test" finished-at="2025-08-05T11:49:13 IST" duration-ms="9622">
-      <class name="testCases.BrandsNetworkTest">
-        <test-method is-config="true" signature="loadConfig()[pri:0, instance:testCases.BrandsNetworkTest@7dc0f706]" started-at="2025-08-05T11:49:04 IST" name="loadConfig" finished-at="2025-08-05T11:49:04 IST" duration-ms="19" status="PASS">
+    <test started-at="2025-08-11T16:38:41 IST" name="Default test" finished-at="2025-08-11T16:38:54 IST" duration-ms="13006">
+      <class name="testCases.Tc_Brands">
+        <test-method is-config="true" signature="loadConfig()[pri:0, instance:testCases.Tc_Brands@5149d738]" started-at="2025-08-11T16:38:41 IST" name="loadConfig" finished-at="2025-08-11T16:38:41 IST" duration-ms="21" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loadConfig -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:testCases.BrandsNetworkTest@7dc0f706]" started-at="2025-08-05T11:49:04 IST" name="setup" finished-at="2025-08-05T11:49:08 IST" duration-ms="3900" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:testCases.Tc_Brands@5149d738]" started-at="2025-08-11T16:38:41 IST" name="setup" finished-at="2025-08-11T16:38:44 IST" duration-ms="3023" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="TC_AddNewBrandAndVerifyNetworkPaheEmptyMessage()[pri:0, instance:testCases.BrandsNetworkTest@7dc0f706]" started-at="2025-08-05T11:49:08 IST" name="TC_AddNewBrandAndVerifyNetworkPaheEmptyMessage" finished-at="2025-08-05T11:49:13 IST" duration-ms="5623" status="PASS">
+        <test-method signature="testAddNewBrand()[pri:0, instance:testCases.Tc_Brands@5149d738]" started-at="2025-08-11T16:38:44 IST" name="testAddNewBrand" finished-at="2025-08-11T16:38:54 IST" duration-ms="9888" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Exception in testAddNewBrand: Locator must be set]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Exception in testAddNewBrand: Locator must be set
+at org.testng.Assert.fail(Assert.java:111)
+at testCases.Tc_Brands.testAddNewBrand(Tc_Brands.java:40)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_AddNewBrandAndVerifyNetworkPaheEmptyMessage -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.BrandsNetworkTest@7dc0f706]" started-at="2025-08-05T11:49:13 IST" name="tearDown" finished-at="2025-08-05T11:49:13 IST" duration-ms="1" status="PASS">
+        </test-method> <!-- testAddNewBrand -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.Tc_Brands@5149d738]" started-at="2025-08-11T16:38:54 IST" name="tearDown" finished-at="2025-08-11T16:38:54 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- testCases.BrandsNetworkTest -->
+      </class> <!-- testCases.Tc_Brands -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
