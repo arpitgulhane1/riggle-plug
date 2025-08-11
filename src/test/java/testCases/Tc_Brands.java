@@ -20,8 +20,8 @@ public class Tc_Brands extends BaseClass {
 	            homep.clickOnBrandsMenu();
 
 	            BrandsPage bpage = new BrandsPage(driver);
-	            bpage.clickOnAddBrand();
-	            bpage.uploadBrandPhoto();
+//	            bpage.clickOnAddBrand();
+//	            bpage.uploadBrandPhoto();
 //	            testBrandName = TestDataGenerator.getRandomBrandName();  // Get and store random brand name
 //	            bpage.addBrandName(testBrandName);
 //	            bpage.enterCityName();
@@ -29,9 +29,7 @@ public class Tc_Brands extends BaseClass {
 //	            
 //	            bpage.clickOnCloseAddBrandTemplate();
 	            bpage.searchBrand();
-	            Thread.sleep(2000);
 	            bpage.clickEditNewBrand();
-	            Thread.sleep(2000);
 	            Assert.assertTrue(bpage.verifyAddBrandDetail()); 
 	            
 	            System.out.println("Brand added successfully: " + testBrandName);

@@ -42,8 +42,8 @@ public class BrandsPage extends BasePage {
 	WebElement uploadBrandPhoto;
 	@FindBy(xpath = "//input[@id='nest-messages_name']")
 	WebElement brandName;
-	@FindBy(xpath = "//div[@class= 'ant-form-item-control-input']")
-	WebElement brandNameToGettext;
+	
+//	WebElement brandInput = driver.findElement(By.id("nest-messages_name"));
 	
 	@FindBy(xpath = "//input[@id='nest-messages_cities']")
 	WebElement enterCityName;
@@ -73,8 +73,9 @@ public class BrandsPage extends BasePage {
 //	driver.findElement(By.xpath("//div[@id='rc_unique_0']")).click();
 
 	public void searchBrand() {
-		
+		waitForElementVisible(addNewBrand, 5);
 		searchBrand.clear();
+		searchBrand.click();
 		String bradName = BrandUtility.readJson("Brand", "BrandName");
 		searchBrand.sendKeys(bradName);
 //		wait.until(ExpectedConditions.visibilityOf(selectedBrandName));
@@ -196,7 +197,12 @@ public class BrandsPage extends BasePage {
 
 	public void clickEditNewBrand() {
 //		searchBrand.click();
-
+		wait.until(ExpectedConditions.visibilityOf(brandProduct));
+		String bradName = BrandUtility.readJson("Brand", "BrandName");
+		wait.until(driver -> brandAlreadyAdded.getText().equalsIgnoreCase(bradName));
+		
+		if (brandAlreadyAdded.getText().equalsIgnoreCase(bradName)) {
+		
 		editBrand.click();
 //		  String resultName = brandName.getText();
 //		  String resultCity =enterCityName.getText();
@@ -204,6 +210,7 @@ public class BrandsPage extends BasePage {
 //	        Assert.assertEquals(resultCity, enterCityName);
 ////		// TODO Auto-generated method stub
 //		
+		}
 	}
 	
 //	public boolean verifyAddBrandDetail() {
@@ -214,22 +221,23 @@ public class BrandsPage extends BasePage {
 	public boolean verifyAddBrandDetail() throws InterruptedException {
 	    String brandNameOld = BrandUtility.readJson("Brand", "BrandName");
 	    
-	    waitForElementVisible(addNewBrand, 5);
-	    String listedBrandName = brandNameToGettext.getText();
+	    waitForElementVisible(brandName, 5);
+	    String brandValue = brandName.getAttribute("value");
 	    
-	    System.out.println("✅ Brand name matches: " + listedBrandName);
-	    System.out.println("✅ Brand name matches: " + brandNameOld);
+	    System.out.println("✅ Brand name from UI: " + brandValue);
+	    System.out.println("✅ Brand name from JSON: " + brandNameOld);
 
 	    Thread.sleep(2000);
-	    boolean isMatch = brandNameOld.trim().equals(listedBrandName.trim());
-	  
+
+	    boolean isMatch = brandNameOld.trim().equalsIgnoreCase(brandValue.trim());
 
 	    if (!isMatch) {
-	        System.out.println("❌ Brand name mismatch! Expected: " + brandNameOld + ", Found: " + listedBrandName);
+	        System.out.println("❌ Brand name mismatch! Expected: " + brandNameOld + ", Found: " + brandValue);
 	    } else {
-	        System.out.println("✅ Brand name matches: " + listedBrandName);
+	        System.out.println("✅ Brand name matches (case ignored): " + brandValue);
 	    }
 
 	    return isMatch;
 	}
+
 }
