@@ -26,7 +26,7 @@ import utility.BrandUtility;
 public class BrandsPage extends BasePage {
 
 	private static String[] brands;
-	 private static String selectedBrandName; 			//  Cached random brand name
+	private static String selectedBrandName; // Cached random brand name
 
 //	private String selectedBrandName ="Tata";
 
@@ -42,12 +42,13 @@ public class BrandsPage extends BasePage {
 	WebElement uploadBrandPhoto;
 	@FindBy(xpath = "//input[@id='nest-messages_name']")
 	WebElement brandName;
-	
+
 //	WebElement brandInput = driver.findElement(By.id("nest-messages_name"));
-	
+
 	@FindBy(xpath = "//input[@id='nest-messages_cities']")
 	WebElement enterCityName;
-	@FindBy(xpath = "//span[@aria-label='close']") WebElement closeAddBrandTemplate;
+	@FindBy(xpath = "//span[@aria-label='close']")
+	WebElement closeAddBrandTemplate;
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement saveNewBrand;
 
@@ -59,15 +60,22 @@ public class BrandsPage extends BasePage {
 	WebElement noBrandDataPresent;
 	@FindBy(xpath = "//div[contains(@class, 'ant-col ant-col-xs-24')]")
 	WebElement brandContainerData;
-	
+
 	@FindBy(xpath = "//div[@class='ant-card ant-card-bordered ant-card-hoverable']//h4")
 	WebElement brandAlreadyAdded;
-	
-	@FindBy (xpath="//div[contains(@class, 'ant-space-item')]")
+
+	@FindBy(xpath = "//div[contains(@class, 'ant-space-item')]")
 	WebElement editBrand;
 
-	
-	
+	@FindBy(xpath = "//div[@class='ant-modal-title' and @id='rc_unique_0']")
+	WebElement editBrandHeaderText;
+	@FindBy(xpath = "//div[@class=\"ant-select-selection-overflow-item\"]/span[1]")
+	List<WebElement> allCitysInputBox;
+	@FindBy(xpath = "//div[@class='ant-upload-drag-container']/img")
+	WebElement brandImgPath;
+	@FindBy(xpath = "//span[@class='anticon anticon-close ant-modal-close-icon']//*[name()='svg']")
+	WebElement closeBrand;
+
 //	Actions act = new Actions(driver);
 //	act.keyDown(Keys.ENTER).keyUp(Keys.ENTER).perform();
 //	driver.findElement(By.xpath("//div[@id='rc_unique_0']")).click();
@@ -90,10 +98,16 @@ public class BrandsPage extends BasePage {
 //	public void setBrandName(String name) {
 //		this.selectedBrandName = name;
 //	}
-	
+
+	public String getMyBrandName() {
+		String name = BrandUtility.readJson("Brand", "BrandName");
+		return name;
+
+	}
+
 	public void clickOnCloseAddBrandTemplate() {
 		closeAddBrandTemplate.click();
-		
+
 	}
 
 	public boolean isBrandDisplayed() {
@@ -101,10 +115,9 @@ public class BrandsPage extends BasePage {
 	}
 
 	public void clickOnAddBrand() {
-	    wait.until(ExpectedConditions.elementToBeClickable(addNewBrand));
-	    addNewBrand.click();
+		wait.until(ExpectedConditions.elementToBeClickable(addNewBrand));
+		addNewBrand.click();
 	}
-
 
 	public void uploadBrandPhoto() {
 		File file = new File(".\\src\\test\\resources\\BrandLogo1.png");
@@ -130,55 +143,48 @@ public class BrandsPage extends BasePage {
 
 	public void saveNewBrand() {
 		saveNewBrand.click();
-		System.out.println("selectedBrandName = "+ selectedBrandName);
-		BrandUtility.writeJson("Brand", "BrandName", selectedBrandName);				
+		System.out.println("selectedBrandName = " + selectedBrandName);
+		BrandUtility.writeJson("Brand", "BrandName", selectedBrandName);
 	}
-	
 
 	public void clickOnBrandProduct() {
 		wait.until(ExpectedConditions.visibilityOf(brandProduct));
 		String bradName = BrandUtility.readJson("Brand", "BrandName");
 		wait.until(driver -> brandAlreadyAdded.getText().equalsIgnoreCase(bradName));
-		
+
 		if (brandAlreadyAdded.getText().equalsIgnoreCase(bradName)) {
 			Actions action = new Actions(driver);
-			action.keyDown(Keys.CONTROL)
-			.click(brandProduct)
-			.keyUp(Keys.CONTROL)
-			.build()
-			.perform();
+			action.keyDown(Keys.CONTROL).click(brandProduct).keyUp(Keys.CONTROL).build().perform();
 			List<String> tabsId = new ArrayList<>(driver.getWindowHandles());
-			
+
 			if (tabsId.size() < 2) {
 				throw new RuntimeException("Brand not Found New tab did not open as expected");
 			}
 			driver.switchTo().window(tabsId.get(1));
 		}
 	}
-	
+
+	public boolean isBrandImgPresent() {
+		return brandImgPath.isDisplayed();
+	}
+
 	public void clickOnRateBrandPage() {
 		wait.until(ExpectedConditions.visibilityOf(brandRate));
 		String bradName = BrandUtility.readJson("Brand", "BrandName");
 		wait.until(driver -> brandAlreadyAdded.getText().equalsIgnoreCase(bradName));
 
 		if (brandAlreadyAdded.getText().equalsIgnoreCase(bradName)) {
-		  Actions action = new Actions(driver);
-		    action.keyDown(Keys.CONTROL)
-		          .click(brandRate)
-		          .keyUp(Keys.CONTROL)
-		          .build()
-		          .perform();
-		    List<String> tabsId = new ArrayList<>(driver.getWindowHandles());
-		    
-		    if (tabsId.size() < 2) {
-		        throw new RuntimeException("Brand not Found New tab did not open as expected");
-		    }
-		    driver.switchTo().window(tabsId.get(1));
+			Actions action = new Actions(driver);
+			action.keyDown(Keys.CONTROL).click(brandRate).keyUp(Keys.CONTROL).build().perform();
+			List<String> tabsId = new ArrayList<>(driver.getWindowHandles());
+
+			if (tabsId.size() < 2) {
+				throw new RuntimeException("Brand not Found New tab did not open as expected");
+			}
+			driver.switchTo().window(tabsId.get(1));
 		}
 	}
 
-	
-	
 	public String getBrandName() {
 		if (selectedBrandName == null) {
 			try (FileReader reader = new FileReader(".\\src\\test\\resources\\brands.properties")) {
@@ -191,7 +197,7 @@ public class BrandsPage extends BasePage {
 				throw new RuntimeException("Failed to read brand names from properties file", e);
 			}
 		}
-		
+
 		return selectedBrandName;
 	}
 
@@ -200,10 +206,10 @@ public class BrandsPage extends BasePage {
 		wait.until(ExpectedConditions.visibilityOf(brandProduct));
 		String bradName = BrandUtility.readJson("Brand", "BrandName");
 		wait.until(driver -> brandAlreadyAdded.getText().equalsIgnoreCase(bradName));
-		
+
 		if (brandAlreadyAdded.getText().equalsIgnoreCase(bradName)) {
-		
-		editBrand.click();
+
+			editBrand.click();
 //		  String resultName = brandName.getText();
 //		  String resultCity =enterCityName.getText();
 //	        Assert.assertEquals(resultName, brandName);
@@ -212,32 +218,79 @@ public class BrandsPage extends BasePage {
 //		
 		}
 	}
-	
+
 //	public boolean verifyAddBrandDetail() {
 //		String brandNameOld = BrandUtility.readJson("Brand", "BrandName");
 //		String listedBrandName = brandName.getText();
 //		return brandNameOld.equals(listedBrandName);		
 //	}
 	public boolean verifyAddBrandDetail() throws InterruptedException {
-	    String brandNameOld = BrandUtility.readJson("Brand", "BrandName");
-	    
-	    waitForElementVisible(brandName, 5);
-	    String brandValue = brandName.getAttribute("value");
-	    
-	    System.out.println("✅ Brand name from UI: " + brandValue);
-	    System.out.println("✅ Brand name from JSON: " + brandNameOld);
 
-	    Thread.sleep(2000);
+//		WebElement modalTitle = 
+		wait.until(ExpectedConditions.visibilityOf(editBrandHeaderText));
 
-	    boolean isMatch = brandNameOld.trim().equalsIgnoreCase(brandValue.trim());
+		// Get text from UI
+		String actualTitle = editBrandHeaderText.getText();
 
-	    if (!isMatch) {
-	        System.out.println("❌ Brand name mismatch! Expected: " + brandNameOld + ", Found: " + brandValue);
-	    } else {
-	        System.out.println("✅ Brand name matches (case ignored): " + brandValue);
-	    }
+		if (actualTitle.startsWith("Edit ")) {
+			actualTitle = actualTitle.substring(5);
+		}
 
-	    return isMatch;
+		// Expected value from JSON or hardcoded
+		String expectedTitle = getMyBrandName(); // or read from your data file
+
+		System.out.println("✅ Modal title from UI: " + actualTitle);
+		System.out.println("✅ Expected modal title: " + expectedTitle);
+
+		// Verify
+		if (!actualTitle.trim().equalsIgnoreCase(expectedTitle.trim())) {
+			System.out.println("❌ Modal title mismatch!");
+		} else {
+			System.out.println("✅ Modal title matches!");
+		}
+		String brandNameOld = BrandUtility.readJson("Brand", "BrandName");
+		String cityNameOld = BrandUtility.readJson("Brand", "City");
+		boolean isCityMatch = false;
+		waitForElementVisible(brandName, 5);
+
+//	    waitForElementVisible(allCitysInputBox,5);
+		String brandValue = brandName.getAttribute("value");
+		for (WebElement city : allCitysInputBox) {
+			String citytext = city.getAttribute("title");
+			if (cityNameOld.equalsIgnoreCase(citytext)) {
+				isCityMatch = true;
+			}
+		}
+
+//	    String cityValue =allCitysInputBox.getAttribute("title");
+
+		System.out.println("✅ Brand name from UI: " + brandValue);
+		System.out.println("✅ Brand name from JSON: " + brandNameOld);
+//	    System.out.println("✅ City name from UI: " + cityValue);
+		System.out.println("✅ City name from JSON: " + cityNameOld);
+
+		Thread.sleep(2000);
+
+		boolean isBrandMatch = brandNameOld.trim().equalsIgnoreCase(brandValue.trim());
+
+		if (!isBrandMatch) {
+			System.out.println("❌ Brand name mismatch! Expected: " + brandNameOld + ", Found: " + brandValue);
+		} else {
+			System.out.println("✅ Brand name matches (case ignored): " + brandValue);
+		}
+
+//	    boolean isCityMatch = cityNameOld.trim().equalsIgnoreCase(cityValue.trim());
+//	    if (!isCityMatch) {
+//	        System.out.println("❌ City name mismatch! Expected: " + cityNameOld + ", Found: " + cityValue);
+//	    } else {
+//	        System.out.println("✅ City name matches (case ignored): " + cityValue);
+//	    }
+
+		return isBrandMatch && isCityMatch;
+	}
+
+	public void closeBrandAfterVerify() {
+		closeBrand.click();
 	}
 
 }

@@ -33,12 +33,12 @@ public class VerifyOtpPage extends BasePage {
 	WebElement submitButton;
 	@FindBy(xpath = ("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[3]/form[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/button[1]"))
 	WebElement absuluteSubmitButton;
-	
 
-	@FindBy(xpath = ("//div[@class='ant-notification-notice-description']")) WebElement invalidOTP_Error ;
-	@FindBy(xpath = ("//div[@id='login-form_otp_help']//div[text()='Please input your OTP']")) WebElement errorInputyourOTP;
-	
-	
+	@FindBy(xpath = ("//div[@class='ant-notification-notice-description']"))
+	WebElement invalidOTP_Error;
+	@FindBy(xpath = ("//div[@id='login-form_otp_help']//div[text()='Please input your OTP']"))
+	WebElement errorInputyourOTP;
+
 	// action methods 007880
 	public void enterOtp(String mobileNumber) {
 
@@ -62,25 +62,25 @@ public class VerifyOtpPage extends BasePage {
 	}
 
 	public void enterInvalidOtp() {
-		 Random random = new Random();
-	        int sixDigitNumber = 100000 + random.nextInt(900000); 
+		Random random = new Random();
+		int sixDigitNumber = 100000 + random.nextInt(900000);
 
-	        String otpString = String.valueOf(sixDigitNumber);
+		String otpString = String.valueOf(sixDigitNumber);
 
-	        // Convert to char array
-	        char[] digitsArray = new char[otpString.length()];
-	        for (int i = 0; i < otpString.length(); i++) {
-	            digitsArray[i] = otpString.charAt(i);
-	        }
-	        otpFistDigit.sendKeys(String.valueOf(digitsArray[0]));
-			otpSecondDigit.sendKeys(String.valueOf(digitsArray[1]));
-			otpThirdDigit.sendKeys(String.valueOf(digitsArray[2]));
-			otpFourthDigit.sendKeys(String.valueOf(digitsArray[3]));
-			otpFifthDigit.sendKeys(String.valueOf(digitsArray[4]));
-			otpSixthDigit.sendKeys(String.valueOf(digitsArray[5]));
-			
+		// Convert to char array
+		char[] digitsArray = new char[otpString.length()];
+		for (int i = 0; i < otpString.length(); i++) {
+			digitsArray[i] = otpString.charAt(i);
+		}
+		otpFistDigit.sendKeys(String.valueOf(digitsArray[0]));
+		otpSecondDigit.sendKeys(String.valueOf(digitsArray[1]));
+		otpThirdDigit.sendKeys(String.valueOf(digitsArray[2]));
+		otpFourthDigit.sendKeys(String.valueOf(digitsArray[3]));
+		otpFifthDigit.sendKeys(String.valueOf(digitsArray[4]));
+		otpSixthDigit.sendKeys(String.valueOf(digitsArray[5]));
+
 	}
-	
+
 	public void clearOtpInputFields() {
 		otpFistDigit.sendKeys("");
 		otpSecondDigit.sendKeys("");
@@ -89,43 +89,40 @@ public class VerifyOtpPage extends BasePage {
 		otpFifthDigit.sendKeys("");
 		otpSixthDigit.sendKeys("");
 	}
-	
+
 	public void clickOnSubmitButton() {
-			
-		    try {
-		        submitButton.click();
-		    } catch (Exception e) {
-		        absuluteSubmitButton.click();
-		    }
-		    
+
+		try {
+			submitButton.click();
+		} catch (Exception e) {
+			absuluteSubmitButton.click();
+		}
+
 	}
-	
+
 	public boolean isInvalidErrorShown() {
 //		invalidOTP_Error.isDisplayed();
-		
-		WebDriverWait wait = new WebDriverWait(driver , Duration.ofSeconds(10));
-	    try {
-	        wait.until(ExpectedConditions.visibilityOf(invalidOTP_Error));
-	        return invalidOTP_Error.isDisplayed();
-	    } catch (TimeoutException e) {
-	        return false; 
-	    }
-		
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		try {
+			wait.until(ExpectedConditions.visibilityOf(invalidOTP_Error));
+			return invalidOTP_Error.isDisplayed();
+		} catch (TimeoutException e) {
+			return false;
+		}
+
 	}
+
 	public boolean isPleaseInputYourOtpErrorMessageDisplayed() {
 //		return errorInputyourOTP.isDisplayed();
-		
-		
-		
-		WebDriverWait wait = new WebDriverWait(driver , Duration.ofSeconds(10));
-	    try {
-	        wait.until(ExpectedConditions.visibilityOf(errorInputyourOTP));
-	        return errorInputyourOTP.isDisplayed();
-	    } catch (TimeoutException e) {
-	        return false; 
-	    }
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		try {
+			wait.until(ExpectedConditions.visibilityOf(errorInputyourOTP));
+			return errorInputyourOTP.isDisplayed();
+		} catch (TimeoutException e) {
+			return false;
+		}
 	}
-	
-	
 
 }

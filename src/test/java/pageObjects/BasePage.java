@@ -10,8 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
 	WebDriver driver;
-	 protected WebDriverWait wait;
-	
+	protected WebDriverWait wait;
+
 	BasePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -19,9 +19,8 @@ public class BasePage {
 	}
 
 	public void waitForElementVisible(WebElement element, int timeoutInSeconds) {
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
-	    wait.until(ExpectedConditions.visibilityOf(element));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+		wait.until(ExpectedConditions.visibilityOf(element));
 	}
-	
-	
+
 }

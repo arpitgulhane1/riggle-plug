@@ -7,8 +7,8 @@
         <methods>
           <include name="loadConfig"/>
           <include name="tearDown"/>
-          <include name="testAddNewBrand"/>
           <include name="setup"/>
+          <include name="testSearchBrandAndClickProduct"/>
         </methods>
       </class> <!-- testCases.Tc_Brands -->
     </classes>
