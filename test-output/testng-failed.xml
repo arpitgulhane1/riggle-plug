@@ -7,6 +7,10 @@
         <methods>
           <include name="loadConfig"/>
           <include name="tearDown"/>
+<<<<<<< HEAD
+=======
+          <include name="testSearchBrand_EditProduct_VerifyProductSuccessfully"/>
+>>>>>>> 30c7fe4 (Add product and verify product details also edit product but edit is pending not done)
           <include name="setup"/>
           <include name="testSearchBrandAndClickProduct"/>
         </methods>

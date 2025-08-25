@@ -47,8 +47,14 @@ public class BaseClass {
 
 //	@AfterClass
 	@AfterMethod
+<<<<<<< HEAD
 	public void tearDown() {
 		if (driver != null) {
+=======
+    public void tearDown() throws InterruptedException {
+        if (driver != null) {
+        	Thread.sleep(6000);
+>>>>>>> 30c7fe4 (Add product and verify product details also edit product but edit is pending not done)
 //            driver.quit();
 		}
 	}

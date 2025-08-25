@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Default_suite" class="navigator-link">
-              <span class="suite-name border-passed">Default suite</span>
+              <span class="suite-name border-failed">Default suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -50,7 +50,11 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
+<<<<<<< HEAD
                     <span>C:\Users\91908\AppData\Local\Temp\testng-eclipse-367697009\testng-customsuite.xml</span>
+=======
+                    <span>C:\Users\USER\AppData\Local\Temp\testng-eclipse-1925657062\testng-customsuite.xml</span>
+>>>>>>> 30c7fe4 (Add product and verify product details also edit product but edit is pending not done)
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,21 +96,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Default_suite" class="hide-methods passed suite-Default_suite"> (hide)</a> <!-- hide-methods passed suite-Default_suite -->
-                      <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods failed suite-Default_suite"> (hide)</a> <!-- hide-methods failed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods failed suite-Default_suite"> (show)</a> <!-- show-methods failed suite-Default_suite -->
                     </span>
-                    <div class="method-list-content passed suite-Default_suite">
+                    <div class="method-list-content failed suite-Default_suite">
                       <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="testCases.Tc_Brands" class="method navigator-link" hash-for-method="testAddNewBrand">testAddNewBrand</a> <!-- method navigator-link -->
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="testCases.Tc_Brands" class="method navigator-link" hash-for-method="testSearchBrand_EditProduct_VerifyProductSuccessfully">testSearchBrand_EditProduct_VerifyProductSuccessfully</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-Default_suite -->
+                    </div> <!-- method-list-content failed suite-Default_suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -118,25 +122,84 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Default_suite" class="panel Default_suite">
-          <div class="suite-Default_suite-class-passed">
+          <div class="suite-Default_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">testCases.Tc_Brands</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="testAddNewBrand">
-                  </a> <!-- testAddNewBrand -->
-                  <span class="method-name">testAddNewBrand</span>
+                  <a name="testSearchBrand_EditProduct_VerifyProductSuccessfully">
+                  </a> <!-- testSearchBrand_EditProduct_VerifyProductSuccessfully -->
+                  <span class="method-name">testSearchBrand_EditProduct_VerifyProductSuccessfully</span>
+                  <div class="stack-trace">org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;input type=&quot;search&quot; id=&quot;nest-messages_category&quot; autocomplete=&quot;off&quot; class=&quot;ant-select-selection-search-input&quot; role=&quot;combobox&quot; aria-haspopup=&quot;listbox&quot; aria-owns=&quot;nest-messages_category_list&quot; aria-autocomplete=&quot;list&quot; aria-controls=&quot;nest-messages_category_list&quot; aria-activedescendant=&quot;nest-messages_category_list_0&quot; aria-required=&quot;true&quot; value=&quot;&quot;&gt; is not clickable at point (503, 258). Other element would receive the click: &lt;span class=&quot;ant-select-selection-item&quot; title=&quot;...&quot;&gt;Health Care &amp;amp; Hygiene&lt;/span&gt;
+  (Session info: chrome=139.0.7258.139)
+Build info: version: &apos;4.28.0&apos;, revision: &apos;ac342546e9&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;23.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [ad995c3359d74e1e6950008eb737df30, clickElement {id=f.3DB9E256C52FC11DD7C07FB02B5465AE.d.4F42066CD8004EE8F73846725B18592A.e.67}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 139.0.7258.139, chrome: {chromedriverVersion: 139.0.7258.138 (884e54ea8d4..., userDataDir: C:\Users\USER\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57075}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57075/devtoo..., se:cdpVersion: 139.0.7258.139, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (ad995c3359d74e1e6950008eb737df30)] -&gt; xpath: //input[@id=&apos;nest-messages_category&apos;]]
+Session ID: ad995c3359d74e1e6950008eb737df30
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy2/jdk.proxy2.$Proxy13.click(Unknown Source)
+	at pageObjects.ProductsPage.editProductCategory(ProductsPage.java:489)
+	at testCases.Tc_Brands.testSearchBrand_EditProduct_VerifyProductSuccessfully(Tc_Brands.java:122)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Default_suite-class-passed -->
+          </div> <!-- suite-Default_suite-class-failed -->
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
+<<<<<<< HEAD
             <span class="header-content">C:\Users\91908\AppData\Local\Temp\testng-eclipse-367697009\testng-customsuite.xml</span>
+=======
+            <span class="header-content">C:\Users\USER\AppData\Local\Temp\testng-eclipse-1925657062\testng-customsuite.xml</span>
+>>>>>>> 30c7fe4 (Add product and verify product details also edit product but edit is pending not done)
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -147,7 +210,7 @@
     &lt;classes&gt;
       &lt;class name=&quot;testCases.Tc_Brands&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;testAddNewBrand&quot;/&gt;
+          &lt;include name=&quot;testSearchBrand_EditProduct_VerifyProductSuccessfully&quot;/&gt;
         &lt;/methods&gt;
       &lt;/class&gt; &lt;!-- testCases.Tc_Brands --&gt;
     &lt;/classes&gt;
@@ -191,14 +254,22 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'testAddNewBrand')
+data.setCell(0, 1, 'testSearchBrand_EditProduct_VerifyProductSuccessfully')
 data.setCell(0, 2, 'testCases.Tc_Brands')
+<<<<<<< HEAD
 data.setCell(0, 3, 8854);
+=======
+data.setCell(0, 3, 19299);
+>>>>>>> 30c7fe4 (Add product and verify product details also edit product but edit is pending not done)
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
+<<<<<<< HEAD
               <span class="suite-total-time">Total running time: 8 seconds</span>
+=======
+              <span class="suite-total-time">Total running time: 19 seconds</span>
+>>>>>>> 30c7fe4 (Add product and verify product details also edit product but edit is pending not done)
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -213,13 +284,21 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">2 ignored methods</span>
+            <span class="header-content">3 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
               <span class="ignored-class-name">testCases.Tc_Brands</span>
               <div class="ignored-methods-div">
+<<<<<<< HEAD
                 <span class="ignored-method-name">testSearchBrandAndClickProduct2</span>
+=======
+                <span class="ignored-method-name">verifyProductDetails</span>
+                <br/>
+                <span class="ignored-method-name">testSearchBrand_AddNewProduct_VerifyProductSuccessfully</span>
+                <br/>
+                <span class="ignored-method-name">testAddNewBrand_ShouldCreateBrandSuccessfully</span>
+>>>>>>> 30c7fe4 (Add product and verify product details also edit product but edit is pending not done)
                 <br/>
                 <span class="ignored-method-name">testSearchBrandAndClickProduct</span>
                 <br/>
@@ -240,6 +319,7 @@ return data;
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
+<<<<<<< HEAD
                 <span class="method-start">24 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
@@ -249,6 +329,19 @@ return data;
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
                 <span class="method-start">11531 ms</span>
+=======
+                <span class="method-start">49 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">testSearchBrand_EditProduct_VerifyProductSuccessfully</span>
+                <span class="method-start">4106 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">23452 ms</span>
+>>>>>>> 30c7fe4 (Add product and verify product details also edit product but edit is pending not done)
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

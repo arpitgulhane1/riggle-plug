@@ -4,7 +4,25 @@
     "City" : "Mumbai"
   },
   "Product" : {
-    "ProductName" : "Hilll-Feeney",
-    "Mrp" : "Hilll-Feeney"
+    "ProductName" : "Incredible Paper Shirt",
+    "ProductMRP" : "914",
+    "BestBeforeValue" : "8",
+    "ExpiryUnitDropDownOption" : "Months",
+    "productDescValue" : "Product Description For Testing",
+    "ProductCategoryName" : "Health Care & Hygiene",
+    "CheckBoxMustSellValue" : "true",
+    "GST_PercentageValue" : "7",
+    "selectedMeasurementUnitValue" : "gm",
+    "ProductUniqueCode" : "PROD-20250824211201",
+    "ProductUnitWTValue" : "35",
+    "PackagingUnitValue" : null,
+    "ProductCatalogImageValue" : "true",
+    "productSubCategoryName" : "Tissue - Papers & Towels",
+    "PackagingUnitContainsValue" : null,
+    "ProductImageValue" : "true",
+    "Cess_PercentageValue" : "4",
+    "CheckBoxFocusedValue" : "false",
+    "CheckBoxPromotedValue" : "false",
+    "HSNCodeValue" : "3320"
   }
 }
