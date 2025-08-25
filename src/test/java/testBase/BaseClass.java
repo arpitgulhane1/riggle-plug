@@ -20,14 +20,13 @@ public class BaseClass {
 	public WebDriver driver;
 	public Properties prop;
 
-	 @BeforeClass
-	    public void loadConfig() throws IOException {
-	        FileReader file = new FileReader(".\\src\\test\\resources\\config.properties");
-	        prop = new Properties();
-	        prop.load(file);
-	    }
-	
-	
+	@BeforeClass
+	public void loadConfig() throws IOException {
+		FileReader file = new FileReader(".\\src\\test\\resources\\config.properties");
+		prop = new Properties();
+		prop.load(file);
+	}
+
 //	@BeforeClass
 	@BeforeMethod
 	public void setup() throws IOException {
@@ -37,7 +36,7 @@ public class BaseClass {
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--disable-gpu");
 		options.addArguments("--remote-allow-origins=*");
-		
+
 		driver = new ChromeDriver(options);
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
@@ -48,23 +47,21 @@ public class BaseClass {
 
 //	@AfterClass
 	@AfterMethod
-    public void tearDown() {
-        if (driver != null) {
+	public void tearDown() {
+		if (driver != null) {
 //            driver.quit();
-        }
-    }
+		}
+	}
 
+	public void loginToApp() {
+		LoginPage login = new LoginPage(driver);
+		login.enterUserName(prop.getProperty("mobileNumber"));
+		login.clickOnTermsAndPolicyCheckbox();
+		login.clickOnsubmitButton();
 
-
-public void loginToApp() {
-	LoginPage login = new LoginPage(driver);
-	login.enterUserName(prop.getProperty("mobileNumber"));
-	login.clickOnTermsAndPolicyCheckbox();
-	login.clickOnsubmitButton();
-
-	VerifyOtpPage votp = new VerifyOtpPage(driver);
-	votp.enterOtp(prop.getProperty("mobileNumber"));
-	votp.clickOnSubmitButton();
-}
+		VerifyOtpPage votp = new VerifyOtpPage(driver);
+		votp.enterOtp(prop.getProperty("mobileNumber"));
+		votp.clickOnSubmitButton();
+	}
 
 }

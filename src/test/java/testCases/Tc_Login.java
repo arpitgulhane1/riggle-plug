@@ -46,7 +46,7 @@ public class Tc_Login extends BaseClass {
 		}
 	}
 
-	@Test 
+	@Test
 	public void testEmptyMobileNumberWithCheckbox() {
 		try {
 			LoginPage login = new LoginPage(driver);
@@ -102,7 +102,7 @@ public class Tc_Login extends BaseClass {
 		Assert.assertTrue(errorStatus, "Invalid OTP error is not displayed!");
 	}
 
-	@Test																	
+	@Test
 	public void testOtpNotEnteredError() { // without enter OTP
 		LoginPage login = new LoginPage(driver);
 		login.enterUserName(prop.getProperty("mobileNumber"));
@@ -128,19 +128,19 @@ public class Tc_Login extends BaseClass {
 			VerifyOtpPage votp = new VerifyOtpPage(driver);
 			votp.enterOtp(prop.getProperty("mobileNumber"));
 			votp.clickOnSubmitButton();
-			
+
 			HomePage hp = new HomePage(driver);
-			boolean loginSuccess = hp.verifyLogo(); 
+			boolean loginSuccess = hp.verifyLogo();
 			Assert.assertTrue(loginSuccess, "Login verification failed: Logo not found.");
-		}catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println("Exception occurred during login: " + e.getMessage());
 			e.printStackTrace(); // Helpful for debugging
 			Assert.fail("Login test failed due to exception.");
 		}
-		
+
 	}
-	
-	@Test(groups = {"login", "regression"})
+
+	@Test(groups = { "login", "regression" })
 	public void testSuccessfulLoginAndLogout() {
 		SoftAssert softAssert = new SoftAssert();
 
