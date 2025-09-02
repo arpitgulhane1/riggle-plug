@@ -81,7 +81,7 @@ public class Tc_Brands extends BaseClass {
 	            prodPage.addGST_Percentage();
 	            prodPage.addCess_Percentage();
 	            prodPage.addProduct_Description();
-	            prodPage.clickSubmitButton();
+	            prodPage.clickOnSubmitButton();
 	           
 	            Assert.assertTrue(prodPage.verifyProductCreatedSuccessMessage(), 
 	                    "Product created success message not displayed or mismatched!");
@@ -114,8 +114,6 @@ public class Tc_Brands extends BaseClass {
 			   
 			   Assert.assertTrue(prodPage.isEditProductPageTitleMatchingProductName(),"Edit Product page title text is not matching!");
 			   
-			   
-			   
 			   prodPage.editProductName();
 			   prodPage.editProductMRP();
 			   prodPage.editProductCode();
@@ -126,8 +124,8 @@ public class Tc_Brands extends BaseClass {
 			   prodPage.selectExpiryUnitDropDown();
 			   prodPage.editProductUnitWT();
 			   prodPage.selectMeasurementUnitDropDown();
-			   prodPage.uploadProductImage();
-			   prodPage.uploadProduct_CatalogImage();
+//			   prodPage.uploadProductImage();
+//			   prodPage.uploadProduct_CatalogImage();
 
 //			// Add Unit Code
 //	            prodPage.addUnit();
@@ -140,9 +138,21 @@ public class Tc_Brands extends BaseClass {
 			   prodPage.editGST_Percentage();
 			   prodPage.editCess_Percentage();
 			   prodPage.editProduct_Description();
+			   
+			   prodPage.clickOnUpdateButton();
 
+			   Assert.assertTrue(prodPage.verifyProductUpdatedSuccessMessage(), 
+	                    "Product Updated success message not displayed or mismatched!");
+	            
 			   
+			   prodPage.clickOnResetFilters();
+	            prodPage.searchProduct();
+	            prodPage.clickOnEditProductIcon();
+			   Assert.assertTrue(prodPage.isEditProductPageTitleMatchingProductName(),"Edit Product page title text is not matching!");
 			   
+			   Assert.assertTrue(prodPage.areProductDetailsValid(), "Product details from UI do not match.");
+			   
+				System.out.println("Brand search and product click successful.");
 			   
 //			   Assert.assertTrue(productPage.areProductDetailsValid(), "Product details from UI do not match."); 
 	    }

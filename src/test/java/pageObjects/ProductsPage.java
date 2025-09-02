@@ -1,19 +1,20 @@
 package pageObjects;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -45,13 +46,14 @@ public class ProductsPage extends BasePage {
 	WebElement productName;
 	@FindBy(xpath = "//input[@id='nest-messages_mrp']")
 	WebElement productMRP;
-	@FindBy(xpath = "//input[@id='nest-messages_category']")
+
+	@FindBy(xpath = "//label[text()='Category']/following::div[@class='ant-select-selector'][1]")
 	WebElement productCategory;
 	@FindBy(xpath = "//input[@id='nest-messages_category']/ancestor::div[@class='ant-select-selector']//span[@class='ant-select-selection-item']")
 	WebElement productCategoryOnEdit;
 	@FindBy(xpath = "//div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]")
 	List<WebElement> productCategoryAllOptions;
-	@FindBy(xpath = "//input[@id='nest-messages_sub_category']")
+	@FindBy(xpath = "//label[text()='Sub Category']/following::div[@class='ant-select-selector'][1]")
 	WebElement productSubCategory;
 	@FindBy(xpath = "//input[@id='nest-messages_sub_category']/ancestor::div[@class='ant-select-selector']//span[@class='ant-select-selection-item']")
 	WebElement productSubCategoryOnEdit;
@@ -59,6 +61,7 @@ public class ProductsPage extends BasePage {
 	List<WebElement> productSubCategoryAllOptions;
 	@FindBy(xpath = "//input[@id='nest-messages_base_quantity']")
 	WebElement productUnitWT;
+
 
 //	Not Mandatory
 	@FindBy(xpath = "//input[@id='nest-messages_product_code']")
@@ -72,16 +75,20 @@ public class ProductsPage extends BasePage {
 
 	@FindBy(xpath = "//input[@id='nest-messages_expiry_in']")
 	WebElement inputBestBefore;
-	@FindBy(xpath = "//input[@id='nest-messages_expiry_unit']")
+//	@FindBy(xpath = "//input[@id='nest-messages_expiry_unit']")
+//	WebElement expiryUnitDropDown;
+	@FindBy(xpath = "//label[text()='Expiry Unit']/following::div[@class='ant-select-selector'][1]")
 	WebElement expiryUnitDropDown;
 	@FindBy(xpath = "//input[@id='nest-messages_expiry_unit']/ancestor::div[@class='ant-select-selector']//span[@class='ant-select-selection-item']")
 	WebElement expiryUnitDropDownOnEdit;
 	@FindBy(xpath = "//div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]")
 	List<WebElement> expiryUnitDropDownAllOptions;
-	@FindBy(xpath = "//input[@id='nest-messages_base_unit']")
+//	@FindBy(xpath = "//input[@id='nest-messages_base_unit']")
+//	WebElement measurementUnitDropDown;
+	@FindBy(xpath = "//label[text()='Measurement Unit']/following::div[@class='ant-select-selector'][1]")
 	WebElement measurementUnitDropDown;
-	@FindBy(xpath = "//input[@id='nest-messages_base_unit']/ancestor::div[@class='ant-select-selector']//span[@class='ant-select-selection-item']")
-	WebElement measurementUnitDropDownOnEdit;
+//	@FindBy(xpath = "//input[@id='nest-messages_base_unit']/ancestor::div[@class='ant-select-selector']//span[@class='ant-select-selection-item']")
+//	WebElement measurementUnitDropDownOnEdit;
 	@FindBy(xpath = "//div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]")
 	List<WebElement> measurementUnitDropDownAllOptions;
 
@@ -133,6 +140,12 @@ public class ProductsPage extends BasePage {
 
 	@FindBy(xpath = "//input[@id=\"search\"]")
 	WebElement searchProductBar;
+	
+//	@FindBy(xpath = "//input[@id=\"search\"]")
+//	WebElement editsearchProductBar;
+	
+	@FindBy(xpath = "//button[@type='button' and .//span[normalize-space()='Reset Filters']]")
+	private WebElement resetFiltersButton;
 
 	// Edit Product
 	@FindBy(xpath = "//div[@class=\"ant-modal-title\"]")
@@ -142,9 +155,11 @@ public class ProductsPage extends BasePage {
 	WebElement editProductButton;
 
 	@FindBy(xpath = "div[class=\"ant-col ant-col-6\"]")
-	WebElement productContainer;
+	List<WebElement> productContainer;
 
-	@FindBy(xpath = "(//div[@class=\"ant-col ant-col-6\"]//span[@class=\"font-size-base font-weight-semibold font-normal text-darkgreen\"])[1]")
+//	@FindBy(xpath = "(//div[@class=\"ant-col ant-col-6\"]//span[@class=\"font-size-base font-weight-semibold font-normal text-darkgreen\"])[1]")
+//	WebElement productNameFromContainer;
+	@FindBy(xpath = "(//div[contains(@class,'ant-col ant-col-6')]//span[contains(@class,'text-darkgreen')])[1]")
 	WebElement productNameFromContainer;
 
 	public String getProductBrandPath() {
@@ -207,6 +222,7 @@ public class ProductsPage extends BasePage {
 	public void addProductCategory() {
 		String desiredCategory = ConfigReader.getProperty("product.category");
 		productCategory.click();
+		
 		waitForMultipleElementsVisible(productCategoryAllOptions, 5);
 		if (productCategoryAllOptions.isEmpty()) {
 			throw new RuntimeException("❌ No product categories available!");
@@ -254,8 +270,11 @@ public class ProductsPage extends BasePage {
 	}
 
 	public void addProductCode() {
-		String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		productUniqueCode = "PROD-" + timestamp;
+		int randomNum = new Random().nextInt(9000) + 1000;
+		js.executeScript("arguments[0].value='';", productCode);
+		productUniqueCode = "PROD-" + randomNum;
+		
+		productCode.clear();
 		productCode.sendKeys(productUniqueCode);
 	}
 
@@ -463,7 +482,8 @@ public class ProductsPage extends BasePage {
 
 	public void editProductName() {
 		newProductName = TestDataGenerator.getRandomProductName();
-		productName.clear();
+		productName.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+		productName.sendKeys(Keys.DELETE);
 		productName.sendKeys(newProductName);
 	}
 
@@ -471,7 +491,9 @@ public class ProductsPage extends BasePage {
 		Random rand = new Random();
 		int randomMRP = rand.nextInt(961) + 40;
 		productNewMRP = String.valueOf(randomMRP);
-		productMRP.clear();
+		productMRP.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+		productMRP.sendKeys(Keys.DELETE);
+//		js.executeScript("arguments[0].value='';", productMRP);
 		productMRP.sendKeys(productNewMRP);
 	}
 
@@ -487,6 +509,7 @@ public class ProductsPage extends BasePage {
 
 	public void editProductCategory() {
 		productCategory.click();
+//		js.executeScript("arguments[0].click();", productCategory);
 		waitForMultipleElementsVisible(productCategoryAllOptions, 5);
 		if (productCategoryAllOptions.isEmpty()) {
 			throw new RuntimeException("❌ No product categories available!");
@@ -516,14 +539,19 @@ public class ProductsPage extends BasePage {
 		Random random = new Random();
 		int unitWeight = random.nextInt(46) + 5;
 		productUnitWTValue = String.valueOf(unitWeight);
-		productUnitWT.clear();
+//		productUnitWT.clear();
+		productUnitWT.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+		productUnitWT.sendKeys(Keys.DELETE);
 		productUnitWT.sendKeys(productUnitWTValue);
 	}
 
 	public void editProductCode() {
-		String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		productUniqueCode = "PROD-" + timestamp;
-		productCode.clear();
+		int randomNum = new Random().nextInt(9000) + 1000;
+
+		productUniqueCode = "PROD-" + randomNum;
+
+		productCode.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+		productCode.sendKeys(Keys.DELETE);
 		productCode.sendKeys(productUniqueCode);
 	}
 
@@ -531,7 +559,9 @@ public class ProductsPage extends BasePage {
 		Random random = new Random();
 		int bestBefore = random.nextInt(9) + 4;
 		bestBeforeValue = String.valueOf(bestBefore);
-		inputBestBefore.clear();
+//		inputBestBefore.clear();
+		inputBestBefore.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+		inputBestBefore.sendKeys(Keys.DELETE);
 		inputBestBefore.sendKeys(bestBeforeValue);
 	}
 
@@ -539,7 +569,8 @@ public class ProductsPage extends BasePage {
 		Random random = new Random();
 		int hsnCode = 1000 + random.nextInt(9000);
 		HSNCodeValue = String.valueOf(hsnCode);
-		HSNCodeInput.clear();
+		HSNCodeInput.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+		HSNCodeInput.sendKeys(Keys.DELETE);
 		HSNCodeInput.sendKeys(HSNCodeValue);
 	}
 
@@ -547,7 +578,8 @@ public class ProductsPage extends BasePage {
 		Random random = new Random();
 		int unitWeight = random.nextInt(12) + 2;
 		GST_PercentageValue = String.valueOf(unitWeight);
-		GST_Percentage.clear();
+		GST_Percentage.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+		GST_Percentage.sendKeys(Keys.DELETE);
 		GST_Percentage.sendKeys(GST_PercentageValue);
 	}
 
@@ -555,13 +587,15 @@ public class ProductsPage extends BasePage {
 		Random random = new Random();
 		int unitWeight = random.nextInt(9) + 2;
 		Cess_PercentageValue = String.valueOf(unitWeight);
-		Cess_Percentage.clear();
+		Cess_Percentage.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+		Cess_Percentage.sendKeys(Keys.DELETE);
 		Cess_Percentage.sendKeys(Cess_PercentageValue);
 	}
 
 	public void editProduct_Description() {
 		productDescValue = "Edited Product Description For Testing";
-		product_Description.clear();
+		product_Description.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+		product_Description.sendKeys(Keys.DELETE);
 		product_Description.sendKeys(productDescValue);
 	}
 
@@ -574,7 +608,17 @@ public class ProductsPage extends BasePage {
 		containsInput.sendKeys(packagingUnitContainsValue);
 	}
 
-	public void clickSubmitButton() {
+	public void clickOnSubmitButton() {
+		try {
+			submitButton.click();
+			saveDetails();
+			System.out.println("Click succeeded.");
+		} catch (Exception e) {
+			System.out.println(" click failed ");
+		}
+	}
+	
+	public void clickOnUpdateButton() {
 		try {
 			submitButton.click();
 			saveDetails();
@@ -599,15 +643,50 @@ public class ProductsPage extends BasePage {
 	}
 
 	public void searchProduct() {
-		waitForElementVisible(searchProductBar, 7);
+		waitForElementVisible(searchProductBar, 10);
 		searchProductBar.clear();
 		searchProductBar.sendKeys(getProductName());
 	}
+	
+//	public void clickOnResetFilters() {
+//		resetFiltersButton.click();
+//	}
+	
+	public void clickOnResetFilters() {
+		wait.until(ExpectedConditions.visibilityOf(resetFiltersButton));
+		Actions actions = new Actions(driver);
+		actions.moveToElement(resetFiltersButton).click().perform();
+	}
+	
+	
+//	public void clickOnResetFilters() {
+//	    try {
+//	        wait.until(ExpectedConditions.elementToBeClickable(resetFiltersButton));
+//	        resetFiltersButton.click();   // normal click
+//	    } catch (Exception e) {
+//	        // Fallback: scroll + JS click
+//	        js.executeScript("arguments[0].scrollIntoView(true);", resetFiltersButton);
+//	        js.executeScript("arguments[0].click();", resetFiltersButton);
+//	    }
+//	}
 
+	
 	public void clickOnEditProductIcon() {
+//		wait.until(ExpectedConditions.visibilityOf(editProductButton));
 		String expectedProductName = getProductName().trim();
-		wait.until(ExpectedConditions.textToBePresentInElement(productNameFromContainer, expectedProductName));
-
+//		wait.until(ExpectedConditions.textToBePresentInElement(productNameFromContainer, expectedProductName));
+//		WebElement brandResult = wait.until(
+//	    ExpectedConditions.visibilityOfElementLocated(
+//	        By.xpath("(//*[normalize-space(text())="+expectedProductName+"])[1]")
+//	    )
+//	);
+		wait.until(ExpectedConditions.numberOfElementsToBe(
+		        By.xpath("//div[@class='ant-col ant-col-6']"), 1
+		    ));
+//		wait.until(ExpectedConditions.visibilityOf(editProductButton));
+//		System.out.println("productNameFromContainer ="+productNameFromContainer.getText());
+//		System.out.println("expectedProductName ="+expectedProductName);
+		
 		if (productNameFromContainer.getText().trim().equals(expectedProductName)) {
 			editProductButton.click();
 			js.executeScript("document.body.style.zoom = '80%'");
@@ -685,7 +764,7 @@ public class ProductsPage extends BasePage {
 	}
 
 	public void getMeasurementUnitValue() {
-		selectedMeasurementUnitValue = measurementUnitDropDownOnEdit.getText();
+		selectedMeasurementUnitValue = measurementUnitDropDown.getText();
 	}
 
 	public void getHSNCodeValue() {
@@ -804,6 +883,17 @@ public class ProductsPage extends BasePage {
 
 		} catch (Exception e) {
 			System.out.println("❌ Exception during Product data verification: " + e.getMessage());
+			return false;
+		}
+	}
+
+	public boolean verifyProductUpdatedSuccessMessage() {
+		try {
+			wait.until(ExpectedConditions.visibilityOf(productCreatedSuccessMessage));
+
+			String actualText = productCreatedSuccessMessage.getText().trim();
+			return actualText.equals("Product updated successfully");
+		} catch (TimeoutException e) {
 			return false;
 		}
 	}

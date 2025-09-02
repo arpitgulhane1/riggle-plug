@@ -62,7 +62,7 @@ public class BrandsPage extends BasePage {
 	@FindBy(xpath = "//div[contains(@class, 'ant-col ant-col-xs-24')]")
 	WebElement brandContainerData;
 	
-	@FindBy(xpath = "//div[@class='ant-card ant-card-bordered ant-card-hoverable']//h4")
+	@FindBy(xpath = "(//div[@class='ant-card ant-card-bordered ant-card-hoverable']//h4)[1]")
 	WebElement brandAlreadyAdded;
 	
 	@FindBy (xpath="//div[contains(@class, 'ant-space-item')]")
@@ -85,7 +85,7 @@ public class BrandsPage extends BasePage {
 //			        By.xpath("//h4[normalize-space(text())='" + bradName + "']")
 //			    )
 //			);
-//		wait.until(ExpectedConditions.visibilityOf(bradName));
+//		wait.until(ExpectedConditions.visibilityOf(brandResult));
 		try {
 			wait.until(ExpectedConditions.or(ExpectedConditions.visibilityOf(brandContainerData)));
 		} catch (TimeoutException e) {
@@ -182,6 +182,28 @@ public class BrandsPage extends BasePage {
 			driver.switchTo().window(tabsId.get(1));
 		}
 	}
+	
+//	public void clickOnBrandProduct() {
+//	    String bradName = BrandUtility.readJson("Brand", "BrandName");
+//
+//	    wait.until(ExpectedConditions.visibilityOf(brandProduct));
+//	    wait.until(ExpectedConditions.textToBePresentInElement(brandAlreadyAdded, bradName));
+//
+//	    if (brandAlreadyAdded.getText().equalsIgnoreCase(bradName)) {
+//	        Actions action = new Actions(driver);
+//	        action.keyDown(Keys.CONTROL).click(brandProduct).keyUp(Keys.CONTROL).build().perform();
+//
+//	        wait.until(driver -> driver.getWindowHandles().size() > 1);
+//
+//	        List<String> tabsId = new ArrayList<>(driver.getWindowHandles());
+//	        driver.switchTo().window(tabsId.get(1));
+//
+//	        System.out.println("✅ Switched to new Brand tab: " + driver.getTitle());
+//	    } else {
+//	        throw new RuntimeException("❌ Expected brand not found: " + bradName);
+//	    }
+//	}
+
 	
 	public void clickOnRateBrandPage() {
 		wait.until(ExpectedConditions.visibilityOf(brandRate));
