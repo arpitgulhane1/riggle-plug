@@ -62,6 +62,9 @@ public class BrandsPage extends BasePage {
 	@FindBy(xpath = "//div[contains(@class, 'ant-col ant-col-xs-24')]")
 	WebElement brandContainerData;
 	
+	@FindBy(xpath = ".//span[contains(text(),'Network')]")
+	WebElement brandNetwork;
+	
 	@FindBy(xpath = "(//div[@class='ant-card ant-card-bordered ant-card-hoverable']//h4)[1]")
 	WebElement brandAlreadyAdded;
 	
@@ -183,6 +186,26 @@ public class BrandsPage extends BasePage {
 		}
 	}
 	
+	public void clickOnNetworkBrandPage() {
+		wait.until(ExpectedConditions.visibilityOf(brandNetwork));
+		String bradName = BrandUtility.readJson("Brand", "BrandName");
+//		String bradName = "Tata";
+		wait.until(driver -> brandAlreadyAdded.getText().equalsIgnoreCase(bradName));
+		if (brandAlreadyAdded.getText().equalsIgnoreCase(bradName)) {
+		  Actions action = new Actions(driver);
+		    action.keyDown(Keys.CONTROL)
+		          .click(brandNetwork)
+		          .keyUp(Keys.CONTROL)
+		          .build()
+		          .perform();
+		    List<String> tabsId = new ArrayList<>(driver.getWindowHandles());
+		   
+		    if (tabsId.size() < 2) {
+		        throw new RuntimeException("Brand not Found New tab did not open as expected");
+		    }
+		    driver.switchTo().window(tabsId.get(1));
+		}
+	}
 //	public void clickOnBrandProduct() {
 //	    String bradName = BrandUtility.readJson("Brand", "BrandName");
 //

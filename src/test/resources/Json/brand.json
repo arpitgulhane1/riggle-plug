@@ -24,5 +24,13 @@
     "CheckBoxFocusedValue" : "false",
     "CheckBoxPromotedValue" : "true",
     "HSNCodeValue" : "1150"
+  },
+  "Network" : {
+    "CP_Name" : "AA CP Name",
+    "Role" : "Channel Partner 3",
+    "LinkSeller" : "RoyalFord Pvt Ltd (self)",
+    "RateStrecture" : "Base",
+    "AssignSalsePerson" : "",
+    "PrimarySalesPerson" : ""
   }
 }
