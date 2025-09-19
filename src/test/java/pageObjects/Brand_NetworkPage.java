@@ -13,7 +13,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import utility.BrandUtility;
 public class Brand_NetworkPage extends BasePage{
 	
-	private static String selectedRateStructur="" ,selectedRole="", selectedCP ="" ,selectedLinkSellerName ="" , selectedSalesPerson= "" ,selectedPrimarySalesPerson="";
+	private static String selectedRateStructur="" ,selectedRole="", selectedCP ="" ,selectedLinkSellerName ="" , selectedSalesPerson= ""  , selectedPrimarySalesPersonName="";
+	private static int assignSalesPersonNameSize;
 	
     public Brand_NetworkPage(WebDriver driver) {
         super(driver);
@@ -66,18 +67,53 @@ public class Brand_NetworkPage extends BasePage{
     
     @FindBy(xpath="//div[@class='ant-select-selection-overflow']")
     WebElement assignSalesPerson;
+    
+    @FindBy(xpath="(//span[@class=\"ant-select-selection-item\"])[5]")
+    WebElement assignSalesPersonEditRateStrecture;
 //    @FindBy(xpath="//div[@class=\"rc-virtual-list-holder\"]//div[@class=\"ant-select-item-option-content\"]")
 
-    @FindBy(xpath="//div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@class='ant-select-item-option-content']")
+//    @FindBy(xpath="//div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@class='ant-select-item-option-content']")
+//    List<WebElement> chooseAssignSalesPersonAllOption;
+//    @FindBy(xpath="//div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@class='ant-select-item ant-select-item-option']")
+//    List<WebElement> chooseAssignSalesPersonAllOption;
+    
+    
+    
+    // Working
+    @FindBy(xpath="//div[@class='rc-virtual-list-holder-inner']//div[@title and @aria-selected='false']")
     List<WebElement> chooseAssignSalesPersonAllOption;
+    
+//    @FindBy(xpath="//div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title and @aria-selected='false']")
+//    List<WebElement> chooseAssignSalesPersonAllOption;
+    
+//    @FindBy(xpath = "//div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title and @aria-selected='false']")
+//    List<WebElement> chooseAssignSalesPersonAllOption;
+
+    
+    
+//    @FindBy(xpath="//div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@class='rc-virtual-list-holder-inner']//div[@title and @aria-selected='false']")
+//    List<WebElement> chooseAssignSalesPersonAllOption;
+    
+
+//    @FindBy(xpath="//div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]")
+//    List<WebElement> chooseAssignSalesPersonAllOption;
     
 //    @FindBy(xpath="//div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@class='ant-select-item ant-select-item-option']")
 //    List<WebElement> chooseAssignSalesPersonAllOption;
     
+    
+    
+    
+    
+    
     @FindBy(xpath="//input[@id='nest-messages_primary_salesperson']")
     WebElement assignPrimarySalesPerson;
-    @FindBy(xpath="//div[@class='ant-select-dropdown ant-select-dropdown-placement-topLeft  ant-select-dropdown-hidden']//div[@class=\"rc-virtual-list-holder\"]//div[@class=\"ant-select-item-option-content\"]")
-    List<WebElement> chooseAssignPrimarySalesPersonAllOption;
+    
+    @FindBy(xpath="(//span[@class=\"ant-select-selection-item\"])[6]")
+    WebElement assignPrimarySalesPersonEditRateStrecture;
+    
+    @FindBy(xpath="//div[@class='rc-virtual-list-holder-inner']//div[@title and @aria-selected='false']")
+    List<WebElement> assignPrimarySalesPersonAllOption;
     
     @FindBy(xpath="//button[@type='submit']")
     WebElement assign;
@@ -162,6 +198,7 @@ public class Brand_NetworkPage extends BasePage{
 //      int getvalue = channelPartnerListAllOption.size();
 //      waitForMultipleElementsVisible(channelPartnerListAllOption,7);
 //      wait.until(ExpectedConditions.visibilityOfAllElements(channelPartnerListAllOption));
+//        wait.until(ExpectedConditions.visibilityOfAllElements(chooseAssignSalesPersonAllOption));
         Random rd = new Random();
         WebElement option = channelPartnerListAllOption.get(rd.nextInt(channelPartnerListAllOption.size()));
         selectedCP = option.getText();
@@ -229,41 +266,76 @@ public class Brand_NetworkPage extends BasePage{
 //    }
 
     
-    public void enterAssignSalesPersonName() {
-        wait.until(ExpectedConditions.visibilityOf(assignSalesPerson));
-        assignSalesPerson.click();
+    public void selectAssignSalesPersonName() {
+    	wait.until(ExpectedConditions.visibilityOf(assignSalesPerson));
+    	assignSalesPerson.click();
         
         Random rd = new Random();
-        System.out.println("size = "+chooseAssignSalesPersonAllOption.size());
-//      waitForMultipleElementsVisible(chooseAssignSalesPersonAllOption, 7);
-        wait.until(ExpectedConditions.visibilityOfAllElements(chooseAssignSalesPersonAllOption));
+
+        assignSalesPersonNameSize = chooseAssignSalesPersonAllOption.size();
+        System.out.println("size 1 : = "+assignSalesPersonNameSize);
         
         for (WebElement op : chooseAssignSalesPersonAllOption) {
             String title = op.getAttribute("title");
-            String text  = op.getText();
-            System.out.println("Title: " + title + " | Text: " + text);
         }
-
-        System.out.println("size = "+chooseAssignSalesPersonAllOption.size());
         WebElement option = chooseAssignSalesPersonAllOption.get(rd.nextInt(chooseAssignSalesPersonAllOption.size()));
         selectedSalesPerson = option.getText();
         option.click();
+        assignSalesPerson.click();
     }
     
+
+//    public void enterAssignSalesPersonName() {
+//        wait.until(ExpectedConditions.visibilityOf(assignSalesPerson));
+//        assignSalesPerson.click();
+//
+//        Random rd = new Random();
+//        int total = chooseAssignSalesPersonAllOption.size();
+//        System.out.println("Total size = " + total);
+//
+//        // Limit to last 7, but handle case when < 7 options exist
+//        int startIndex = Math.max(0, total - 7); 
+//        int randomIndex = startIndex + rd.nextInt(total - startIndex);
+//
+//        WebElement option = chooseAssignSalesPersonAllOption.get(randomIndex);
+//        selectedSalesPerson = option.getText();
+//
+//        System.out.println("🎯 Selected SalesPerson: " + selectedSalesPerson);
+//
+//        option.click();
+//        assignSalesPerson.click();
+//    }
 
     
     public void clickOnassignPrimarySalesPerson() {
         assignPrimarySalesPerson.click();
     }
     
-    public void enterAssignPrimarySalesPersonName() {
+    public void selectAssignPrimarySalesPersonName() {
         wait.until(ExpectedConditions.visibilityOf(assignPrimarySalesPerson));
         assignPrimarySalesPerson.click();
+
+        int totalSize = assignPrimarySalesPersonAllOption.size();
+        System.out.println("Size 2 :"+totalSize);
+        int startIndex = assignSalesPersonNameSize-1; 
+        int range = totalSize - startIndex;
+        System.out.println("Range : "+range);
+        if (range <= 0) {
+            throw new RuntimeException("No new Sales Person options available to select!");
+        }
+
         Random rd = new Random();
-        WebElement option = chooseAssignPrimarySalesPersonAllOption.get(rd.nextInt(chooseAssignPrimarySalesPersonAllOption.size()));
-        String selectedoption = option.getText();
+        int randomIndex = startIndex + rd.nextInt(range);
+
+        WebElement option = assignPrimarySalesPersonAllOption.get(randomIndex);
+        selectedPrimarySalesPersonName = option.getText();
+
+        System.out.println("🎯 Selected Primary Sales Person: " + selectedPrimarySalesPersonName);
         option.click();
     }
+
+    
+    
     public void clickOnAssignButton() {
         assign.click();
         assignAllValue();
@@ -284,6 +356,8 @@ public class Brand_NetworkPage extends BasePage{
         String expectedRole = getRole();
         String expectedLinkSeller = getLinkSeller();
         String expectedRateStructure = getRateStrecture();
+        String expectedAssignSalsePerson = getAssignSalsePerson();
+        String expectedPrimarySalsePerson = getPrimarySalsePerson();
 
         for (WebElement editButton : editAssignChannelPartner_Button) {
             editButton.click();
@@ -294,11 +368,16 @@ public class Brand_NetworkPage extends BasePage{
             String actualRole = channelPartnerEditRole.getText();
             String actualLinkSeller = channelPartnerLinkSellerName.getText();
             String actualRateStructure = channelPartnerEditRateStrecture.getText();
+            String actualAssignSalesPerson = assignSalesPersonEditRateStrecture.getText();
+            String actualAssignPrimarySalesPerson = assignPrimarySalesPersonEditRateStrecture.getText();
 
             if (actualName.equals(expectedName) &&
                 actualRole.equals(expectedRole) &&
                 actualLinkSeller.equals(expectedLinkSeller) &&
-                actualRateStructure.equals(expectedRateStructure)) {
+                actualRateStructure.equals(expectedRateStructure))
+//            actualAssignSalesPerson.equals(expectedAssignSalsePerson) &&
+//			actualAssignPrimarySalesPerson.equals(expectedPrimarySalsePerson)) 
+            {
 
                 System.out.println("Matched");
                 return true;
@@ -320,7 +399,7 @@ public class Brand_NetworkPage extends BasePage{
     	productDetails.put("LinkSeller", selectedLinkSellerName);
     	productDetails.put("RateStrecture", selectedRateStructur);
     	productDetails.put("AssignSalsePerson", selectedSalesPerson);
-    	productDetails.put("PrimarySalesPerson", selectedPrimarySalesPerson);
+    	productDetails.put("PrimarySalesPerson", selectedPrimarySalesPersonName);
     	BrandUtility.writeJson("Network", productDetails);
     }
     

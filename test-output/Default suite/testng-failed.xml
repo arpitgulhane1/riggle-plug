@@ -7,8 +7,8 @@
         <methods>
           <include name="loadConfig"/>
           <include name="tearDown"/>
+          <include name="TC_AssignNewChannelPartner_AndVerifyNetworkEmptyMessage"/>
           <include name="setup"/>
-          <include name="testVerifyAssignChannelPartnerDetails"/>
         </methods>
       </class> <!-- testCases.BrandsNetworkTest -->
     </classes>
