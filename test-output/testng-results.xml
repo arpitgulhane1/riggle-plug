@@ -2,28 +2,28 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-08-13T17:09:28 IST" name="Default suite" finished-at="2025-08-13T17:09:40 IST" duration-ms="11571">
+  <suite started-at="2025-09-19T13:44:05 IST" name="Default suite" finished-at="2025-09-19T13:44:35 IST" duration-ms="30369">
     <groups>
     </groups>
-    <test started-at="2025-08-13T17:09:28 IST" name="Default test" finished-at="2025-08-13T17:09:40 IST" duration-ms="11571">
-      <class name="testCases.Tc_Brands">
-        <test-method is-config="true" signature="loadConfig()[pri:0, instance:testCases.Tc_Brands@5149d738]" started-at="2025-08-13T17:09:28 IST" name="loadConfig" finished-at="2025-08-13T17:09:28 IST" duration-ms="14" status="PASS">
+    <test started-at="2025-09-19T13:44:05 IST" name="Default test" finished-at="2025-09-19T13:44:35 IST" duration-ms="30369">
+      <class name="testCases.BrandsNetworkTest">
+        <test-method is-config="true" signature="loadConfig()[pri:0, instance:testCases.BrandsNetworkTest@43c1b556]" started-at="2025-09-19T13:44:05 IST" name="loadConfig" finished-at="2025-09-19T13:44:05 IST" duration-ms="19" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loadConfig -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:testCases.Tc_Brands@5149d738]" started-at="2025-08-13T17:09:28 IST" name="setup" finished-at="2025-08-13T17:09:31 IST" duration-ms="2648" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:testCases.BrandsNetworkTest@43c1b556]" started-at="2025-09-19T13:44:05 IST" name="setup" finished-at="2025-09-19T13:44:09 IST" duration-ms="3635" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testAddNewBrand()[pri:0, instance:testCases.Tc_Brands@5149d738]" started-at="2025-08-13T17:09:31 IST" name="testAddNewBrand" finished-at="2025-08-13T17:09:40 IST" duration-ms="8854" status="PASS">
+        <test-method signature="testVerifyAssignChannelPartnerDetails()[pri:0, instance:testCases.BrandsNetworkTest@43c1b556]" started-at="2025-09-19T13:44:09 IST" name="testVerifyAssignChannelPartnerDetails" finished-at="2025-09-19T13:44:20 IST" duration-ms="11334" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAddNewBrand -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.Tc_Brands@5149d738]" started-at="2025-08-13T17:09:40 IST" name="tearDown" finished-at="2025-08-13T17:09:40 IST" duration-ms="0" status="PASS">
+        </test-method> <!-- testVerifyAssignChannelPartnerDetails -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.BrandsNetworkTest@43c1b556]" started-at="2025-09-19T13:44:20 IST" name="tearDown" finished-at="2025-09-19T13:44:35 IST" duration-ms="15312" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- testCases.Tc_Brands -->
+      </class> <!-- testCases.BrandsNetworkTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -4,7 +4,33 @@
     "City" : "Mumbai"
   },
   "Product" : {
-    "ProductName" : "Hilll-Feeney",
-    "Mrp" : "Hilll-Feeney"
+    "ProductName" : "Sleek Marble Bottle",
+    "ProductMRP" : "423",
+    "BestBeforeValue" : "7",
+    "ExpiryUnitDropDownOption" : "Days",
+    "productDescValue" : "Edited Product Description For Testing",
+    "ProductCategoryName" : "Health Care & Hygiene",
+    "CheckBoxMustSellValue" : "false",
+    "GST_PercentageValue" : "10",
+    "selectedMeasurementUnitValue" : "kg",
+    "ProductUniqueCode" : "PROD-3769",
+    "ProductUnitWTValue" : "5",
+    "PackagingUnitValue" : null,
+    "ProductCatalogImageValue" : null,
+    "productSubCategoryName" : "Handwash & Sanitizers",
+    "PackagingUnitContainsValue" : null,
+    "ProductImageValue" : null,
+    "Cess_PercentageValue" : "4",
+    "CheckBoxFocusedValue" : "false",
+    "CheckBoxPromotedValue" : "true",
+    "HSNCodeValue" : "1150"
+  },
+  "Network" : {
+    "CP_Name" : "Abhishek Pvt Ltdd",
+    "Role" : "Channel Partner 1",
+    "LinkSeller" : "RoyalFord Pvt Ltd (self)",
+    "RateStrecture" : "Base",
+    "AssignSalsePerson" : "Arpit Kumar (Asm)",
+    "PrimarySalesPerson" : "Arpit Kumar (Asm)"
   }
 }
