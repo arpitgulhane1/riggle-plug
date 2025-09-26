@@ -26,11 +26,11 @@
     "HSNCodeValue" : "1150"
   },
   "Network" : {
-    "CP_Name" : "Abhishek Pvt Ltdd",
-    "Role" : "Channel Partner 1",
-    "LinkSeller" : "RoyalFord Pvt Ltd (self)",
+    "CP_Name" : "",
+    "Role" : "Channel Partner 3",
+    "LinkSeller" : "RoyalFord Pvt Ltd",
     "RateStrecture" : "Base",
-    "AssignSalsePerson" : "Arpit Kumar (Asm)",
-    "PrimarySalesPerson" : "Arpit Kumar (Asm)"
+    "AssignSalsePerson" : "Ansh Singh (Asm)",
+    "PrimarySalesPerson" : ""
   }
 }
