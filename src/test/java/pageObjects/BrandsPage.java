@@ -96,9 +96,9 @@ public class BrandsPage extends BasePage {
 		}
 	}
 
-//	public void setBrandName(String name) {
-//		this.selectedBrandName = name;
-//	}
+	public void setBrandName(String name) {
+		this.selectedBrandName = name;
+	}
 	
 	public void clickOnCloseAddBrandTemplate() {
 		closeAddBrandTemplate.click();
@@ -169,6 +169,7 @@ public class BrandsPage extends BasePage {
 //			driver.switchTo().window(tabsId.get(1));
 //		}
 //	}
+	
 	public void clickOnBrandProduct() {
 		wait.until(ExpectedConditions.visibilityOf(brandProduct));
 		String bradName = BrandUtility.readJson("Brand", "BrandName");

@@ -37,6 +37,8 @@ public class BaseClass {
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--disable-gpu");
 		options.addArguments("--remote-allow-origins=*");
+		options.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
+		options.addArguments("--disable-blink-features=AutomationControlled");
 		
 		driver = new ChromeDriver(options);
 		driver.manage().deleteAllCookies();

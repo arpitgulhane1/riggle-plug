@@ -8,7 +8,7 @@ import pageObjects.HomePage;
 import testBase.BaseClass;
 import utility.TestDataGenerator;
 
-public class Brand_Rate extends BaseClass {
+public class Brand_RateTest extends BaseClass {
 
 	BrandsPage bpage;
 	HomePage homep;
