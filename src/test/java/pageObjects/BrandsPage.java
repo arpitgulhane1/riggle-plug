@@ -10,7 +10,6 @@ import java.util.Properties;
 import java.util.Random;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -83,6 +82,29 @@ public class BrandsPage extends BasePage {
 		searchBrand.click();
 		String bradName = BrandUtility.readJson("Brand", "BrandName");
 		searchBrand.sendKeys(bradName);
+//		searchBrand.sendKeys("Tata");
+		
+//		WebElement brandResult = wait.until(
+//			    ExpectedConditions.visibilityOfElementLocated(
+//			        By.xpath("//h4[normalize-space(text())='" + bradName + "']")
+//			    )
+//			);
+//		wait.until(ExpectedConditions.visibilityOf(brandResult));
+		try {
+			wait.until(ExpectedConditions.or(ExpectedConditions.visibilityOf(brandContainerData)));
+		} catch (TimeoutException e) {
+			throw new AssertionError("No brand result or empty message found within wait time.");
+		}
+	}
+	
+	public void searchBrandByName(String name) {
+		waitForElementVisible(addNewBrand, 5);
+		searchBrand.clear();
+		searchBrand.click();
+		String bradName = BrandUtility.readJson("Brand", "BrandName");
+		searchBrand.sendKeys(name);
+//		searchBrand.sendKeys("Tata");
+		
 //		WebElement brandResult = wait.until(
 //			    ExpectedConditions.visibilityOfElementLocated(
 //			        By.xpath("//h4[normalize-space(text())='" + bradName + "']")
@@ -173,8 +195,9 @@ public class BrandsPage extends BasePage {
 	public void clickOnBrandProduct() {
 		wait.until(ExpectedConditions.visibilityOf(brandProduct));
 		String bradName = BrandUtility.readJson("Brand", "BrandName");
-		wait.until(driver -> brandAlreadyAdded.getText().equalsIgnoreCase(bradName));
-
+		
+		wait.until(driver -> brandAlreadyAdded.getText().trim().equalsIgnoreCase(bradName.trim()));
+	
 		if (brandAlreadyAdded.getText().equalsIgnoreCase(bradName)) {
 			Actions action = new Actions(driver);
 			action.keyDown(Keys.CONTROL).click(brandProduct).keyUp(Keys.CONTROL).build().perform();
@@ -187,10 +210,28 @@ public class BrandsPage extends BasePage {
 		}
 	}
 	
+	public void clickOnBrandProductByName(String name) {
+		wait.until(ExpectedConditions.visibilityOf(brandProduct));
+		String bradName = BrandUtility.readJson("Brand", "BrandName");
+		wait.until(driver -> brandAlreadyAdded.getText().trim().equalsIgnoreCase(name.trim()));
+	
+		if (brandAlreadyAdded.getText().equalsIgnoreCase(name)) {
+			Actions action = new Actions(driver);
+			action.keyDown(Keys.CONTROL).click(brandProduct).keyUp(Keys.CONTROL).build().perform();
+			List<String> tabsId = new ArrayList<>(driver.getWindowHandles());
+
+			if (tabsId.size() < 2) {
+				throw new RuntimeException("Brand not Found New tab did not open as expected");
+			}
+			driver.switchTo().window(tabsId.get(1));
+		}
+	}
+	
+	
 	public void clickOnNetworkBrandPage() {
 		wait.until(ExpectedConditions.visibilityOf(brandNetwork));
 		String bradName = BrandUtility.readJson("Brand", "BrandName");
-//		String bradName = "Tata";
+//		String bradName ="Tata";
 		wait.until(driver -> brandAlreadyAdded.getText().equalsIgnoreCase(bradName));
 		if (brandAlreadyAdded.getText().equalsIgnoreCase(bradName)) {
 		  Actions action = new Actions(driver);

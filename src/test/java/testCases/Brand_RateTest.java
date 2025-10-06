@@ -48,10 +48,11 @@ public class Brand_RateTest extends BaseClass {
 	        homep.clickOnBrandsMenu();
 	        BrandsPage bpage = new BrandsPage(driver);   
 	        Brand_RatePage brand_RatePage = new Brand_RatePage(driver);
-	        bpage.searchBrand();
+//	        bpage.searchBrand();
+	        bpage.searchBrandByName("A New Brand");
 	        brand_RatePage.clickOnRate();
 //	        brand_RatePage.clickOnchannelPartner();
-//	        brand_RatePage.getChannelPartnerName();
+	        brand_RatePage.getChannelPartnerName();
 	        brand_RatePage.clickOnEditChannelPartnerName();
 		}
 		catch(Exception e) {

@@ -121,7 +121,9 @@ public class ProductsPage extends BasePage {
 	WebElement Cess_Percentage;
 	@FindBy(xpath = "//textarea[@id='nest-messages_description']")
 	WebElement product_Description;
-
+	@FindBy(xpath = "//div[@class=\"ant-modal-title\"]")
+	WebElement addProduct_TitleText;
+	
 //	Image
 	@FindBy(xpath = "//input[contains(@accept,'image/jpeg, image/jpg, image/png')]")
 	WebElement ProductImage;
@@ -162,6 +164,20 @@ public class ProductsPage extends BasePage {
 	@FindBy(xpath = "(//div[contains(@class,'ant-col ant-col-6')]//span[contains(@class,'text-darkgreen')])[1]")
 	WebElement productNameFromContainer;
 
+	
+// Mandatory field pop msg	
+	@FindBy(xpath ="//div[contains(text(),'Please enter Product Name')]")
+	WebElement productNameMsg;
+	
+	@FindBy(xpath ="//div[contains(text(),'Please enter MRP')]")
+	WebElement mrpMsg;
+	
+	@FindBy(xpath ="//div[contains(text(),'Please enter Category')]")
+	WebElement categoryMsg;
+	
+	@FindBy(xpath ="//div[contains(text(),'Please enter Sub Category')]")
+	WebElement subCategoryMsg;
+	
 	public String getProductBrandPath() {
 		String productBrandName = productBrandPath.getText();
 		return productBrandName;
@@ -610,6 +626,7 @@ public class ProductsPage extends BasePage {
 
 	public void clickOnSubmitButton() {
 		try {
+			wait.until(ExpectedConditions.visibilityOf(addProduct_TitleText));
 			submitButton.click();
 			saveDetails();
 			System.out.println("Click succeeded.");
@@ -897,5 +914,57 @@ public class ProductsPage extends BasePage {
 			return false;
 		}
 	}
+	
+	 // Methods to get popup text
+    public  boolean getProductNameValidationText() {
+    	try {
+    		wait.until(ExpectedConditions.visibilityOf(addProduct_TitleText));
+
+			String actualText = productNameMsg.getText().trim();
+			return actualText.equals("Please enter Product Name");
+    	}catch  (TimeoutException e) {
+    		
+    	}
+		return false;
+        
+    }
+
+    public boolean getMRPValidationText() {
+    	try {
+    		wait.until(ExpectedConditions.visibilityOf(addProduct_TitleText));
+
+			String actualText = mrpMsg.getText().trim();
+			return actualText.equals("Please enter MRP");
+			
+    	}catch  (TimeoutException e) {
+    		
+    	}
+		return false;
+    }     
+
+    public boolean getCategoryValidationText() {
+    	try {
+    		wait.until(ExpectedConditions.visibilityOf(addProduct_TitleText));
+
+			String actualText =categoryMsg.getText().trim();
+			return actualText.equals("Please enter Category");
+    	}catch  (TimeoutException e) {
+    		
+    	}
+		return false;
+    }
+
+    public boolean getSubCategoryValidationText() {
+    	try {
+    		wait.until(ExpectedConditions.visibilityOf(addProduct_TitleText));
+
+			String actualText =subCategoryMsg.getText().trim();
+			return actualText.equals("Please enter Sub Category");
+    	}catch  (TimeoutException e) {
+    		
+    	}
+		return false;
+    }
+
 
 }
