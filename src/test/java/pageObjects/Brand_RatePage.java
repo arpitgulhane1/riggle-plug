@@ -133,6 +133,7 @@ public class Brand_RatePage extends BasePage {
 		addChannelPartner.click();
 	}
 	public void getChannelPartnerName() {
+		
 		for (int i = 0; i < cpName.size(); i++) {
             String originalName = cpName.get(i).getText();
             System.out.println("Original Cp Name " + (i + 1) + ": " + originalName);

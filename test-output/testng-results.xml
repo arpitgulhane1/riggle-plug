@@ -2,44 +2,38 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-24T17:48:31 IST" name="Default suite" finished-at="2025-09-24T17:49:12 IST" duration-ms="41306">
+  <suite started-at="2025-10-03T17:37:05 IST" name="Default suite" finished-at="2025-10-03T17:37:35 IST" duration-ms="29699">
     <groups>
     </groups>
-    <test started-at="2025-09-24T17:48:31 IST" name="Default test" finished-at="2025-09-24T17:49:12 IST" duration-ms="41306">
-      <class name="testCases.BrandsNetworkTest">
-        <test-method is-config="true" signature="loadConfig()[pri:0, instance:testCases.BrandsNetworkTest@5149d738]" started-at="2025-09-24T17:48:31 IST" name="loadConfig" finished-at="2025-09-24T17:48:31 IST" duration-ms="15" status="PASS">
+    <test started-at="2025-10-03T17:37:05 IST" name="Default test" finished-at="2025-10-03T17:37:35 IST" duration-ms="29699">
+      <class name="testCases.Tc_Brands">
+        <test-method is-config="true" signature="loadConfig()[pri:0, instance:testCases.Tc_Brands@3a7442c7]" started-at="2025-10-03T17:37:05 IST" name="loadConfig" finished-at="2025-10-03T17:37:05 IST" duration-ms="12" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loadConfig -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:testCases.BrandsNetworkTest@5149d738]" started-at="2025-09-24T17:48:31 IST" name="setup" finished-at="2025-09-24T17:48:34 IST" duration-ms="2939" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:testCases.Tc_Brands@3a7442c7]" started-at="2025-10-03T17:37:05 IST" name="setup" finished-at="2025-10-03T17:37:07 IST" duration-ms="2198" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="TC_AssignNewChannelPartner_AndVerifyNetworkEmptyMessage()[pri:0, instance:testCases.BrandsNetworkTest@5149d738]" started-at="2025-09-24T17:48:34 IST" name="TC_AssignNewChannelPartner_AndVerifyNetworkEmptyMessage" finished-at="2025-09-24T17:48:57 IST" duration-ms="23056" status="FAIL">
+        <test-method signature="testSearchBrand_AddNewProduct_VerifyProductSuccessfully()[pri:0, instance:testCases.Tc_Brands@3a7442c7]" started-at="2025-10-03T17:37:07 IST" name="testSearchBrand_AddNewProduct_VerifyProductSuccessfully" finished-at="2025-10-03T17:37:20 IST" duration-ms="12208" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Exception in testAddNewBrand: element not interactable
-  (Session info: chrome=140.0.7339.128)
+              <![CDATA[Exception in testSearchBrandAndClickProduct: Expected condition failed: waiting for visibility of all [[[ChromeDriver: chrome on windows (9dc06ded0b19a9c2d2a1936e3648dd99)] -> xpath: //div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]], [[ChromeDriver: chrome on windows (9dc06ded0b19a9c2d2a1936e3648dd99)] -> xpath: //div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]], [[ChromeDriver: chrome on windows (9dc06ded0b19a9c2d2a1936e3648dd99)] -> xpath: //div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]], [[ChromeDriver: chrome on windows (9dc06ded0b19a9c2d2a1936e3648dd99)] -> xpath: //div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]], [[ChromeDriver: chrome on windows (9dc06ded0b19a9c2d2a1936e3648dd99)] -> xpath: //div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]], [[ChromeDriver: chrome on windows (9dc06ded0b19a9c2d2a1936e3648dd99)] -> xpath: //div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]], [[ChromeDriver: chrome on windows (9dc06ded0b19a9c2d2a1936e3648dd99)] -> xpath: //div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]], [[ChromeDriver: chrome on windows (9dc06ded0b19a9c2d2a1936e3648dd99)] -> xpath: //div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]]] (tried for 5 second(s) with 500 milliseconds interval)
 Build info: version: '4.28.0', revision: 'ac342546e9'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [defa8d0bbe5baf899d3c5af6643efbbd, clickElement {id=f.4AB1A1FD7DBE2EC768DF65FE93D912D5.d.CF8890912A89019E756DD419B8CAF451.e.57}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 140.0.7339.128, chrome: {chromedriverVersion: 140.0.7339.207 (17230b545fd..., userDataDir: C:\Users\91908\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60991}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60991/devtoo..., se:cdpVersion: 140.0.7339.128, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (defa8d0bbe5baf899d3c5af6643efbbd)] -> xpath: //div[@class="ant-select-item-option-content"]]
-Session ID: defa8d0bbe5baf899d3c5af6643efbbd]]>
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.55, chrome: {chromedriverVersion: 141.0.7390.54 (b95610d5c4a5..., userDataDir: C:\Users\91908\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63832}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63832/devtoo..., se:cdpVersion: 141.0.7390.55, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 9dc06ded0b19a9c2d2a1936e3648dd99]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Exception in testAddNewBrand: element not interactable
-  (Session info: chrome=140.0.7339.128)
+              <![CDATA[java.lang.AssertionError: Exception in testSearchBrandAndClickProduct: Expected condition failed: waiting for visibility of all [[[ChromeDriver: chrome on windows (9dc06ded0b19a9c2d2a1936e3648dd99)] -> xpath: //div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]], [[ChromeDriver: chrome on windows (9dc06ded0b19a9c2d2a1936e3648dd99)] -> xpath: //div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]], [[ChromeDriver: chrome on windows (9dc06ded0b19a9c2d2a1936e3648dd99)] -> xpath: //div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]], [[ChromeDriver: chrome on windows (9dc06ded0b19a9c2d2a1936e3648dd99)] -> xpath: //div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]], [[ChromeDriver: chrome on windows (9dc06ded0b19a9c2d2a1936e3648dd99)] -> xpath: //div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]], [[ChromeDriver: chrome on windows (9dc06ded0b19a9c2d2a1936e3648dd99)] -> xpath: //div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]], [[ChromeDriver: chrome on windows (9dc06ded0b19a9c2d2a1936e3648dd99)] -> xpath: //div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]], [[ChromeDriver: chrome on windows (9dc06ded0b19a9c2d2a1936e3648dd99)] -> xpath: //div[@class='ant-select-dropdown ant-select-dropdown-placement-bottomLeft ']//div[@title]]] (tried for 5 second(s) with 500 milliseconds interval)
 Build info: version: '4.28.0', revision: 'ac342546e9'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [defa8d0bbe5baf899d3c5af6643efbbd, clickElement {id=f.4AB1A1FD7DBE2EC768DF65FE93D912D5.d.CF8890912A89019E756DD419B8CAF451.e.57}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 140.0.7339.128, chrome: {chromedriverVersion: 140.0.7339.207 (17230b545fd..., userDataDir: C:\Users\91908\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60991}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60991/devtoo..., se:cdpVersion: 140.0.7339.128, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (defa8d0bbe5baf899d3c5af6643efbbd)] -> xpath: //div[@class="ant-select-item-option-content"]]
-Session ID: defa8d0bbe5baf899d3c5af6643efbbd
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.55, chrome: {chromedriverVersion: 141.0.7390.54 (b95610d5c4a5..., userDataDir: C:\Users\91908\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63832}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63832/devtoo..., se:cdpVersion: 141.0.7390.55, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 9dc06ded0b19a9c2d2a1936e3648dd99
 at org.testng.Assert.fail(Assert.java:111)
-at testCases.BrandsNetworkTest.TC_AssignNewChannelPartner_AndVerifyNetworkEmptyMessage(BrandsNetworkTest.java:43)
+at testCases.Tc_Brands.testSearchBrand_AddNewProduct_VerifyProductSuccessfully(Tc_Brands.java:98)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -73,12 +67,12 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_AssignNewChannelPartner_AndVerifyNetworkEmptyMessage -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.BrandsNetworkTest@5149d738]" started-at="2025-09-24T17:48:57 IST" name="tearDown" finished-at="2025-09-24T17:49:12 IST" duration-ms="15249" status="PASS">
+        </test-method> <!-- testSearchBrand_AddNewProduct_VerifyProductSuccessfully -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.Tc_Brands@3a7442c7]" started-at="2025-10-03T17:37:20 IST" name="tearDown" finished-at="2025-10-03T17:37:35 IST" duration-ms="15241" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- testCases.BrandsNetworkTest -->
+      </class> <!-- testCases.Tc_Brands -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

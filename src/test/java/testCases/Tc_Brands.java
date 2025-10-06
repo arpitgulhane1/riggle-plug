@@ -174,7 +174,52 @@ public class Tc_Brands extends BaseClass {
 		   Assert.assertTrue(productPage.areProductDetailsValid(), "Product details from UI do not match."); 
 	   }
 	    
-	    
+	    //
+    @Test
+	public void  testProductFieldValidations() throws InterruptedException {
+		 loginToApp();
+		
+         HomePage homep = new HomePage(driver);
+         homep.clickOnBrandsMenu();
 
-	
-}
+         BrandsPage bpage = new BrandsPage(driver);
+         ProductsPage prodPage = new ProductsPage(driver);
+		   
+		   homep.clickOnBrandsMenu();
+		   bpage.searchBrandByName("Tata");
+//		   Thread.sleep(5000);
+		   bpage.clickOnBrandProductByName("Tata");
+           prodPage.addProductButton();  
+		   prodPage.clickOnSubmitButton();
+		   prodPage.getProductNameValidationText();
+		   prodPage.getMRPValidationText();
+		   prodPage.getCategoryValidationText();
+		   prodPage.getSubCategoryValidationText();
+		   Assert.assertTrue(prodPage.getProductNameValidationText(),"Product Name validation message mismatch!");
+	       Assert.assertTrue(prodPage.getMRPValidationText(),"MRP validation message mismatch!");
+	       Assert.assertTrue(prodPage.getCategoryValidationText(),"Category validation message mismatch!");
+           Assert.assertTrue(prodPage.getSubCategoryValidationText(),"Sub Category validation message mismatch!");
+	       
+	       prodPage.addProductName();
+	       prodPage.clickOnSubmitButton();
+	       Assert.assertTrue(prodPage.getMRPValidationText(),"MRP validation message mismatch!");
+	       Assert.assertTrue(prodPage.getCategoryValidationText(),"Category validation message mismatch!");
+           Assert.assertTrue(prodPage.getSubCategoryValidationText(),"Sub Category validation message mismatch!");
+           prodPage.addProductMRP();
+           prodPage.clickOnSubmitButton();
+//           Assert.assertTrue(prodPage.getCategoryValidationText(),"Category validation message mismatch!");
+//           Assert.assertTrue(prodPage.getSubCategoryValidationText(),"Sub Category validation message mismatch!");
+//           prodPage.addProductCategory();
+//           prodPage.clickOnSubmitButton();
+//           Assert.assertTrue(prodPage.getSubCategoryValidationText(),"Sub Category validation message mismatch!");
+           prodPage.addProductSubCategory();
+//           prodPage.clickOnSubmitButton();
+           
+	    }
+    
+    
+
+		  
+		
+	}
+

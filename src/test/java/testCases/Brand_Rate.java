@@ -51,7 +51,7 @@ public class Brand_Rate extends BaseClass {
 	        bpage.searchBrand();
 	        brand_RatePage.clickOnRate();
 //	        brand_RatePage.clickOnchannelPartner();
-//	        brand_RatePage.getChannelPartnerName();
+	        brand_RatePage.getChannelPartnerName();
 	        brand_RatePage.clickOnEditChannelPartnerName();
 		}
 		catch(Exception e) {
