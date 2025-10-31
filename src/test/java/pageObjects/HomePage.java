@@ -39,15 +39,15 @@ public class HomePage extends BasePage {
 	WebElement dashboard;
 	@FindBy(xpath = "//a[@href='/v1/r-plug/brands']")
 	WebElement brands;
-	@FindBy(xpath = "//li//span[text()='Users']") // take time
+	@FindBy(xpath = "//a[@href='/v1/r-plug/users-dashboard']") // take time
 	WebElement users;
-	@FindBy(xpath = "//li//span[text()='My HR']") // take time
+	@FindBy(xpath = "//a[@href='/v1/r-plug/my-hr/hr-dashboard']") // take time
 	WebElement MyHR;
 	@FindBy(xpath = "//a[@href='/v1/r-plug/target-and-acheivement']")
 	WebElement Target;
 	@FindBy(xpath = "//a[@href='/v1/r-plug/arena']")
 	WebElement Arena;
-	@FindBy(xpath = "//li//span[text()='Orders']") // take time
+	@FindBy(xpath = "//a[@href='/v1/r-plug/orders-dashboard']") // take time
 	WebElement Orders;
 	@FindBy(xpath = "//a[@href='/v1/r-plug/asset']")
 	WebElement Asset;

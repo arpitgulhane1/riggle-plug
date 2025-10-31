@@ -19,6 +19,8 @@ public class BasePage {
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 	}
+	
+	JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	public void waitForElementVisible(WebElement element, int timeoutInSeconds) {
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));

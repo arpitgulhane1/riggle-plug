@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testCases.Tc_Brands">
+      <class name="testCases.Brand_RateTest">
         <methods>
           <include name="loadConfig"/>
           <include name="tearDown"/>
+          <include name="testAddRateAndMoqProduct"/>
           <include name="setup"/>
-          <include name="testProductFieldValidations"/>
         </methods>
-      </class> <!-- testCases.Tc_Brands -->
+      </class> <!-- testCases.Brand_RateTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

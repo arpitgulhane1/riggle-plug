@@ -1,11 +1,11 @@
 {
   "Brand" : {
-    "BrandName" : "Dickens Group",
+    "BrandName" : "Smitham-Christiansen",
     "City" : "Mumbai"
   },
   "Product" : {
-    "ProductName" : "Synergistic Cotton Watch",
-    "ProductMRP" : "738",
+    "ProductName" : "Lightweight Copper Shoes",
+    "ProductMRP" : "510",
     "BestBeforeValue" : null,
     "ExpiryUnitDropDownOption" : null,
     "productDescValue" : null,
@@ -13,11 +13,11 @@
     "CheckBoxMustSellValue" : null,
     "GST_PercentageValue" : null,
     "selectedMeasurementUnitValue" : null,
-    "ProductUniqueCode" : null,
+    "ProductUniqueCode" : "PROD-4719",
     "ProductUnitWTValue" : null,
     "PackagingUnitValue" : null,
     "ProductCatalogImageValue" : null,
-    "productSubCategoryName" : null,
+    "productSubCategoryName" : "",
     "PackagingUnitContainsValue" : null,
     "ProductImageValue" : null,
     "Cess_PercentageValue" : null,

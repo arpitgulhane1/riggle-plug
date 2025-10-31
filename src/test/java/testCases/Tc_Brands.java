@@ -63,25 +63,25 @@ public class Tc_Brands extends BaseClass {
 	            prodPage.addProductCode();
 	            prodPage.addProductCategory();
 	            prodPage.addProductSubCategory();
-	            prodPage.clickProductAimCheckboxRandomly();
-	            prodPage.addInputBestBefore();
-	            prodPage.selectExpiryUnitDropDown();
-	            prodPage.addProductUnitWT();
-	            prodPage.selectMeasurementUnitDropDown();
-	            prodPage.uploadProductImage();
-	            prodPage.uploadProduct_CatalogImage();
+//	            prodPage.clickProductAimCheckboxRandomly();
+//	            prodPage.addInputBestBefore();
+//	            prodPage.selectExpiryUnitDropDown();
+//	            prodPage.addProductUnitWT();
+//	            prodPage.selectMeasurementUnitDropDown();
+//	            prodPage.uploadProductImage();
+//	            prodPage.uploadProduct_CatalogImage();
 	            // Add Unit Code
 //	            prodPage.addUnit();
 //	            prodPage.clickOnAddUnitButton();
 //	            prodPage.selectpackagingUnit();
 //	            prodPage.packagingUnitContains(); 	//containsInput
-	            
+	            prodPage.clickOnSubmitButton();
 	            // GST Details 
 	            prodPage.addHSNCodeInput();
 	            prodPage.addGST_Percentage();
 	            prodPage.addCess_Percentage();
 	            prodPage.addProduct_Description();
-	            prodPage.clickOnSubmitButton();
+//	            prodPage.clickOnSubmitButton();
 	           
 	            Assert.assertTrue(prodPage.verifyProductCreatedSuccessMessage(), 
 	                    "Product created success message not displayed or mismatched!");
