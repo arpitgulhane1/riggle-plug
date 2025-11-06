@@ -4,6 +4,7 @@
     "City" : "Mumbai"
   },
   "Product" : {
+<<<<<<< Updated upstream
     "ProductName" : "Awesome Paper Hat",
     "ProductMRP" : "972",
     "BestBeforeValue" : null,
@@ -24,6 +25,28 @@
     "CheckBoxFocusedValue" : null,
     "CheckBoxPromotedValue" : null,
     "HSNCodeValue" : "2334"
+=======
+    "ProductName" : "Durable Aluminum Watch",
+    "ProductMRP" : "839",
+    "BestBeforeValue" : "9",
+    "ExpiryUnitDropDownOption" : "Months",
+    "productDescValue" : "Product Description For Testing",
+    "ProductCategoryName" : "Aerated Drink",
+    "CheckBoxMustSellValue" : "false",
+    "GST_PercentageValue" : "10",
+    "selectedMeasurementUnitValue" : "lt",
+    "ProductUniqueCode" : "PROD-6866",
+    "ProductUnitWTValue" : "29",
+    "PackagingUnitValue" : null,
+    "ProductCatalogImageValue" : "true",
+    "productSubCategoryName" : "Drink",
+    "PackagingUnitContainsValue" : null,
+    "ProductImageValue" : "true",
+    "Cess_PercentageValue" : "9",
+    "CheckBoxFocusedValue" : "false",
+    "CheckBoxPromotedValue" : "true",
+    "HSNCodeValue" : "9501"
+>>>>>>> Stashed changes
   },
   "Network" : {
     "CP_Name" : "",

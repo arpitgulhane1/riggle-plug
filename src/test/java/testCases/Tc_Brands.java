@@ -81,12 +81,17 @@ public class Tc_Brands extends BaseClass {
 	            prodPage.addGST_Percentage();
 	            prodPage.addCess_Percentage();
 	            prodPage.addProduct_Description();
+<<<<<<< Updated upstream
 //	            prodPage.clickOnSubmitButton();
 	           
 
 	            prodPage.clickOnSubmitButton();
 	            
 
+=======
+	            prodPage.clickOnSubmitButton();
+	            
+>>>>>>> Stashed changes
 	            Assert.assertTrue(prodPage.verifyProductCreatedSuccessMessage(), 
 	                    "Product created success message not displayed or mismatched!");
 	            
