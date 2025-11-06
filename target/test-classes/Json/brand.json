@@ -1,53 +1,36 @@
 {
-  "Brand" : {
-    "BrandName" : "Smitham-Christiansen",
-    "City" : "Mumbai"
+  "Brand": {
+    "BrandName": "Smitham-Christiansen",
+    "City": "Mumbai"
   },
-  "Product" : {
-<<<<<<< Updated upstream
-    "ProductName" : "Lightweight Copper Shoes",
-    "ProductMRP" : "510",
-    "BestBeforeValue" : null,
-    "ExpiryUnitDropDownOption" : null,
-    "productDescValue" : null,
-    "ProductCategoryName" : "",
-    "CheckBoxMustSellValue" : null,
-    "GST_PercentageValue" : null,
-    "selectedMeasurementUnitValue" : null,
-    "ProductUniqueCode" : "PROD-4719",
-    "ProductUnitWTValue" : null,
-    "PackagingUnitValue" : null,
-    "ProductCatalogImageValue" : null,
-    "productSubCategoryName" : "",
-=======
-    "ProductName" : "Durable Aluminum Watch",
-    "ProductMRP" : "839",
-    "BestBeforeValue" : "9",
-    "ExpiryUnitDropDownOption" : "Months",
-    "productDescValue" : "Product Description For Testing",
-    "ProductCategoryName" : "Aerated Drink",
-    "CheckBoxMustSellValue" : "false",
-    "GST_PercentageValue" : "10",
-    "selectedMeasurementUnitValue" : "lt",
-    "ProductUniqueCode" : "PROD-6866",
-    "ProductUnitWTValue" : "29",
-    "PackagingUnitValue" : null,
-    "ProductCatalogImageValue" : "true",
-    "productSubCategoryName" : "Drink",
->>>>>>> Stashed changes
-    "PackagingUnitContainsValue" : null,
-    "ProductImageValue" : "true",
-    "Cess_PercentageValue" : "9",
-    "CheckBoxFocusedValue" : "false",
-    "CheckBoxPromotedValue" : "true",
-    "HSNCodeValue" : "9501"
+  "Product": {
+    "ProductName": "Durable Aluminum Watch",
+    "ProductMRP": "839",
+    "BestBeforeValue": "9",
+    "ExpiryUnitDropDownOption": "Months",
+    "productDescValue": "Product Description For Testing",
+    "ProductCategoryName": "Aerated Drink",
+    "CheckBoxMustSellValue": "false",
+    "GST_PercentageValue": "10",
+    "selectedMeasurementUnitValue": "lt",
+    "ProductUniqueCode": "PROD-6866",
+    "ProductUnitWTValue": "29",
+    "PackagingUnitValue": null,
+    "ProductCatalogImageValue": "true",
+    "productSubCategoryName": "Drink",
+    "PackagingUnitContainsValue": null,
+    "ProductImageValue": "true",
+    "Cess_PercentageValue": "9",
+    "CheckBoxFocusedValue": "false",
+    "CheckBoxPromotedValue": "true",
+    "HSNCodeValue": "9501"
   },
-  "Network" : {
-    "CP_Name" : "",
-    "Role" : "Channel Partner 3",
-    "LinkSeller" : "RoyalFord Pvt Ltd",
-    "RateStrecture" : "Base",
-    "AssignSalsePerson" : "Ansh Singh (Asm)",
-    "PrimarySalesPerson" : ""
+  "Network": {
+    "CP_Name": "",
+    "Role": "Channel Partner 3",
+    "LinkSeller": "RoyalFord Pvt Ltd",
+    "RateStrecture": "Base",
+    "AssignSalsePerson": "Ansh Singh (Asm)",
+    "PrimarySalesPerson": ""
   }
 }

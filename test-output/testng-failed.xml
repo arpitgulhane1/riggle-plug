@@ -3,18 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testCases.Brand_RateTest">
+      <class name="testCases.Tc_Brands">
         <methods>
           <include name="loadConfig"/>
           <include name="tearDown"/>
-          <include name="testAddRateAndMoqProduct"/>
           <include name="setup"/>
-<<<<<<< Updated upstream
-=======
           <include name="testSearchBrand_AddNewProduct_VerifyProductSuccessfully"/>
->>>>>>> Stashed changes
         </methods>
-      </class> <!-- testCases.Brand_RateTest -->
+      </class> <!-- testCases.Tc_Brands -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

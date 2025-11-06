@@ -57,15 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<<<<<<< Updated upstream
-<td>Started on:</td><td>Thu Oct 30 18:16:55 IST 2025</td>
+<td>Started on:</td><td>Thu Nov 06 17:36:34 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>31 seconds (31723 ms)</td>
-=======
-<td>Started on:</td><td>Fri Oct 31 12:29:37 IST 2025</td>
-</tr>
-<tr><td>Total time:</td><td>51 seconds (51461 ms)</td>
->>>>>>> Stashed changes
+<tr><td>Total time:</td><td>38 seconds (38367 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -82,18 +76,19 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<<<<<<< Updated upstream
-<td title='testCases.Brand_RateTest.testEditFirstCpRate()'><b>testEditFirstCpRate</b><br>Test class: testCases.Brand_RateTest</td>
-<td></td>
-<td>14</td>
-<td>testCases.Brand_RateTest@4b013c76</td></tr>
-=======
 <td title='testCases.Tc_Brands.testSearchBrand_AddNewProduct_VerifyProductSuccessfully()'><b>testSearchBrand_AddNewProduct_VerifyProductSuccessfully</b><br>Test class: testCases.Tc_Brands</td>
-<td><div><pre>java.lang.AssertionError: Product details from UI do not match. expected [true] but found [false]
+<td><div><pre>java.lang.AssertionError: Exception in testSearchBrandAndClickProduct: stale element reference: stale element not found in the current frame
+  (Session info: chrome=142.0.7444.60)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: &apos;4.28.0&apos;, revision: &apos;ac342546e9&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;23.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [7148f1fca755743eda6a94bb9edda89b, sendKeysToElement {value=[Ljava.lang.CharSequence;@d74bac4, id=f.6C4DE6402957D2C099119A7502D73066.d.67021A9ECA92738C9319A8E28D487177.e.49}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.60, chrome: {chromedriverVersion: 142.0.7444.61 (9884f628acbc..., userDataDir: C:\Users\USER\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51108}, goog:processID: 14264, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51108/devtoo..., se:cdpVersion: 142.0.7444.60, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (7148f1fca755743eda6a94bb9edda89b)] -&gt; xpath: //input[@id=&apos;nest-messages_hsn_code&apos;]]
+Session ID: 7148f1fca755743eda6a94bb9edda89b
 	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertTrue(Assert.java:57)
-	at testCases.Tc_Brands.testSearchBrand_AddNewProduct_VerifyProductSuccessfully(Tc_Brands.java:93)
+	at testCases.Tc_Brands.testSearchBrand_AddNewProduct_VerifyProductSuccessfully(Tc_Brands.java:102)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -120,12 +115,19 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div><a href='#' onClick='toggleBox("stack-trace891715540", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace891715540'><pre>java.lang.AssertionError: Product details from UI do not match. expected [true] but found [false]
+</pre></div><a href='#' onClick='toggleBox("stack-trace1790229151", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1790229151'><pre>java.lang.AssertionError: Exception in testSearchBrandAndClickProduct: stale element reference: stale element not found in the current frame
+  (Session info: chrome=142.0.7444.60)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: &apos;4.28.0&apos;, revision: &apos;ac342546e9&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;23.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [7148f1fca755743eda6a94bb9edda89b, sendKeysToElement {value=[Ljava.lang.CharSequence;@d74bac4, id=f.6C4DE6402957D2C099119A7502D73066.d.67021A9ECA92738C9319A8E28D487177.e.49}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.60, chrome: {chromedriverVersion: 142.0.7444.61 (9884f628acbc..., userDataDir: C:\Users\USER\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51108}, goog:processID: 14264, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51108/devtoo..., se:cdpVersion: 142.0.7444.60, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (7148f1fca755743eda6a94bb9edda89b)] -&gt; xpath: //input[@id=&apos;nest-messages_hsn_code&apos;]]
+Session ID: 7148f1fca755743eda6a94bb9edda89b
 	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertTrue(Assert.java:57)
-	at testCases.Tc_Brands.testSearchBrand_AddNewProduct_VerifyProductSuccessfully(Tc_Brands.java:93)
+	at testCases.Tc_Brands.testSearchBrand_AddNewProduct_VerifyProductSuccessfully(Tc_Brands.java:102)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -153,9 +155,8 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
-<td>32</td>
+<td>18</td>
 <td>testCases.Tc_Brands@22fcf7ab</td></tr>
->>>>>>> Stashed changes
 </table><p>
 </body>
 </html>

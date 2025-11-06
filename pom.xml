@@ -121,7 +121,7 @@
 			<version>2.17.1</version>
 		</dependency>
 
-<!-- use the latest stable 
+	<!-- use the latest stable 
 		<dependency>
 			<groupId>Demo-Proj</groupId>
 			<artifactId>Demo-Proj</artifactId>

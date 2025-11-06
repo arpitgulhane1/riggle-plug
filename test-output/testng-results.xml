@@ -2,50 +2,46 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-<<<<<<< Updated upstream
-  <suite started-at="2025-10-30T18:16:55 IST" name="Default suite" finished-at="2025-10-30T18:17:27 IST" duration-ms="31723">
+  <suite started-at="2025-11-06T17:36:34 IST" name="Default suite" finished-at="2025-11-06T17:37:12 IST" duration-ms="38367">
     <groups>
     </groups>
-    <test started-at="2025-10-30T18:16:55 IST" name="Default test" finished-at="2025-10-30T18:17:27 IST" duration-ms="31723">
-      <class name="testCases.Brand_RateTest">
-        <test-method is-config="true" signature="loadConfig()[pri:0, instance:testCases.Brand_RateTest@4b013c76]" started-at="2025-10-30T18:16:55 IST" name="loadConfig" finished-at="2025-10-30T18:16:55 IST" duration-ms="12" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- loadConfig -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:testCases.Brand_RateTest@4b013c76]" started-at="2025-10-30T18:16:55 IST" name="setup" finished-at="2025-10-30T18:16:58 IST" duration-ms="2309" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="testEditFirstCpRate()[pri:0, instance:testCases.Brand_RateTest@4b013c76]" started-at="2025-10-30T18:16:58 IST" name="testEditFirstCpRate" finished-at="2025-10-30T18:17:12 IST" duration-ms="14162" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testEditFirstCpRate -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.Brand_RateTest@4b013c76]" started-at="2025-10-30T18:17:12 IST" name="tearDown" finished-at="2025-10-30T18:17:27 IST" duration-ms="15206" status="PASS">
-=======
-  <suite started-at="2025-10-31T12:29:37 IST" name="Default suite" finished-at="2025-10-31T12:30:28 IST" duration-ms="51461">
-    <groups>
-    </groups>
-    <test started-at="2025-10-31T12:29:37 IST" name="Default test" finished-at="2025-10-31T12:30:28 IST" duration-ms="51461">
+    <test started-at="2025-11-06T17:36:34 IST" name="Default test" finished-at="2025-11-06T17:37:12 IST" duration-ms="38367">
       <class name="testCases.Tc_Brands">
-        <test-method is-config="true" signature="loadConfig()[pri:0, instance:testCases.Tc_Brands@22fcf7ab]" started-at="2025-10-31T12:29:37 IST" name="loadConfig" finished-at="2025-10-31T12:29:37 IST" duration-ms="25" status="PASS">
+        <test-method is-config="true" signature="loadConfig()[pri:0, instance:testCases.Tc_Brands@22fcf7ab]" started-at="2025-11-06T17:36:34 IST" name="loadConfig" finished-at="2025-11-06T17:36:34 IST" duration-ms="25" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loadConfig -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:testCases.Tc_Brands@22fcf7ab]" started-at="2025-10-31T12:29:37 IST" name="setup" finished-at="2025-10-31T12:29:41 IST" duration-ms="3887" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:testCases.Tc_Brands@22fcf7ab]" started-at="2025-11-06T17:36:34 IST" name="setup" finished-at="2025-11-06T17:36:37 IST" duration-ms="3679" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testSearchBrand_AddNewProduct_VerifyProductSuccessfully()[pri:0, instance:testCases.Tc_Brands@22fcf7ab]" started-at="2025-10-31T12:29:41 IST" name="testSearchBrand_AddNewProduct_VerifyProductSuccessfully" finished-at="2025-10-31T12:30:13 IST" duration-ms="32139" status="FAIL">
+        <test-method signature="testSearchBrand_AddNewProduct_VerifyProductSuccessfully()[pri:0, instance:testCases.Tc_Brands@22fcf7ab]" started-at="2025-11-06T17:36:37 IST" name="testSearchBrand_AddNewProduct_VerifyProductSuccessfully" finished-at="2025-11-06T17:36:56 IST" duration-ms="18937" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Product details from UI do not match. expected [true] but found [false]]]>
+              <![CDATA[Exception in testSearchBrandAndClickProduct: stale element reference: stale element not found in the current frame
+  (Session info: chrome=142.0.7444.60)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: '4.28.0', revision: 'ac342546e9'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [7148f1fca755743eda6a94bb9edda89b, sendKeysToElement {value=[Ljava.lang.CharSequence;@d74bac4, id=f.6C4DE6402957D2C099119A7502D73066.d.67021A9ECA92738C9319A8E28D487177.e.49}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.60, chrome: {chromedriverVersion: 142.0.7444.61 (9884f628acbc..., userDataDir: C:\Users\USER\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51108}, goog:processID: 14264, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51108/devtoo..., se:cdpVersion: 142.0.7444.60, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (7148f1fca755743eda6a94bb9edda89b)] -> xpath: //input[@id='nest-messages_hsn_code']]
+Session ID: 7148f1fca755743eda6a94bb9edda89b]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Product details from UI do not match. expected [true] but found [false]
+              <![CDATA[java.lang.AssertionError: Exception in testSearchBrandAndClickProduct: stale element reference: stale element not found in the current frame
+  (Session info: chrome=142.0.7444.60)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: '4.28.0', revision: 'ac342546e9'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [7148f1fca755743eda6a94bb9edda89b, sendKeysToElement {value=[Ljava.lang.CharSequence;@d74bac4, id=f.6C4DE6402957D2C099119A7502D73066.d.67021A9ECA92738C9319A8E28D487177.e.49}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.60, chrome: {chromedriverVersion: 142.0.7444.61 (9884f628acbc..., userDataDir: C:\Users\USER\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51108}, goog:processID: 14264, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51108/devtoo..., se:cdpVersion: 142.0.7444.60, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (7148f1fca755743eda6a94bb9edda89b)] -> xpath: //input[@id='nest-messages_hsn_code']]
+Session ID: 7148f1fca755743eda6a94bb9edda89b
 at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertTrue(Assert.java:57)
-at testCases.Tc_Brands.testSearchBrand_AddNewProduct_VerifyProductSuccessfully(Tc_Brands.java:93)
+at testCases.Tc_Brands.testSearchBrand_AddNewProduct_VerifyProductSuccessfully(Tc_Brands.java:102)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -78,8 +74,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSearchBrand_AddNewProduct_VerifyProductSuccessfully -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.Tc_Brands@22fcf7ab]" started-at="2025-10-31T12:30:13 IST" name="tearDown" finished-at="2025-10-31T12:30:28 IST" duration-ms="15333" status="PASS">
->>>>>>> Stashed changes
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.Tc_Brands@22fcf7ab]" started-at="2025-11-06T17:36:56 IST" name="tearDown" finished-at="2025-11-06T17:37:12 IST" duration-ms="15608" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
