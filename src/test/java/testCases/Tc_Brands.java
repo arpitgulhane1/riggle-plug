@@ -75,7 +75,7 @@ public class Tc_Brands extends BaseClass {
 //	            prodPage.clickOnAddUnitButton();
 //	            prodPage.selectpackagingUnit();
 //	            prodPage.packagingUnitContains(); 	//containsInput
-	            prodPage.clickOnSubmitButton();
+	            
 	            // GST Details 
 	            prodPage.addHSNCodeInput();
 	            prodPage.addGST_Percentage();

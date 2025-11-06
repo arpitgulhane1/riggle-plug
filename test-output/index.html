@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\USER\AppData\Local\Temp\testng-eclipse-655143911\testng-customsuite.xml</span>
+                    <span>C:\Users\USER\AppData\Local\Temp\testng-eclipse-1699466273\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -129,18 +129,11 @@
                   <a name="testSearchBrand_AddNewProduct_VerifyProductSuccessfully">
                   </a> <!-- testSearchBrand_AddNewProduct_VerifyProductSuccessfully -->
                   <span class="method-name">testSearchBrand_AddNewProduct_VerifyProductSuccessfully</span>
-                  <div class="stack-trace">java.lang.AssertionError: Exception in testSearchBrandAndClickProduct: stale element reference: stale element not found in the current frame
-  (Session info: chrome=142.0.7444.60)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
-Build info: version: &apos;4.28.0&apos;, revision: &apos;ac342546e9&apos;
-System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;23.0.2&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [7148f1fca755743eda6a94bb9edda89b, sendKeysToElement {value=[Ljava.lang.CharSequence;@d74bac4, id=f.6C4DE6402957D2C099119A7502D73066.d.67021A9ECA92738C9319A8E28D487177.e.49}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.60, chrome: {chromedriverVersion: 142.0.7444.61 (9884f628acbc..., userDataDir: C:\Users\USER\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51108}, goog:processID: 14264, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51108/devtoo..., se:cdpVersion: 142.0.7444.60, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (7148f1fca755743eda6a94bb9edda89b)] -&gt; xpath: //input[@id=&apos;nest-messages_hsn_code&apos;]]
-Session ID: 7148f1fca755743eda6a94bb9edda89b
+                  <div class="stack-trace">java.lang.AssertionError: Product details from UI do not match. expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:111)
-	at testCases.Tc_Brands.testSearchBrand_AddNewProduct_VerifyProductSuccessfully(Tc_Brands.java:102)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at testCases.Tc_Brands.testSearchBrand_AddNewProduct_VerifyProductSuccessfully(Tc_Brands.java:97)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -176,7 +169,7 @@ Session ID: 7148f1fca755743eda6a94bb9edda89b
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\USER\AppData\Local\Temp\testng-eclipse-655143911\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\USER\AppData\Local\Temp\testng-eclipse-1699466273\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -233,12 +226,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'testSearchBrand_AddNewProduct_VerifyProductSuccessfully')
 data.setCell(0, 2, 'testCases.Tc_Brands')
-data.setCell(0, 3, 18937);
+data.setCell(0, 3, 35644);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 18 seconds</span>
+              <span class="suite-total-time">Total running time: 35 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -290,11 +283,11 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">testSearchBrand_AddNewProduct_VerifyProductSuccessfully</span>
-                <span class="method-start">3732 ms</span>
+                <span class="method-start">4604 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">22706 ms</span>
+                <span class="method-start">40261 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -9,22 +9,15 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">38,367</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">55,837</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">testCases.Tc_Brands</td><td><a href="#m0">testSearchBrand_AddNewProduct_VerifyProductSuccessfully</a></td><td rowspan="1">1762430797968</td><td rowspan="1">18937</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">testCases.Tc_Brands</td><td><a href="#m0">testSearchBrand_AddNewProduct_VerifyProductSuccessfully</a></td><td rowspan="1">1762431859168</td><td rowspan="1">35644</td></tr></tbody>
 </table>
-<h2>Default test</h2><h3 id="m0">testCases.Tc_Brands#testSearchBrand_AddNewProduct_VerifyProductSuccessfully</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Exception in testSearchBrandAndClickProduct: stale element reference: stale element not found in the current frame
-  (Session info: chrome=142.0.7444.60)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
-Build info: version: &apos;4.28.0&apos;, revision: &apos;ac342546e9&apos;
-System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;23.0.2&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [7148f1fca755743eda6a94bb9edda89b, sendKeysToElement {value=[Ljava.lang.CharSequence;@d74bac4, id=f.6C4DE6402957D2C099119A7502D73066.d.67021A9ECA92738C9319A8E28D487177.e.49}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.60, chrome: {chromedriverVersion: 142.0.7444.61 (9884f628acbc..., userDataDir: C:\Users\USER\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51108}, goog:processID: 14264, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51108/devtoo..., se:cdpVersion: 142.0.7444.60, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (7148f1fca755743eda6a94bb9edda89b)] -&gt; xpath: //input[@id=&apos;nest-messages_hsn_code&apos;]]
-Session ID: 7148f1fca755743eda6a94bb9edda89b
+<h2>Default test</h2><h3 id="m0">testCases.Tc_Brands#testSearchBrand_AddNewProduct_VerifyProductSuccessfully</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Product details from UI do not match. expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:111)
-	at testCases.Tc_Brands.testSearchBrand_AddNewProduct_VerifyProductSuccessfully(Tc_Brands.java:102)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at testCases.Tc_Brands.testSearchBrand_AddNewProduct_VerifyProductSuccessfully(Tc_Brands.java:97)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
