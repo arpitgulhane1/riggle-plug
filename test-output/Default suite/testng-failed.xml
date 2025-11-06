@@ -9,6 +9,10 @@
           <include name="tearDown"/>
           <include name="testAddRateAndMoqProduct"/>
           <include name="setup"/>
+<<<<<<< Updated upstream
+=======
+          <include name="testSearchBrand_AddNewProduct_VerifyProductSuccessfully"/>
+>>>>>>> Stashed changes
         </methods>
       </class> <!-- testCases.Brand_RateTest -->
     </classes>

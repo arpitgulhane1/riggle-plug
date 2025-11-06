@@ -129,7 +129,9 @@ public class ProductsPage extends BasePage {
 	WebElement ProductImage;
 	@FindBy(xpath = "//div[@class='ant-upload-drag-container']//img")
 	WebElement productImagePresent;
-	@FindBy(xpath = "//input[@id='nest-messages_catalog']")
+//	@FindBy(xpath = "//input[@id='nest-messages_catalog']")
+//	WebElement Product_CatalogImage;
+	@FindBy(xpath = "//input[contains(@accept,'.jpg,.jpeg,.png,video/*, .mp4,.gif,.webp')]")
 	WebElement Product_CatalogImage;
 	@FindBy(xpath = "//div[@class=\"ant-upload-list-text-container\"]//div[@class=\"ant-upload-text-icon\"]")
 	WebElement product_CatalogImageIsPathAfterUpload;
@@ -626,6 +628,7 @@ public class ProductsPage extends BasePage {
 
 	public void clickOnSubmitButton() {
 		try {
+			js.executeScript("document.body.style.zoom = '70%'");
 			wait.until(ExpectedConditions.visibilityOf(addProduct_TitleText));
 			submitButton.click();
 			saveDetails();

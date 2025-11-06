@@ -83,6 +83,10 @@ public class Tc_Brands extends BaseClass {
 	            prodPage.addProduct_Description();
 //	            prodPage.clickOnSubmitButton();
 	           
+
+	            prodPage.clickOnSubmitButton();
+	            
+
 	            Assert.assertTrue(prodPage.verifyProductCreatedSuccessMessage(), 
 	                    "Product created success message not displayed or mismatched!");
 	            
