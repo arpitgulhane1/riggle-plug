@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -61,7 +62,14 @@ public class BaseClass {
 
 public void loginToApp() {
 	LoginPage login = new LoginPage(driver);
+	try {
+	    Alert alert = driver.switchTo().alert();
+	    alert.accept();
+	    System.out.println("✅ Alert found and accepted successfully.");
+	} catch (Exception e) {
+	}
 	login.enterUserName(prop.getProperty("mobileNumber"));
+	
 	login.clickOnTermsAndPolicyCheckbox();
 	login.clickOnsubmitButton();
 

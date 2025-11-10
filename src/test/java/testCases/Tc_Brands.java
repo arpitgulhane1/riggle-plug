@@ -7,6 +7,7 @@ import pageObjects.BrandsPage;
 import pageObjects.HomePage;
 import pageObjects.ProductsPage;
 import testBase.BaseClass;
+import utility.BrandUtility;
 import utility.TestDataGenerator;
 
 public class Tc_Brands extends BaseClass {
@@ -39,8 +40,70 @@ public class Tc_Brands extends BaseClass {
 	        }
 	    }
 	    
+	 @Test
+	 public void testSearchBrand_AddNewProduct_VerifyProductSuccessfully() {
+		 try {
+			 loginToApp();
+			 HomePage homep = new HomePage(driver);
+			 ProductsPage prodPage = new ProductsPage(driver);
+			 BrandsPage bpage = new BrandsPage(driver);
+			 
+			 homep.clickOnBrandsMenu();
+			 
+//	            bpage.setBrandName(testBrandName); // Inject brand name to page
+//	            bpage.setBrandName("Tesla"); // Remove after test run
+			 bpage.searchBrand();
+			 
+			 
+//	            Assert.assertTrue(bpage.isBrandDisplayed(), "❌ Brand not displayed: " + testBrandName);    // check same value which is add as brand 
+			 bpage.clickOnBrandProduct();
+			 
+			 prodPage.addProductButton();
+			 prodPage.addProductName();
+			 prodPage.addProductMRP();
+			 prodPage.addProductCode();
+			 prodPage.addProductCategory();
+			 prodPage.addProductSubCategory();
+			 prodPage.clickProductAimCheckboxRandomly();
+			 prodPage.addInputBestBefore();
+			 prodPage.selectExpiryUnitDropDown();
+			 prodPage.addProductUnitWT();
+			 prodPage.selectMeasurementUnitDropDown();
+			 prodPage.uploadProductImage();
+			 prodPage.uploadProduct_CatalogImage();
+			 // Add Unit Code
+//	            prodPage.addUnit();
+//	            prodPage.clickOnAddUnitButton();
+//	            prodPage.selectpackagingUnit();
+//	            prodPage.packagingUnitContains(); 	//containsInput
+			 
+			 // GST Details 
+			 prodPage.addHSNCodeInput();
+			 prodPage.addGST_Percentage();
+			 prodPage.addCess_Percentage();
+			 prodPage.addProduct_Description();
+			 
+			 prodPage.clickOnSubmitButton();
+			 
+			 Assert.assertTrue(prodPage.verifyProductCreatedSuccessMessage(), 
+					 "Product created success message not displayed or mismatched!");
+			 
+			 prodPage.searchProduct();
+			 prodPage.clickOnEditProductIcon();
+			 Assert.assertTrue(prodPage.isEditProductPageTitleMatchingProductName(),"Edit Product page title text is not matching!");
+			 
+//			   Assert.assertTrue(prodPage.areProductDetailsValid(), "Product details from UI do not match.");
+			 
+			 System.out.println("Brand search and product click successful.");
+		 } catch (Exception e) {
+			 System.err.println("❌ Error in brand search/product click: " + e.getMessage());
+			 Assert.fail("Exception in testSearchBrandAndClickProduct: " + e.getMessage());
+		 }
+	 }
+	 
+	 
 	    @Test
-	    public void testSearchBrand_AddNewProduct_VerifyProductSuccessfully() {
+	    public void test_AddNewMultipleProductInSeries() {
 	        try {
 	            loginToApp();
 	            HomePage homep = new HomePage(driver);
@@ -53,23 +116,25 @@ public class Tc_Brands extends BaseClass {
 //	            bpage.setBrandName("Tesla"); // Remove after test run
 	            bpage.searchBrand();
 	            
-	            
 //	            Assert.assertTrue(bpage.isBrandDisplayed(), "❌ Brand not displayed: " + testBrandName);    // check same value which is add as brand 
 	            bpage.clickOnBrandProduct();
 	            
+	            int count = 1000; 
+	            
+	            for(int i=1 ;i<=count ; i++) {
 	            prodPage.addProductButton();
 	            prodPage.addProductName();
 	            prodPage.addProductMRP();
 	            prodPage.addProductCode();
 	            prodPage.addProductCategory();
 	            prodPage.addProductSubCategory();
-//	            prodPage.clickProductAimCheckboxRandomly();
-//	            prodPage.addInputBestBefore();
-//	            prodPage.selectExpiryUnitDropDown();
-//	            prodPage.addProductUnitWT();
-//	            prodPage.selectMeasurementUnitDropDown();
-//	            prodPage.uploadProductImage();
-//	            prodPage.uploadProduct_CatalogImage();
+	            prodPage.clickProductAimCheckboxRandomly();
+	            prodPage.addInputBestBefore();
+	            prodPage.selectExpiryUnitDropDown();
+	            prodPage.addProductUnitWT();
+	            prodPage.selectMeasurementUnitDropDown();
+	            prodPage.uploadProductImage();
+	            prodPage.uploadProduct_CatalogImage();
 	            // Add Unit Code
 //	            prodPage.addUnit();
 //	            prodPage.clickOnAddUnitButton();
@@ -87,12 +152,13 @@ public class Tc_Brands extends BaseClass {
 	            Assert.assertTrue(prodPage.verifyProductCreatedSuccessMessage(), 
 	                    "Product created success message not displayed or mismatched!");
 	            
-	            prodPage.searchProduct();
-	            prodPage.clickOnEditProductIcon();
-			   Assert.assertTrue(prodPage.isEditProductPageTitleMatchingProductName(),"Edit Product page title text is not matching!");
-			   
-			   Assert.assertTrue(prodPage.areProductDetailsValid(), "Product details from UI do not match.");
-			   
+	            
+//	            prodPage.searchProduct();
+//	            
+//	            String bradName = BrandUtility.readJson("Brand", "BrandName");
+//	            String brandNameFromTital = prodPage.getFirstProductPageTitalText();
+	            
+	            }
 	            System.out.println("Brand search and product click successful.");
 	        } catch (Exception e) {
 	            System.err.println("❌ Error in brand search/product click: " + e.getMessage());

@@ -76,6 +76,7 @@ public class BrandsPage extends BasePage {
 //	act.keyDown(Keys.ENTER).keyUp(Keys.ENTER).perform();
 //	driver.findElement(By.xpath("//div[@id='rc_unique_0']")).click();
 
+	
 	public void searchBrand() {
 		waitForElementVisible(addNewBrand, 5);
 		searchBrand.clear();

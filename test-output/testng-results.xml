@@ -2,51 +2,38 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-<<<<<<< Updated upstream
-  <suite started-at="2025-11-06T17:54:14 IST" name="Default suite" finished-at="2025-11-06T17:55:10 IST" duration-ms="55837">
+  <suite started-at="2025-11-08T01:25:47 IST" name="Default suite" finished-at="2025-11-08T01:28:23 IST" duration-ms="155944">
     <groups>
     </groups>
-    <test started-at="2025-11-06T17:54:14 IST" name="Default test" finished-at="2025-11-06T17:55:10 IST" duration-ms="55837">
+    <test started-at="2025-11-08T01:25:47 IST" name="Default test" finished-at="2025-11-08T01:28:23 IST" duration-ms="155944">
       <class name="testCases.Tc_Brands">
-        <test-method is-config="true" signature="loadConfig()[pri:0, instance:testCases.Tc_Brands@22fcf7ab]" started-at="2025-11-06T17:54:14 IST" name="loadConfig" finished-at="2025-11-06T17:54:14 IST" duration-ms="28" status="PASS">
+        <test-method is-config="true" signature="loadConfig()[pri:0, instance:testCases.Tc_Brands@2de23121]" started-at="2025-11-08T01:25:47 IST" name="loadConfig" finished-at="2025-11-08T01:25:47 IST" duration-ms="19" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loadConfig -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:testCases.Tc_Brands@22fcf7ab]" started-at="2025-11-06T17:54:14 IST" name="setup" finished-at="2025-11-06T17:54:19 IST" duration-ms="4552" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:testCases.Tc_Brands@2de23121]" started-at="2025-11-08T01:25:47 IST" name="setup" finished-at="2025-11-08T01:25:52 IST" duration-ms="5358" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testSearchBrand_AddNewProduct_VerifyProductSuccessfully()[pri:0, instance:testCases.Tc_Brands@22fcf7ab]" started-at="2025-11-06T17:54:19 IST" name="testSearchBrand_AddNewProduct_VerifyProductSuccessfully" finished-at="2025-11-06T17:54:54 IST" duration-ms="35644" status="FAIL">
-=======
-  <suite started-at="2025-10-31T12:29:37 IST" name="Default suite" finished-at="2025-10-31T12:30:28 IST" duration-ms="51461">
-    <groups>
-    </groups>
-    <test started-at="2025-10-31T12:29:37 IST" name="Default test" finished-at="2025-10-31T12:30:28 IST" duration-ms="51461">
-      <class name="testCases.Tc_Brands">
-        <test-method is-config="true" signature="loadConfig()[pri:0, instance:testCases.Tc_Brands@22fcf7ab]" started-at="2025-10-31T12:29:37 IST" name="loadConfig" finished-at="2025-10-31T12:29:37 IST" duration-ms="25" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- loadConfig -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:testCases.Tc_Brands@22fcf7ab]" started-at="2025-10-31T12:29:37 IST" name="setup" finished-at="2025-10-31T12:29:41 IST" duration-ms="3887" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="testSearchBrand_AddNewProduct_VerifyProductSuccessfully()[pri:0, instance:testCases.Tc_Brands@22fcf7ab]" started-at="2025-10-31T12:29:41 IST" name="testSearchBrand_AddNewProduct_VerifyProductSuccessfully" finished-at="2025-10-31T12:30:13 IST" duration-ms="32139" status="FAIL">
->>>>>>> Stashed changes
+        <test-method signature="test_AddNewMultipleProductInSeries()[pri:0, instance:testCases.Tc_Brands@2de23121]" started-at="2025-11-08T01:25:52 IST" name="test_AddNewMultipleProductInSeries" finished-at="2025-11-08T01:28:07 IST" duration-ms="135063" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Product details from UI do not match. expected [true] but found [false]]]>
+              <![CDATA[Exception in testSearchBrandAndClickProduct: Expected condition failed: waiting for element to be clickable: [[ChromeDriver: chrome on windows (b68b021737e2266c5a464944a296fb61)] -> xpath: //label[text()='Category']/following::div[@class='ant-select-selector'][1]] (tried for 20 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.0', revision: 'ac342546e9'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.135, chrome: {chromedriverVersion: 142.0.7444.61 (9884f628acbc..., userDataDir: C:\Users\USER\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61312}, goog:processID: 5236, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61312/devtoo..., se:cdpVersion: 142.0.7444.135, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: b68b021737e2266c5a464944a296fb61]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Product details from UI do not match. expected [true] but found [false]
+              <![CDATA[java.lang.AssertionError: Exception in testSearchBrandAndClickProduct: Expected condition failed: waiting for element to be clickable: [[ChromeDriver: chrome on windows (b68b021737e2266c5a464944a296fb61)] -> xpath: //label[text()='Category']/following::div[@class='ant-select-selector'][1]] (tried for 20 second(s) with 500 milliseconds interval)
+Build info: version: '4.28.0', revision: 'ac342546e9'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.135, chrome: {chromedriverVersion: 142.0.7444.61 (9884f628acbc..., userDataDir: C:\Users\USER\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61312}, goog:processID: 5236, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61312/devtoo..., se:cdpVersion: 142.0.7444.135, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: b68b021737e2266c5a464944a296fb61
 at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertTrue(Assert.java:57)
-<<<<<<< Updated upstream
-at testCases.Tc_Brands.testSearchBrand_AddNewProduct_VerifyProductSuccessfully(Tc_Brands.java:97)
-=======
-at testCases.Tc_Brands.testSearchBrand_AddNewProduct_VerifyProductSuccessfully(Tc_Brands.java:93)
->>>>>>> Stashed changes
+at testCases.Tc_Brands.test_AddNewMultipleProductInSeries(Tc_Brands.java:165)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -78,12 +65,8 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testSearchBrand_AddNewProduct_VerifyProductSuccessfully -->
-<<<<<<< Updated upstream
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.Tc_Brands@22fcf7ab]" started-at="2025-11-06T17:54:54 IST" name="tearDown" finished-at="2025-11-06T17:55:10 IST" duration-ms="15528" status="PASS">
-=======
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.Tc_Brands@22fcf7ab]" started-at="2025-10-31T12:30:13 IST" name="tearDown" finished-at="2025-10-31T12:30:28 IST" duration-ms="15333" status="PASS">
->>>>>>> Stashed changes
+        </test-method> <!-- test_AddNewMultipleProductInSeries -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.Tc_Brands@2de23121]" started-at="2025-11-08T01:28:07 IST" name="tearDown" finished-at="2025-11-08T01:28:23 IST" duration-ms="15425" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

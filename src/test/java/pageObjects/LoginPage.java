@@ -45,6 +45,7 @@ public class LoginPage extends BasePage {
 
 	// Action Methods
 	public void enterUserName(String number) {
+		wait.until(ExpectedConditions.visibilityOf(mobileNumber));
 		mobileNumber.clear();
 		mobileNumber.sendKeys(number);
 	}

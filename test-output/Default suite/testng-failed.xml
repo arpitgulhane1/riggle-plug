@@ -7,8 +7,8 @@
         <methods>
           <include name="loadConfig"/>
           <include name="tearDown"/>
+          <include name="test_AddNewMultipleProductInSeries"/>
           <include name="setup"/>
-          <include name="testSearchBrand_AddNewProduct_VerifyProductSuccessfully"/>
         </methods>
       </class> <!-- testCases.Tc_Brands -->
     </classes>

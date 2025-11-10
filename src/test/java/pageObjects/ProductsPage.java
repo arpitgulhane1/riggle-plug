@@ -1,6 +1,7 @@
 package pageObjects;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -11,15 +12,17 @@ import java.util.Random;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utility.BrandUtility;
-import utility.ConfigReader;
 import utility.TestDataGenerator;
 
 public class ProductsPage extends BasePage {
@@ -44,6 +47,11 @@ public class ProductsPage extends BasePage {
 	WebElement addProductButton;
 	@FindBy(xpath = "//input[@id='nest-messages_name']")
 	WebElement productName;
+	
+	@FindBy(xpath = "//div[@class='ant-notification ant-notification-topRight']//span")
+	WebElement productNameAlreadyExist;
+	
+	
 	@FindBy(xpath = "//input[@id='nest-messages_mrp']")
 	WebElement productMRP;
 
@@ -133,7 +141,7 @@ public class ProductsPage extends BasePage {
 //	WebElement Product_CatalogImage;
 	@FindBy(xpath = "//input[contains(@accept,'.jpg,.jpeg,.png,video/*, .mp4,.gif,.webp')]")
 	WebElement Product_CatalogImage;
-	@FindBy(xpath = "//div[@class=\"ant-upload-list-text-container\"]//div[@class=\"ant-upload-text-icon\"]")
+	@FindBy(xpath = "//div[@class=\"ant-upload-list ant-upload-list-picture\"]//img[@src]")
 	WebElement product_CatalogImageIsPathAfterUpload;
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement submitButton;
@@ -154,6 +162,10 @@ public class ProductsPage extends BasePage {
 	// Edit Product
 	@FindBy(xpath = "//div[@class=\"ant-modal-title\"]")
 	WebElement editProductPageTitleText;
+	
+	// Edit Product
+	@FindBy(xpath = "//div[@class=\"ant-modal-title\"]")
+	WebElement firstProductPageTitleText_ProductName;
 
 	@FindBy(xpath = "//span[@aria-label=\"edit\"]")
 	WebElement editProductButton;
@@ -213,7 +225,7 @@ public class ProductsPage extends BasePage {
 
 		// Create unique product name
 		newProductName = TestDataGenerator.getRandomProductName();
-
+		productName.clear();
 		// Send to input field
 		productName.sendKeys(newProductName);
 	}
@@ -238,41 +250,157 @@ public class ProductsPage extends BasePage {
 	}
 
 	public void addProductCategory() {
-		String desiredCategory = ConfigReader.getProperty("product.category");
+		wait.until(ExpectedConditions.elementToBeClickable(productCategory));
 		productCategory.click();
 		
-		waitForMultipleElementsVisible(productCategoryAllOptions, 5);
+		waitForMultipleElementsVisible(productCategoryAllOptions, 7);
 		if (productCategoryAllOptions.isEmpty()) {
 			throw new RuntimeException("❌ No product categories available!");
 		}
 
-		Random rand = new Random();
-		int randomIndex = rand.nextInt(productCategoryAllOptions.size()); // 0 to size-1
-		WebElement randomOption = productCategoryAllOptions.get(randomIndex);
+//		Random rand = new Random();
+//		int randomIndex = rand.nextInt(productCategoryAllOptions.size()); // 0 to size-1
+//		WebElement randomOption = productCategoryAllOptions.get(randomIndex);
+//
+//		productCategoryName = randomOption.getText();
+//		randomOption.click();
+		
+		boolean isSelected = false;
+		int attempts = 0;
 
-		productCategoryName = randomOption.getText();
-		randomOption.click();
+		while (!isSelected && attempts < 3) {
+		    try {
+		        Random rand = new Random();
+		        int randomIndex = rand.nextInt(productCategoryAllOptions.size());
+		        WebElement randomOption = productCategoryAllOptions.get(randomIndex);
+
+		        productCategoryName = randomOption.getText();
+		        randomOption.click();
+
+		        System.out.println("✅ Selected random product category: " + productCategoryName);
+		        isSelected = true;
+		    } catch (Exception e) {
+		        attempts++;
+		        System.out.println("⚠️ Attempt " + attempts + " failed: " + e.getMessage());
+		        if (attempts == 3) {
+		            System.out.println("❌ Giving up after 3 failed attempts.");
+		        }
+		    }
+		}
+
 
 		System.out.println("✅ Selected product category: " + productCategoryName);
 	}
 
 	public void addProductSubCategory() {
 		wait.until(ExpectedConditions.elementToBeClickable(productSubCategory));
-		productSubCategory.click();
+		
+		try {
+            // Try normal click first
+            productSubCategory.click();
+            System.out.println("Clicked productSubCategory normally.");
+        } catch (Exception e) {
+            // Fallback to JavaScript click if normal click fails
+            System.out.println("Normal click failed, trying JS click...");
+            js.executeScript("arguments[0].click();", productSubCategory);
+        }
+		
+		
+		
+		int maxAttempts = 3;
+		int attempts_SubCategory = 0;
 
-		// dropdown options are loaded before proceeding
+		while ((productSubCategoryAllOptions == null || productSubCategoryAllOptions.isEmpty()) && attempts_SubCategory < maxAttempts) {
+		    try {
+		        System.out.println("⚠️ No subcategory options found, retrying... Attempt " + (attempts_SubCategory + 1));
+
+		        // Click using normal and JS (some dropdowns need JS click)
+//		        try {
+		            productSubCategory.click();
+//		        } catch (Exception e) {
+//		            js.executeScript("arguments[0].click();", productSubCategory);
+//		        }
+
+		        // Small wait before re-checking (to allow options to load)
+//		        Thread.sleep(2000);
+
+		        // Re-fetch the dropdown options (important after retry)
+//		        productSubCategoryAllOptions = driver.findElements(By.xpath("//your/xpath/for/subcategory/options"));
+
+		        attempts_SubCategory++;
+
+		    } catch (Exception e) {
+		        System.out.println("❌ Error while retrying subcategory options: " + e.getMessage());
+		        attempts_SubCategory++;
+		    }
+		}
+
+		
 		if (productSubCategoryAllOptions == null || productSubCategoryAllOptions.isEmpty()) {
 			throw new RuntimeException("No subcategory options found!");
 		}
 
-		// randomly pick one option from the list
+		boolean isSelected = false;
+		int attempts = 0;
+		while(!isSelected && attempts<3 ) {
+		try {
 		Random rand = new Random();
 		int randomIndex = rand.nextInt(productSubCategoryAllOptions.size());
 
 		WebElement randomOption = productSubCategoryAllOptions.get(randomIndex);
 		productSubCategoryName = randomOption.getText();
 		randomOption.click();
+		isSelected = true;
+		}
+		catch(Exception e) {
+			attempts++;
+	        System.out.println("⚠️ Attempt " + attempts + " failed: " + e.getMessage());
+	        if (attempts == 3) {
+	            System.out.println("❌ Giving up after 3 failed attempts.");
+	        }
+		}
+		}
+		
+		
+		
+		String fieldSub_Category = getProductSubCategoryFromInputField(); // current value
+		System.out.println("productSubCategoryName ===============Before "+productSubCategoryName+" ====================");
+    	System.out.println("fieldSub_Category =================Before "+fieldSub_Category+" ==================");
+		String productSubCategoryName = "";
+
+		int maxAttempt = 3;
+		int attempt = 0;
+
+		while (productSubCategoryName.equals(fieldSub_Category) && attempt < maxAttempt) {
+		    try {
+		    	System.out.println("productSubCategoryName =============== "+productSubCategoryName+" ====================");
+		    	System.out.println("fieldSub_Category ================= "+fieldSub_Category+" ==================");
+		        Random rand = new Random();
+		        int randomIndex = rand.nextInt(productSubCategoryAllOptions.size());
+		        WebElement randomOption = productSubCategoryAllOptions.get(randomIndex);
+
+		        productSubCategoryName = randomOption.getText();
+		        randomOption.click();
+
+		        System.out.println("🟢 Attempt " + (attempt + 1) + ": Selected subcategory - " + productSubCategoryName);
+		        attempt++;
+
+		    } catch (Exception e) {
+		        attempts++;
+		        System.out.println("⚠️ Attempt " + attempt + " failed: " + e.getMessage());
+		    }
+		}
+
+		if (productSubCategoryName.equals(fieldSub_Category)) {
+		    System.out.println("❌ Could not select a different subcategory after " + maxAttempt + " attempts.");
+		} else {
+		    System.out.println("✅ Successfully selected a different subcategory: " + productSubCategoryName);
+		}
+
+		
 	}
+	
+	
 
 	public void clickOnAddUnitButton() {
 		addUnitButton.click();
@@ -631,6 +759,63 @@ public class ProductsPage extends BasePage {
 			js.executeScript("document.body.style.zoom = '70%'");
 			wait.until(ExpectedConditions.visibilityOf(addProduct_TitleText));
 			submitButton.click();
+			
+			saveDetails();
+			System.out.println("Click succeeded.");
+		} catch (Exception e) {
+			System.out.println(" click failed ");
+		}
+	}
+	
+	
+	public void clickOnSubmitButtonForUniqueProduct() {
+		try {
+			js.executeScript("document.body.style.zoom = '70%'");
+			wait.until(ExpectedConditions.visibilityOf(addProduct_TitleText));
+//			submitButton.click();
+			
+//			waitForElementVisible(productNameAlreadyExist, 1);
+//			while(productNameAlreadyExist.isDisplayed()) {
+//				addProductName();
+//			}
+			
+			boolean isDuplicate = true;
+			int attempts = 0;
+			int maxAttempts = 5;
+
+			while (isDuplicate && attempts < maxAttempts) {
+			    try {
+			        submitButton.click();
+			        attempts++;
+			        System.out.println("🟡 Attempt " + attempts + ": Submit button clicked.");
+			        if(!verifyProductCreatedSuccessMessage()) {
+			        // Wait briefly to check if "already exists" popup appears
+//			        WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(2));
+
+			        if (productNameAlreadyExist.isDisplayed()) {
+			            System.out.println("⚠️ Product already exists popup displayed. Generating a new product name...");
+			            addProductName(); // call only if displayed
+			            isDuplicate = true;
+			        }
+			        }
+
+			    } catch (TimeoutException te) {
+			        // Popup did not appear = unique name
+			        isDuplicate = false;
+			        System.out.println("✅ Unique product name accepted!");
+			        saveDetails();
+			    } catch (NoSuchElementException | StaleElementReferenceException ignored) {
+			        // Popup disappeared or DOM refreshed
+			        isDuplicate = false;
+			        System.out.println("✅ Popup disappeared or element stale — assuming unique name.");
+			        saveDetails();
+			    }
+			}
+
+			if (isDuplicate) {
+			    System.out.println("❌ Still duplicate after " + maxAttempts + " attempts.");
+			}
+			
 			saveDetails();
 			System.out.println("Click succeeded.");
 		} catch (Exception e) {
@@ -717,6 +902,11 @@ public class ProductsPage extends BasePage {
 	}
 
 
+	public String getFirstProductPageTitalText() {
+		System.out.println("firstProductPageTitleText_ProductName = = " + firstProductPageTitleText_ProductName);
+		return firstProductPageTitleText_ProductName.getText();
+	}
+	
 	public String getEditProductPageTitalText() {
 		System.out.println("editProductPageTitalText = = " + editProductPageTitleText);
 		return editProductPageTitleText.getText();
@@ -739,8 +929,8 @@ public class ProductsPage extends BasePage {
 		productCategoryName = productCategoryOnEdit.getText();
 	}
 
-	public void getProductSubCategoryFromInputField() {
-		productSubCategoryName = productSubCategoryOnEdit.getText();
+	public String getProductSubCategoryFromInputField() {
+		return productSubCategoryName = productSubCategoryOnEdit.getText();
 	}
 
 	public void getProductCodeFromInputField() {
