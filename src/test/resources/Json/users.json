@@ -1,0 +1,25 @@
+{
+  "Admin" : {
+    "Name" : "",
+    "" : ""
+  },
+  "SalsePerson" : {
+    "FirstName" : "Despina",
+    "LastName" : "Batz",
+    "Email" : "rolland.pfeffer@yahoo.com",
+    "MobileNumber" : "9800042117",
+    "BloodGroup" : "B+",
+    "DateOfBirth" : "02-02-1970",
+    "Designation" : "SO Sales Officer",
+    "ReportingManager" : "Vipin Yadav (ASM)",
+    "HeadquarterCity" : "Chennai",
+    "AssignCities" : "All Cities",
+    "DateOfJoining" : "11-11-2025",
+    "SalesPersonId" : "SP8889",
+    "HomeLocation" : "Hadapsar",
+    "VaanSales" : "true",
+    "HideCPInSalesApp" : "true",
+    "MarkDeliver" : "true",
+    "CessPercentageValue" : "4"
+  }
+}

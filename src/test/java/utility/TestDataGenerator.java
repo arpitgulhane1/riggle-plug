@@ -97,6 +97,11 @@ public class TestDataGenerator {
         String name = faker.company().name().replaceAll("(?i)\\b(ltd|inc|corp|corporation|llc)\\b", "").trim();
         return name + " Pvt Ltd";
     }
+    
+    public static String getRandomEmail() {
+        return faker.internet().emailAddress(); // e.g., "alice.smith@example.com"
+    }
+
 
     // use to search location 
     private static final String[] indianCities = {

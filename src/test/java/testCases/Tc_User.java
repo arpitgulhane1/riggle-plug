@@ -11,63 +11,105 @@ import pageObjects.User_DashboardPage;
 import pageObjects.User_SalesPerson_User;
 import testBase.BaseClass;
 
-
 public class Tc_User extends BaseClass {
 
 	HomePage homep;
-	User_DashboardPage userDashboardPage ;
+	User_DashboardPage userDashboardPage;
 	User_SalesPerson_User salesPersonUserPage;
 	User_AddSalesPersonPage addSalesPersonPage;
-	
+
 	@Test
 	public void testAddSalesPerson() {
 		try {
-			 loginToApp();
-	            HomePage homep = new HomePage(driver);
-	            User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
-	            User_SalesPerson_User salesPersonUserPage = new User_SalesPerson_User(driver);
-	            User_AddSalesPersonPage addSalesPersonPage = new User_AddSalesPersonPage(driver);
-	            homep.clickOnUsersMenu();
-	            userDashboardPage.salesPersonMenu();
-	            salesPersonUserPage.addSalesPerson();
-	            addSalesPersonPage.addFirstName();
-	            addSalesPersonPage.addLastName();
-	            addSalesPersonPage.addEmail();
-	            addSalesPersonPage.addMobileNumber();
-	            addSalesPersonPage.selectBloodGroup();
-	            addSalesPersonPage.addDateOfBirth();
-	            addSalesPersonPage.selectDesignation();
-	            addSalesPersonPage.selectReportingManager();
-	            addSalesPersonPage.addHeadquarterCity();
-	            addSalesPersonPage.addAssignCities();
-	            addSalesPersonPage.addDateOfJoin();
-	            addSalesPersonPage.addSalesPersonId();
-	            addSalesPersonPage.addHomeLocation();
-//	            addSalesPersonPage.clickVanSales();
-//	            addSalesPersonPage.clickHideCPInSalesApp();
-//	            addSalesPersonPage.clickMarkDeliver();
-//	            addSalesPersonPage.clickSave();
-	            
-		}catch (Exception e) {
-      
-        }
+			loginToApp();
+			HomePage homep = new HomePage(driver);
+			User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
+			User_SalesPerson_User salesPersonUserPage = new User_SalesPerson_User(driver);
+			User_AddSalesPersonPage addSalesPersonPage = new User_AddSalesPersonPage(driver);
+			homep.clickOnUsersMenu();
+			userDashboardPage.salesPersonMenu();
+			salesPersonUserPage.addSalesPerson();
+			addSalesPersonPage.addFirstName();
+			addSalesPersonPage.addLastName();
+			addSalesPersonPage.addEmail();
+			addSalesPersonPage.enterMobileNumber();
+			addSalesPersonPage.selectBloodGroup();
+			addSalesPersonPage.addDateOfBirth();
+			addSalesPersonPage.selectDesignation();
+			addSalesPersonPage.selectReportingManager();
+			addSalesPersonPage.addHeadquarterCity();
+			addSalesPersonPage.addAssignCities();
+			addSalesPersonPage.addDateOfJoin();
+			addSalesPersonPage.addSalesPersonId();
+			addSalesPersonPage.addHomeLocation();
+			addSalesPersonPage.clickVanSales();
+			addSalesPersonPage.clickHideCPInSalesApp();
+			addSalesPersonPage.clickMarkDeliver();
+			addSalesPersonPage.clickOnSubmitButton();
+
+		} catch (Exception e) {
+
+		}
 	}
+
+	@Test
+	public void test_AddMultiple_SalesPerson() {
+		try {
+			loginToApp();
+			HomePage homep = new HomePage(driver);
+			User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
+			User_SalesPerson_User salesPersonUserPage = new User_SalesPerson_User(driver);
+			User_AddSalesPersonPage addSalesPersonPage = new User_AddSalesPersonPage(driver);
+			homep.clickOnUsersMenu();
+			userDashboardPage.salesPersonMenu();
+
+			int salsePersonCount = 10;
+
+			for (int i = 1; i <= salsePersonCount; i++) {
+				salesPersonUserPage.addSalesPerson();
+				addSalesPersonPage.addFirstName();
+				addSalesPersonPage.addLastName();
+				addSalesPersonPage.addEmail();
+//				addSalesPersonPage.enterMobileNumber("9123820496");
+				addSalesPersonPage.enterMobileNumber();
+				addSalesPersonPage.selectBloodGroup();
+				addSalesPersonPage.addDateOfBirth();
+				addSalesPersonPage.selectDesignation();
+				addSalesPersonPage.selectReportingManager();
+				addSalesPersonPage.addHeadquarterCity();
+				addSalesPersonPage.addAssignCities();
+				addSalesPersonPage.addDateOfJoin();
+				addSalesPersonPage.addSalesPersonId();
+				addSalesPersonPage.addHomeLocation();
+				addSalesPersonPage.clickVanSales();
+				addSalesPersonPage.clickHideCPInSalesApp();
+				addSalesPersonPage.clickMarkDeliver();
+				addSalesPersonPage.clickOnSubmitButton();
+				
+				Assert.assertTrue(addSalesPersonPage.verifySalsePersonCreatedSuccessMessage(), 
+	                    "Salse person created success message not displayed or mismatched!");
+			}
+
+		} catch (Exception e) {
+
+		}
+	}
+
 	@Test
 
 	public void test_verifysalesPersonDetails() {
 		try {
 			loginToApp();
-            HomePage homep = new HomePage(driver);
-            User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
+			HomePage homep = new HomePage(driver);
+			User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
 			User_SalesPerson_User salesPersonUserPage = new User_SalesPerson_User(driver);
 			homep.clickOnUsersMenu();
-	        userDashboardPage.salesPersonMenu();
+			userDashboardPage.salesPersonMenu();
 			salesPersonUserPage.searchSalesPerson();
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
-	
 
 }

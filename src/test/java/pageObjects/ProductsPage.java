@@ -1041,7 +1041,7 @@ public class ProductsPage extends BasePage {
 			oldData.put("CheckBoxPromotedValue", BrandUtility.readJson("Product", "CheckBoxPromotedValue"));
 			oldData.put("HSNCodeValue", BrandUtility.readJson("Product", "HSNCodeValue"));
 
-			// Step 3: Actual captured values (from UI)
+			//Actual captured values 
 			Map<String, String> capturedData = new HashMap<>();
 			capturedData.put("ProductName", newProductName);
 			capturedData.put("ProductMRP", productNewMRP);
