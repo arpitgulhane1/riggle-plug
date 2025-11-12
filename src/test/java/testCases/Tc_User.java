@@ -6,17 +6,25 @@ import org.testng.annotations.Test;
 
 import pageObjects.Brand_RatePage;
 import pageObjects.HomePage;
+import pageObjects.User_AddChannelPartnerPage;
+import pageObjects.User_AddRopsPage;
 import pageObjects.User_AddSalesPersonPage;
+import pageObjects.User_ChannelPartners_User;
 import pageObjects.User_DashboardPage;
+import pageObjects.User_Rops_User;
 import pageObjects.User_SalesPerson_User;
 import testBase.BaseClass;
 
 public class Tc_User extends BaseClass {
 
 	HomePage homep;
-	User_DashboardPage userDashboardPage;
+	User_DashboardPage userDashboardPage ;
 	User_SalesPerson_User salesPersonUserPage;
 	User_AddSalesPersonPage addSalesPersonPage;
+	User_ChannelPartners_User channelPartnerUserPage;
+	User_AddChannelPartnerPage addChannelPartnerPage;
+	User_Rops_User userRopsPage;
+	User_AddRopsPage userAddRopsPage;
 
 	@Test
 	public void testAddSalesPerson() {
@@ -96,7 +104,6 @@ public class Tc_User extends BaseClass {
 	}
 
 	@Test
-
 	public void test_verifysalesPersonDetails() {
 		try {
 			loginToApp();
@@ -107,6 +114,102 @@ public class Tc_User extends BaseClass {
 			userDashboardPage.salesPersonMenu();
 			salesPersonUserPage.searchSalesPerson();
 
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	
+@Test
+	
+	public void testAddChannelPartners() {
+		try {
+			loginToApp();
+	        HomePage homep = new HomePage(driver);
+	        User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
+	        User_ChannelPartners_User channelPartnerUserPage = new User_ChannelPartners_User(driver);
+	        User_AddChannelPartnerPage addChannelPartnerPage = new User_AddChannelPartnerPage(driver);
+	        homep.clickOnUsersMenu();
+	        userDashboardPage.channelPartnerMenu();
+	        channelPartnerUserPage.ClickOnChannelPartnersMenu();
+	        addChannelPartnerPage.enterMobileNumber();
+	        addChannelPartnerPage.enterEmail();
+	        addChannelPartnerPage.enterFirstName();
+	        addChannelPartnerPage.enterLastName();
+	        addChannelPartnerPage.enterFirmName();
+	        addChannelPartnerPage.enterChannelPartnerId();
+	        addChannelPartnerPage.enterGstNumber();
+	        addChannelPartnerPage.enterPanNumber();
+	        addChannelPartnerPage.enterFssaiNumber();
+	        addChannelPartnerPage.enterFssaiExpiryDate();
+	        addChannelPartnerPage.fillRandomAddressDetails(); 
+	        addChannelPartnerPage.btnSave();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+        
+	}
+	
+	@Test
+	public void testAddRopsUser_Production() {
+		try {
+			loginToApp();
+	        HomePage homep = new HomePage(driver);
+	        User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
+	        User_Rops_User userRopsPage = new User_Rops_User(driver);
+	        User_AddRopsPage userAddRopsPage = new User_AddRopsPage(driver);
+	        homep.clickOnUsersMenu();
+			userRopsPage.ClickOnRopsMenu();
+			userRopsPage.addRopsUser();
+			
+			userAddRopsPage.ClickOn_Production_RadioButton();
+			
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	@Test
+	public void testAddRopsUser_Storage() {
+		try {
+			loginToApp();
+	        HomePage homep = new HomePage(driver);
+	        User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
+	        User_Rops_User userRopsPage = new User_Rops_User(driver);
+	        User_AddRopsPage userAddRopsPage = new User_AddRopsPage(driver);
+	        homep.clickOnUsersMenu();
+			userRopsPage.ClickOnRopsMenu();
+			userRopsPage.addRopsUser();
+			
+			userAddRopsPage.ClickOn_Storage_RadioButton();
+			
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	@Test
+	public void testAddRopsUser_Runner() {
+		try {
+			loginToApp();
+	        HomePage homep = new HomePage(driver);
+	        User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
+	        User_Rops_User userRopsPage = new User_Rops_User(driver);
+	        User_AddRopsPage userAddRopsPage = new User_AddRopsPage(driver);
+	        homep.clickOnUsersMenu();
+			userRopsPage.ClickOnRopsMenu();
+			userRopsPage.addRopsUser();
+			
+			userAddRopsPage.ClickOn_Runner_RadioButton();
+			
+			
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

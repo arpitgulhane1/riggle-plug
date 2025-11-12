@@ -14,13 +14,23 @@ public class User_DashboardPage extends BasePage {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
+	
 	@FindBy(xpath="//div[contains(@class, 'ant-col') and contains(@class, 'ant-col-md-6')]//strong[normalize-space()='Sales Persons']")
 	  WebElement salesPersonsMenu;
 	
+	@FindBy(xpath="//div[contains(@class, 'ant-col') and contains(@class, 'ant-col-md-6')]//strong[normalize-space()='Channel Partners']")
+	WebElement channelPartnersMenu; 
+	
+	@FindBy(xpath="//div[contains(@class, 'ant-col') and contains(@class, 'ant-col-md-6')]//strong[normalize-space()='R-Ops']")
+	WebElement rOpsMenu;
 
 	  public void salesPersonMenu() {
 	  salesPersonsMenu.click();
 }
+	  
+	  public void channelPartnerMenu() {
+			channelPartnersMenu.click();
+		}
 	
 	
 }
