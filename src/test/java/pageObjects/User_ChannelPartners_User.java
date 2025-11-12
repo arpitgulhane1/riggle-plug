@@ -3,6 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class User_ChannelPartners_User extends BasePage {
 	public User_ChannelPartners_User(WebDriver driver) {
@@ -19,6 +20,7 @@ public class User_ChannelPartners_User extends BasePage {
 	
 	
 	public void ClickOnChannelPartnersMenu() {
+		wait.until(ExpectedConditions.elementToBeClickable(channelPartners));
 		channelPartners.click();
 	}
 	

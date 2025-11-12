@@ -3,6 +3,23 @@
     "Name" : "",
     "" : ""
   },
+  "ChannelPartner" : {
+    "MobileNumber" : "7440315933",
+    "EmailId" : "shayne.feeney@gmail.com",
+    "FirstName" : "See",
+    "LastName" : "Larkin",
+    "FirmName" : "Gislason and Sons Pvt Ltd",
+    "ChannelPartnerId" : "061414",
+    "GSTNumber" : "12KBBLE8456A3ZZ",
+    "PANNumber" : "ABCDE8842F",
+    "FSSAINumber" : "85293350937632",
+    "FSSAIExpiryDate" : "20-03-2026",
+    "AddressStreetArea" : "House No. 850, Street No. 40",
+    "AddressLandmark" : "Mechanical or Industrial Engineering",
+    "AddressPincode" : "560001",
+    "AddressCity" : "Bengaluru Urban",
+    "AddressState" : "Karnataka"
+  },
   "SalsePerson" : {
     "FirstName" : "Despina",
     "LastName" : "Batz",
@@ -21,5 +38,11 @@
     "HideCPInSalesApp" : "true",
     "MarkDeliver" : "true",
     "CessPercentageValue" : "4"
+  },
+  "R-Ops" : {
+    "FirstName" : "Tod",
+    "LastName" : "StromanRunner",
+    "MobileNumber" : "9617603894",
+    "UserType" : "Runner"
   }
 }

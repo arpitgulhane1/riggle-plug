@@ -1,9 +1,9 @@
 package pageObjects;
 
 import java.time.Duration;
+import java.util.Map;
 import java.util.Random;
 
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,12 +12,15 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utility.TestDataGenerator;
+import utility.UsersUtility;
 
 public class User_AddRopsPage extends BasePage {
 	public User_AddRopsPage(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
+	
+	private static String rops , mobileNumber,lastName,firstName;
 	
 	@FindBy(xpath="//input[@id='first_name']")
 	WebElement firstName_InputField;
@@ -33,6 +36,10 @@ public class User_AddRopsPage extends BasePage {
 	
 	@FindBy(xpath="//span[normalize-space()='Storage']")
 	WebElement storageRadioButton;
+	
+	@FindBy(xpath="//span[@title='R-Ops']")
+	WebElement ropsPageTital;
+	
 	
 	@FindBy(xpath="//span[normalize-space()='Runner']")
 	WebElement runnerRadioButton;
@@ -68,7 +75,7 @@ public class User_AddRopsPage extends BasePage {
 
 	public void enterFirstName() {
 	    try {
-	        String firstName = TestDataGenerator.getRandomFirstName();
+	        firstName = TestDataGenerator.getRandomFirstName();
 	        wait.until(ExpectedConditions.visibilityOf(firstName_InputField)).clear();
 	        firstName_InputField.sendKeys(firstName);
 	        System.out.println("✅ First Name entered: " + firstName);
@@ -77,11 +84,12 @@ public class User_AddRopsPage extends BasePage {
 	    }
 	}
 
-	public void enterLastName(String role) {
+	public void enterLastName(String txt) {
 	    try {
 	        wait.until(ExpectedConditions.visibilityOf(lastName_InputField)).clear();
-	        lastName_InputField.sendKeys(role);
-	        System.out.println("✅ Last Name entered: " + role);
+	       lastName = TestDataGenerator.getRandomLastName()+txt;
+	        lastName_InputField.sendKeys(lastName);
+	        System.out.println("✅ Last Name entered: " + lastName);
 	    } catch (Exception e) {
 	        System.out.println("❌ Error entering last name: " + e.getMessage());
 	    }
@@ -89,10 +97,10 @@ public class User_AddRopsPage extends BasePage {
 
 	public void enterMobileNumber() {
 	    try {
-	        String mobile = generateRandomMobile();
+	        mobileNumber = generateRandomMobile();
 	        wait.until(ExpectedConditions.visibilityOf(mobileNumber_InputField)).clear();
-	        mobileNumber_InputField.sendKeys(mobile);
-	        System.out.println("📱 Mobile Number entered: " + mobile);
+	        mobileNumber_InputField.sendKeys(mobileNumber);
+	        System.out.println("📱 Mobile Number entered: " + mobileNumber);
 	    } catch (Exception e) {
 	        System.out.println("❌ Error entering mobile number: " + e.getMessage());
 	    }
@@ -104,17 +112,20 @@ public class User_AddRopsPage extends BasePage {
 
 	public void selectRunner() {
 	    wait.until(ExpectedConditions.elementToBeClickable(runnerRadioButton)).click();
-	    System.out.println("🏃 Runner selected.");
+	    rops = runnerRadioButton.getText();
+	    System.out.println("🏃 Runner selected."+rops);
 	}
 
 	public void selectProduction() {
 	    wait.until(ExpectedConditions.elementToBeClickable(productionRadioButton)).click();
-	    System.out.println("🏭 Production selected.");
+	    rops = productionRadioButton.getText();
+	    System.out.println("🏭 Production selected."+rops);
 	}
 
 	public void selectStorage() {
 	    wait.until(ExpectedConditions.elementToBeClickable(storageRadioButton)).click();
-	    System.out.println("📦 Storage selected.");
+	    rops = productionRadioButton.getText();
+	    System.out.println("📦 Storage selected."+rops);
 	}
 
 	// -----------------------------------------------------------------------------------
@@ -124,6 +135,7 @@ public class User_AddRopsPage extends BasePage {
 	public void clickSave() {
 	    try {
 	        wait.until(ExpectedConditions.elementToBeClickable(btnSave)).click();
+	        save();
 	        System.out.println("💾 Save button clicked successfully.");
 	    } catch (Exception e) {
 	        System.out.println("❌ Error clicking Save: " + e.getMessage());
@@ -147,6 +159,19 @@ public class User_AddRopsPage extends BasePage {
 	    }
 	}
 
+	public void save() {
+	    Map<String, String> rOpsDetails = Map.of(
+	        "FirstName", firstName,
+	        "LastName", lastName,
+	        "MobileNumber", mobileNumber,
+	        "UserType", rops
+	    );
+
+	    UsersUtility.writeJson("R-Ops", rOpsDetails);
+	    System.out.println("R-Ops details saved successfully");
+	}
+
+	
 	public void ClickOn_Production_RadioButton() {
 	    try {
 	        selectProduction();
@@ -173,6 +198,16 @@ public class User_AddRopsPage extends BasePage {
 	    }
 	}
 	
-	
+	public boolean verifyRopsSuccessMessage() {
+		try {
+			// change tital to success message when dev done
+			wait.until(ExpectedConditions.visibilityOf(ropsPageTital));
+//			String actualText = productCreatedSuccessMessage.getText().trim();
+//			return actualText.equals("Sales Person Added Successfully");
+			return true;
+		} catch (TimeoutException e) {
+			return false;
+		}
+	}
 
 }

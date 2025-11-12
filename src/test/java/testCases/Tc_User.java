@@ -18,7 +18,7 @@ import testBase.BaseClass;
 public class Tc_User extends BaseClass {
 
 	HomePage homep;
-	User_DashboardPage userDashboardPage ;
+	User_DashboardPage userDashboardPage;
 	User_SalesPerson_User salesPersonUserPage;
 	User_AddSalesPersonPage addSalesPersonPage;
 	User_ChannelPartners_User channelPartnerUserPage;
@@ -93,9 +93,9 @@ public class Tc_User extends BaseClass {
 				addSalesPersonPage.clickHideCPInSalesApp();
 				addSalesPersonPage.clickMarkDeliver();
 				addSalesPersonPage.clickOnSubmitButton();
-				
-				Assert.assertTrue(addSalesPersonPage.verifySalsePersonCreatedSuccessMessage(), 
-	                    "Salse person created success message not displayed or mismatched!");
+
+				Assert.assertTrue(addSalesPersonPage.verifySalsePersonCreatedSuccessMessage(),
+						"Salse person created success message not displayed or mismatched!");
 			}
 
 		} catch (Exception e) {
@@ -118,54 +118,39 @@ public class Tc_User extends BaseClass {
 			// TODO: handle exception
 		}
 	}
-	
-	
-@Test
-	
+
+	@Test
 	public void testAddChannelPartners() {
 		try {
 			loginToApp();
-	        HomePage homep = new HomePage(driver);
-	        User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
-	        User_ChannelPartners_User channelPartnerUserPage = new User_ChannelPartners_User(driver);
-	        User_AddChannelPartnerPage addChannelPartnerPage = new User_AddChannelPartnerPage(driver);
-	        homep.clickOnUsersMenu();
-	        userDashboardPage.channelPartnerMenu();
-	        channelPartnerUserPage.ClickOnChannelPartnersMenu();
-	        addChannelPartnerPage.enterMobileNumber();
-	        addChannelPartnerPage.enterEmail();
-	        addChannelPartnerPage.enterFirstName();
-	        addChannelPartnerPage.enterLastName();
-	        addChannelPartnerPage.enterFirmName();
-	        addChannelPartnerPage.enterChannelPartnerId();
-	        addChannelPartnerPage.enterGstNumber();
-	        addChannelPartnerPage.enterPanNumber();
-	        addChannelPartnerPage.enterFssaiNumber();
-	        addChannelPartnerPage.enterFssaiExpiryDate();
-	        addChannelPartnerPage.fillRandomAddressDetails(); 
-	        addChannelPartnerPage.btnSave();
+			HomePage homep = new HomePage(driver);
+			User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
+			User_ChannelPartners_User channelPartnerUserPage = new User_ChannelPartners_User(driver);
+			User_AddChannelPartnerPage addChannelPartnerPage = new User_AddChannelPartnerPage(driver);
+			homep.clickOnUsersMenu();
+			userDashboardPage.channelPartnerMenu();
 			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-        
-	}
-	
-	@Test
-	public void testAddRopsUser_Production() {
-		try {
-			loginToApp();
-	        HomePage homep = new HomePage(driver);
-	        User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
-	        User_Rops_User userRopsPage = new User_Rops_User(driver);
-	        User_AddRopsPage userAddRopsPage = new User_AddRopsPage(driver);
-	        homep.clickOnUsersMenu();
-			userRopsPage.ClickOnRopsMenu();
-			userRopsPage.addRopsUser();
 			
-			userAddRopsPage.ClickOn_Production_RadioButton();
+			channelPartnerUserPage.ClickOnChannelPartnersMenu();
+			addChannelPartnerPage.enterMobileNumber();
+			addChannelPartnerPage.fillPincode();
+			addChannelPartnerPage.enterEmail();
+			addChannelPartnerPage.enterFirstName();
+			addChannelPartnerPage.enterLastName();
+			addChannelPartnerPage.enterFirmName();
+			addChannelPartnerPage.enterChannelPartnerId();
+			addChannelPartnerPage.enterGstNumber();
+			addChannelPartnerPage.enterPanNumber();
+			addChannelPartnerPage.enterFssaiNumber();
+			addChannelPartnerPage.enterFssaiExpiryDate();
+			addChannelPartnerPage.fillAddress();
+			addChannelPartnerPage.fillLandmark();
+			addChannelPartnerPage.getCity();
+			addChannelPartnerPage.getState();
+			addChannelPartnerPage.clickOnSaveChannelPartnerButton();
 			
+			Assert.assertTrue(addChannelPartnerPage.verifyChannelPartnerSuccessMessage(),
+					"Salse person created success message not displayed or mismatched!");
 			
 			
 		} catch (Exception e) {
@@ -174,45 +159,212 @@ public class Tc_User extends BaseClass {
 	}
 	
 	@Test
-	public void testAddRopsUser_Storage() {
+	public void test_AddMultiple_ChannelPartners() {
 		try {
 			loginToApp();
-	        HomePage homep = new HomePage(driver);
-	        User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
-	        User_Rops_User userRopsPage = new User_Rops_User(driver);
-	        User_AddRopsPage userAddRopsPage = new User_AddRopsPage(driver);
-	        homep.clickOnUsersMenu();
-			userRopsPage.ClickOnRopsMenu();
-			userRopsPage.addRopsUser();
+			HomePage homep = new HomePage(driver);
+			User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
+			User_ChannelPartners_User channelPartnerUserPage = new User_ChannelPartners_User(driver);
+			User_AddChannelPartnerPage addChannelPartnerPage = new User_AddChannelPartnerPage(driver);
+			homep.clickOnUsersMenu();
+			userDashboardPage.channelPartnerMenu();
 			
-			userAddRopsPage.ClickOn_Storage_RadioButton();
+			int CPCount = 3;
+
+			for (int i = 1; i <= CPCount; i++) {
+						
+			channelPartnerUserPage.ClickOnChannelPartnersMenu();
+			addChannelPartnerPage.enterMobileNumber();
+			addChannelPartnerPage.fillPincode();
+			addChannelPartnerPage.enterEmail();
+			addChannelPartnerPage.enterFirstName();
+			addChannelPartnerPage.enterLastName();
+			addChannelPartnerPage.enterFirmName();
+			addChannelPartnerPage.enterChannelPartnerId();
+			addChannelPartnerPage.enterGstNumber();
+			addChannelPartnerPage.enterPanNumber();
+			addChannelPartnerPage.enterFssaiNumber();
+			addChannelPartnerPage.enterFssaiExpiryDate();
+			addChannelPartnerPage.fillAddress();
+			addChannelPartnerPage.fillLandmark();
+			addChannelPartnerPage.getCity();
+			addChannelPartnerPage.getState();
+			addChannelPartnerPage.clickOnSaveChannelPartnerButton();
 			
-			
+			Assert.assertTrue(addChannelPartnerPage.verifyChannelPartnerSuccessMessage(),
+					"Salse person created success message not displayed or mismatched!");
+			}
 			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+
 	}
-	
+
+
 	@Test
 	public void testAddRopsUser_Runner() {
 		try {
 			loginToApp();
-	        HomePage homep = new HomePage(driver);
-	        User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
-	        User_Rops_User userRopsPage = new User_Rops_User(driver);
-	        User_AddRopsPage userAddRopsPage = new User_AddRopsPage(driver);
-	        homep.clickOnUsersMenu();
+			HomePage homep = new HomePage(driver);
+			User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
+			User_Rops_User userRopsPage = new User_Rops_User(driver);
+			User_AddRopsPage userAddRopsPage = new User_AddRopsPage(driver);
+			homep.clickOnUsersMenu();
 			userRopsPage.ClickOnRopsMenu();
+			
 			userRopsPage.addRopsUser();
+			userAddRopsPage.enterFirstName();
+			userAddRopsPage.enterLastName("Runner");
+			userAddRopsPage.enterMobileNumber();
+			userAddRopsPage.selectRunner();
+			userAddRopsPage.clickSave();
 			
-			userAddRopsPage.ClickOn_Runner_RadioButton();
+			Assert.assertTrue(userAddRopsPage.verifyRopsSuccessMessage(),
+					"Salse person created success message not displayed or mismatched!");
 			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	@Test
+	public void test_AddMultipleRopsUser_Runner() {
+		try {
+			loginToApp();
+			HomePage homep = new HomePage(driver);
+			User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
+			User_Rops_User userRopsPage = new User_Rops_User(driver);
+			User_AddRopsPage userAddRopsPage = new User_AddRopsPage(driver);
+			homep.clickOnUsersMenu();
+			userRopsPage.ClickOnRopsMenu();
 			
+			int count = 3;
+
+			for (int i = 1; i <= count; i++) {
+			userRopsPage.addRopsUser();
+			userAddRopsPage.enterFirstName();
+			userAddRopsPage.enterLastName("Runner");
+			userAddRopsPage.enterMobileNumber();
+			userAddRopsPage.selectRunner();
+			userAddRopsPage.clickSave();
+
+			Assert.assertTrue(userAddRopsPage.verifyRopsSuccessMessage(),
+					"Salse person created success message not displayed or mismatched!");
+			}
 			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
 
+	
+	@Test
+	public void testAddRopsUser_Production() {
+		try {
+			loginToApp();
+			HomePage homep = new HomePage(driver);
+			User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
+			User_Rops_User userRopsPage = new User_Rops_User(driver);
+			User_AddRopsPage userAddRopsPage = new User_AddRopsPage(driver);
+			homep.clickOnUsersMenu();
+			userRopsPage.ClickOnRopsMenu();
+			userRopsPage.addRopsUser();
+			
+			userAddRopsPage.enterFirstName();
+			userAddRopsPage.enterLastName("Production");
+			userAddRopsPage.enterMobileNumber();
+			userAddRopsPage.selectProduction();
+			userAddRopsPage.clickSave();
+			Assert.assertTrue(userAddRopsPage.verifyRopsSuccessMessage(),
+					"Salse person created success message not displayed or mismatched!");
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	@Test
+	public void testAddMultipleRopsUser_Production() {
+		try {
+			loginToApp();
+			HomePage homep = new HomePage(driver);
+			User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
+			User_Rops_User userRopsPage = new User_Rops_User(driver);
+			User_AddRopsPage userAddRopsPage = new User_AddRopsPage(driver);
+			homep.clickOnUsersMenu();
+			userRopsPage.ClickOnRopsMenu();
+			
+			int count = 3;
+
+			for (int i = 1; i <= count; i++) { 
+			userRopsPage.addRopsUser();
+			userAddRopsPage.enterFirstName();
+			userAddRopsPage.enterLastName("Production");
+			userAddRopsPage.enterMobileNumber();
+			userAddRopsPage.selectProduction();
+			userAddRopsPage.clickSave();
+			Assert.assertTrue(userAddRopsPage.verifyRopsSuccessMessage(),
+					"Salse person created success message not displayed or mismatched!");
+			
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+	@Test
+	public void testAddRopsUser_Storage() {
+		try {
+			loginToApp();
+			HomePage homep = new HomePage(driver);
+			User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
+			User_Rops_User userRopsPage = new User_Rops_User(driver);
+			User_AddRopsPage userAddRopsPage = new User_AddRopsPage(driver);
+			homep.clickOnUsersMenu();
+			userRopsPage.ClickOnRopsMenu();
+			userRopsPage.addRopsUser();
+			
+			userAddRopsPage.enterFirstName();
+			userAddRopsPage.enterLastName("Storage");
+			userAddRopsPage.enterMobileNumber();
+			userAddRopsPage.selectStorage();
+			userAddRopsPage.clickSave();
+			Assert.assertTrue(userAddRopsPage.verifyRopsSuccessMessage(),
+					"Salse person created success message not displayed or mismatched!");
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	@Test
+	public void testAddMultipleRopsUser_Storage() {
+		try {
+			loginToApp();
+			HomePage homep = new HomePage(driver);
+			User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
+			User_Rops_User userRopsPage = new User_Rops_User(driver);
+			User_AddRopsPage userAddRopsPage = new User_AddRopsPage(driver);
+			homep.clickOnUsersMenu();
+			userRopsPage.ClickOnRopsMenu();
+			
+			int count = 3;
+
+			for (int i = 1; i <= count; i++) {
+			userRopsPage.addRopsUser();
+			userAddRopsPage.enterFirstName();
+			userAddRopsPage.enterLastName("Storage");
+			userAddRopsPage.enterMobileNumber();
+			userAddRopsPage.selectStorage();
+			userAddRopsPage.clickSave();
+			Assert.assertTrue(userAddRopsPage.verifyRopsSuccessMessage(),
+					"Salse person created success message not displayed or mismatched!");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+	
 }

@@ -3,6 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class User_Rops_User extends BasePage{
 	public User_Rops_User (WebDriver driver) {
@@ -23,6 +24,7 @@ public class User_Rops_User extends BasePage{
 		
 	}
 	public void addRopsUser() {
+		wait.until(ExpectedConditions.elementToBeClickable(addRopsUser));
 		addRopsUser.click();
 	}
 }

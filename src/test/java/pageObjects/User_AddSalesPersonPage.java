@@ -161,7 +161,7 @@ public class User_AddSalesPersonPage extends BasePage {
 	}
 
 	public String addLastName() {
-		lastName =  TestDataGenerator.getRandomLastName();
+		lastName =  TestDataGenerator.getRandomLastName()+"SP";
 		enterLastName.clear();
 		enterLastName.sendKeys(lastName);
 		System.out.println("✅ Last Name Entered: " + lastName);

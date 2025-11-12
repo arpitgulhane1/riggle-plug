@@ -1,22 +1,18 @@
 package pageObjects;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import utility.TestDataGenerator;
+import utility.UsersUtility;
 
 public class User_AddChannelPartnerPage extends BasePage {
 	public User_AddChannelPartnerPage(WebDriver driver) {
@@ -24,6 +20,17 @@ public class User_AddChannelPartnerPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
     
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+	
+	private static String mobileNumber, emailId, firstName, lastName, firmName, channelPartnerId, gstNumber, panNumber, fssaiNumber, fssaiExpiryDate, addressStreetArea, addressLandmark, addressPincode, addressCity, addressState, coAdminDetails, addCoAdminButton, saveButton;
+
+	
+	@FindBy(xpath="//span[@title='Channel Partners']")
+	WebElement channelPartnerPageTital;
+	
+	@FindBy(xpath="//div[@class=\"ant-modal-title\"]")
+	WebElement addChannelPartnerPageTital;
+	
 	@FindBy(xpath="//input[@id='nest-messages_mobile']")
 	WebElement mobileNumber_InputField;
 	
@@ -92,23 +99,30 @@ public class User_AddChannelPartnerPage extends BasePage {
 
     public void enterMobileNumber() {
         try {
-            String[] prefixes = {"9", "8", "7"};
-            StringBuilder mobile = new StringBuilder(prefixes[random.nextInt(prefixes.length)]);
-            for (int i = 1; i < 10; i++) mobile.append(random.nextInt(10));
+        	wait.until(ExpectedConditions.visibilityOf(addChannelPartnerPageTital));
+        	mobileNumber = TestDataGenerator.generateRandomMobileNumberWithFaker();
             mobileNumber_InputField.clear();
-            mobileNumber_InputField.sendKeys(mobile.toString());
-            System.out.println("✅ Mobile Number Entered: " + mobile);
+            mobileNumber_InputField.sendKeys(mobileNumber.toString());
+            System.out.println("✅ Mobile Number Entered: " + mobileNumber);
         } catch (Exception e) {
             System.out.println("❌ Error in addmobileNumber_InputField_InputField_InputField(): " + e.getMessage());
         }
     }
+    
+//    public String generateRandomMobileNumber() {
+//		Random random = new Random();
+//		// Ensure the number starts with 6-9
+//		int firstDigit = 6 + random.nextInt(4); // 6, 7, 8, or 9
+//		long remainingDigits = 100000000L + (long) (random.nextDouble() * 899999999L); // 9 digits
+//		return firstDigit + String.valueOf(remainingDigits);
+//	}
 
     public void enterEmail() {
         try {
-            String email = randomAlphabetic(5).toLowerCase() + random.nextInt(1000) + "@gmail.com";
+        	emailId = TestDataGenerator.getRandomEmail();
             email_InputField.clear();
-            email_InputField.sendKeys(email);
-            System.out.println("✅ Email Entered: " + email);
+            email_InputField.sendKeys(emailId);
+            System.out.println("✅ Email Entered: " + emailId);
         } catch (Exception e) {
             System.out.println("❌ Error in addEmail(): " + e.getMessage());
         }
@@ -116,9 +130,9 @@ public class User_AddChannelPartnerPage extends BasePage {
 
     public void enterFirstName() {
         try {
-            String firstName = randomAlphabetic(6);
-            firmName_InputField.clear();
-            firmName_InputField.sendKeys(firstName);
+        	firstName = TestDataGenerator.getRandomFirstName();
+            firstName__InputField.clear();
+            firstName__InputField.sendKeys(firstName);
             System.out.println("✅ First Name Entered: " + firstName);
         } catch (Exception e) {
             System.out.println("❌ Error in addFirstName(): " + e.getMessage());
@@ -127,7 +141,7 @@ public class User_AddChannelPartnerPage extends BasePage {
 
     public void enterLastName() {
         try {
-            String lastName = randomAlphabetic(6);
+        	lastName = TestDataGenerator.getRandomLastName()+"CP";
             lastName_InputField.clear();
             lastName_InputField.sendKeys(lastName);
             System.out.println("✅ Last Name Entered: " + lastName);
@@ -138,10 +152,10 @@ public class User_AddChannelPartnerPage extends BasePage {
 
     public void enterFirmName() {
         try {
-            String firm = randomAlphabetic(8) + " Traders";
+        	firmName = TestDataGenerator.getRandomFirmName();
             firmName_InputField.clear();
-            firmName_InputField.sendKeys(firm);
-            System.out.println("✅ Firm Name Entered: " + firm);
+            firmName_InputField.sendKeys(firmName);
+            System.out.println("✅ Firm Name Entered: " + firmName);
         } catch (Exception e) {
             System.out.println("❌ Error in addFirmName(): " + e.getMessage());
         }
@@ -149,29 +163,22 @@ public class User_AddChannelPartnerPage extends BasePage {
 
     public void enterChannelPartnerId() {
         try {
-            String id = randomNumber(6);
+        	channelPartnerId = randomNumber(6);
             channelPartnerId__InputField.clear();
-            channelPartnerId__InputField.sendKeys(id);
-            System.out.println("✅ Channel Partner ID Entered: " + id);
+            channelPartnerId__InputField.sendKeys(channelPartnerId);
+            System.out.println("✅ Channel Partner ID Entered: " + channelPartnerId);
         } catch (Exception e) {
             System.out.println("❌ Error in addChannelPartnerId(): " + e.getMessage());
         }
     }
-    public String generateValidGST() {
-        return String.format("%02d", random.nextInt(36)) +
-        		randomAlphabetic(5).toUpperCase() +
-        		randomNumber(4) +
-               "F" +
-               random.nextInt(10) +
-               "Z" +
-               random.nextInt(9);
-    }
+ 
+
     public void enterGstNumber() {
         try {
-            String gst = generateValidGST();
+        	gstNumber = TestDataGenerator.generateValidGST();
             gstNumber__InputField.clear();
-            gstNumber__InputField.sendKeys(gst);
-            System.out.println("✅ GST Number Entered: " + gst);
+            gstNumber__InputField.sendKeys(gstNumber);
+            System.out.println("✅ GST Number Entered: " + gstNumber);
         } catch (Exception e) {
             System.out.println("❌ Error in addGstNumber(): " + e.getMessage());
         }
@@ -179,10 +186,10 @@ public class User_AddChannelPartnerPage extends BasePage {
 
     public void enterPanNumber() {
         try {
-            String pan = "ABCDE" + randomNumber(4) + "F";
+        	panNumber = "ABCDE" + randomNumber(4) + "F";
             panNumber__InputField.clear();
-            panNumber__InputField.sendKeys(pan);
-            System.out.println("✅ PAN Number Entered: " + pan);
+            panNumber__InputField.sendKeys(panNumber);
+            System.out.println("✅ PAN Number Entered: " + panNumber);
         } catch (Exception e) {
             System.out.println("❌ Error in addPanNumber(): " + e.getMessage());
         }
@@ -190,10 +197,10 @@ public class User_AddChannelPartnerPage extends BasePage {
 
     public void enterFssaiNumber() {
         try {
-            String fssai = "100" + randomNumber(11); // 14-digit valid pattern
-            firmName_InputField.clear();
-            firmName_InputField.sendKeys(fssai);
-            System.out.println("✅ FSSAI Number Entered: " + fssai);
+        	fssaiNumber = TestDataGenerator.getRandomFssaiNumber();
+            fssaiNumber_InputField.clear();
+            fssaiNumber_InputField.sendKeys(fssaiNumber);
+            System.out.println("✅ FSSAI Number Entered: " + fssaiNumber);
         } catch (Exception e) {
             System.out.println("❌ Error in addFssaiNumber(): " + e.getMessage());
         }
@@ -202,89 +209,104 @@ public class User_AddChannelPartnerPage extends BasePage {
     public void enterFssaiExpiryDate() {
         try {
             // Create a future date (e.g., 2 years ahead)
-            LocalDate futureDate = LocalDate.now().plusYears(2);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            String expiryDate = futureDate.format(formatter);
+        	fssaiExpiryDate = TestDataGenerator.getFutureDate();
 
             // Use JS to set value directly (bypasses clear issue)
             ((JavascriptExecutor) driver).executeScript(
                 "arguments[0].value=arguments[1]; arguments[0].dispatchEvent(new Event('change'));",
-                fssaiExpiryDate__InputField, expiryDate
+                fssaiExpiryDate__InputField, fssaiExpiryDate
             );
 
-            System.out.println("✅ FSSAI Expiry Date Entered: " + expiryDate);
+            System.out.println("✅ FSSAI Expiry Date Entered: " + fssaiExpiryDate);
         } catch (Exception e) {
             System.out.println("❌ Error in addFssaiExpiryDate(): " + e.getMessage());
             e.printStackTrace();
         }
     }
-    private static final String[] VALID_PINCODES = {
-            "400001", // Mumbai
-            "411001", // Pune
-            "110001", // Delhi
-            "560001", // Bangalore
-            "500001", // Hyderabad
-            "600001", // Chennai
-            "700001", // Kolkata
-            "302001", // Jaipur
-            "226001", // Lucknow
-            "380001"  // Ahmedabad
-    };
-
- // 🔹 Method with same name, but only enters PINCODE (city/state auto)
-    public void fillRandomAddressDetails() {
-
-    	String pincode = TestDataGenerator.getRandomPinCode();
-//        String pincode = VALID_PINCODES[random.nextInt(VALID_PINCODES.length)];
-        String[] landmarks = {"Near Market", "Opp. School", "Behind Mall", "Near Temple"};
-        String address = "House No. " + (100 + random.nextInt(900)) + ", Street No. " + (1 + random.nextInt(50));
-        String landmark = landmarks[random.nextInt(landmarks.length)];
-
-        System.out.println("===== AUTO ADDRESS ENTRY STARTED =====");
-        System.out.println("Address Line : " + address);
-        System.out.println("Landmark     : " + landmark);
-        System.out.println("Pincode      : " + pincode);
-        System.out.println("======================================");
-
-        // Fill only address, landmark, and pincode
-        address__InputField.clear();
-        address__InputField.sendKeys(address);
-
-        landmark_InputField.clear();
-        landmark_InputField.sendKeys(landmark);
-
-        panNumber__InputField.clear();
-        panNumber__InputField.sendKeys(pincode);
-
-        // Wait for city and state to auto-fill (by backend logic)
-        try {
-            Thread.sleep(1500); // short delay to allow autofill
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        // ✅ Print whatever city/state system auto-fills
-        System.out.println("Auto City  : " + city__InputField.getAttribute("value"));
-        System.out.println("Auto State : " + state__InputField.getAttribute("value"));
-        System.out.println("======================================");
+ 
+    
+    public void fillAddress() {
+    	addressStreetArea = "House No. " + (100 + random.nextInt(900)) + ", Street No. " + (1 + random.nextInt(50));
+    	// Fill only address, landmark, and pincode
+    	address__InputField.clear();
+    	address__InputField.sendKeys(addressStreetArea);
+    	System.out.println("Address Line : " + addressStreetArea);
     }
     
-    public void btnSave() {
+    public void fillLandmark() {
+    	addressLandmark = TestDataGenerator.getRandomLandmark();
+    	landmark_InputField.clear();
+    	landmark_InputField.sendKeys(addressLandmark);
+    	System.out.println("Landmark     : " + addressLandmark);
+    }
+    
+    public void fillPincode() {
+    	addressPincode = TestDataGenerator.getRandomPinCode();
+    	pincode__InputField.clear();
+    	pincode__InputField.sendKeys(addressPincode);
+    	System.out.println("Pincode      : " + addressPincode);
+    }
+    
+    public String getCity() {
+    	addressCity =  city__InputField.getAttribute("value");
+        System.out.println("Auto City  : " + city__InputField.getAttribute("value"));
+        return addressCity;
+    }
+    
+    public String getState() {
+    	addressState = state__InputField.getAttribute("value");
+    	System.out.println("Auto State : " + state__InputField.getAttribute("value"));
+    	return addressState;
+    }
+    
+
+    
+    public void clickOnSaveChannelPartnerButton() {
         try {
             // Scroll to the Save button before clicking
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", btnSave);
-            Thread.sleep(500); // small delay to allow scroll animation
 
             btnSave.click();
             System.out.println("🖱️ Save button clicked successfully!");
-
-           
-          
-
+            saveDetails();
             System.out.println("✅ Data saved successfully!");
         } catch (Exception e) {
             System.out.println("❌ Error while saving data: " + e.getMessage());
             e.printStackTrace();
         }
     }
+    
+    public void saveDetails() {
+        Map<String, String> channelPartnerDetails = new HashMap<>();
+        channelPartnerDetails.put("MobileNumber", mobileNumber);
+        channelPartnerDetails.put("EmailId", emailId);
+        channelPartnerDetails.put("FirstName", firstName);
+        channelPartnerDetails.put("LastName", lastName);
+        channelPartnerDetails.put("FirmName", firmName);
+        channelPartnerDetails.put("ChannelPartnerId", channelPartnerId);
+        channelPartnerDetails.put("GSTNumber", gstNumber);
+        channelPartnerDetails.put("PANNumber", panNumber);
+        channelPartnerDetails.put("FSSAINumber", fssaiNumber);
+        channelPartnerDetails.put("FSSAIExpiryDate", fssaiExpiryDate);
+        channelPartnerDetails.put("AddressStreetArea", addressStreetArea);
+        channelPartnerDetails.put("AddressLandmark", addressLandmark);
+        channelPartnerDetails.put("AddressPincode", addressPincode);
+        channelPartnerDetails.put("AddressCity", addressCity);
+        channelPartnerDetails.put("AddressState", addressState);
+        UsersUtility.writeJson("ChannelPartner", channelPartnerDetails);
+        System.out.println("Channel Partner details saved successfully");
+    }
+
+    public boolean verifyChannelPartnerSuccessMessage() {
+		try {
+			// change tital to success message when dev done
+			wait.until(ExpectedConditions.visibilityOf(channelPartnerPageTital));
+//			String actualText = productCreatedSuccessMessage.getText().trim();
+//			return actualText.equals("Sales Person Added Successfully");
+			return true;
+		} catch (TimeoutException e) {
+			return false;
+		}
+	}
+    
 }
