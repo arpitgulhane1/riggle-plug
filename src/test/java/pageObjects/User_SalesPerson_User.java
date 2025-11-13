@@ -3,6 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import utility.BrandUtility;
 
@@ -20,6 +21,7 @@ public class User_SalesPerson_User extends BasePage {
 //	
 	
 	  public void addSalesPerson() {
+		  wait.until(ExpectedConditions.elementToBeClickable(addSalesPerson));
 		  addSalesPerson.click();
 	  }
 	public void searchSalesPerson() {

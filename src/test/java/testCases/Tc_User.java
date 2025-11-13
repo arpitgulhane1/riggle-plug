@@ -71,7 +71,7 @@ public class Tc_User extends BaseClass {
 			homep.clickOnUsersMenu();
 			userDashboardPage.salesPersonMenu();
 
-			int salsePersonCount = 10;
+			int salsePersonCount = 1000;
 
 			for (int i = 1; i <= salsePersonCount; i++) {
 				salesPersonUserPage.addSalesPerson();
@@ -89,8 +89,8 @@ public class Tc_User extends BaseClass {
 				addSalesPersonPage.addDateOfJoin();
 				addSalesPersonPage.addSalesPersonId();
 				addSalesPersonPage.addHomeLocation();
-				addSalesPersonPage.clickVanSales();
-				addSalesPersonPage.clickHideCPInSalesApp();
+//				addSalesPersonPage.clickVanSales();
+//				addSalesPersonPage.clickHideCPInSalesApp();
 				addSalesPersonPage.clickMarkDeliver();
 				addSalesPersonPage.clickOnSubmitButton();
 

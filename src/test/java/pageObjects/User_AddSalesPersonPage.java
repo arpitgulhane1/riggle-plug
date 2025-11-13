@@ -35,7 +35,7 @@ public class User_AddSalesPersonPage extends BasePage {
 	private static String firstName, lastName, email, mobileNumber, bloodGroup, dateOfBirth, designation,
 			reportingManager, headquarterCity, assignCitiesTemp, dateOfJoin, salesPersonId, homeLocation;
 
-	private static boolean isVanSales, isHideCPInSalesApp, isMarkDeliver;
+	private static boolean isVanSales = false , isHideCPInSalesApp = false, isMarkDeliver = false;
 
 //	private static String selectedSalesPersonName; 		
 //	  @FindBy(xpath="//div[contains(@class, 'ant-col') and contains(@class, 'ant-col-md-6')]//strong[normalize-space()='Sales Persons']")
