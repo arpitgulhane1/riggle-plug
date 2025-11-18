@@ -14,7 +14,7 @@ public class User_Rops_User extends BasePage{
 	@FindBy(xpath="//strong[normalize-space()='R-Ops']")
 	WebElement rOps;
 	
-	@FindBy(xpath="//span[normalize-space()='Add Ops User']")
+	@FindBy(xpath="//span[normalize-space()='Add R-Ops User']")
 	WebElement addRopsUser;
 	
 	

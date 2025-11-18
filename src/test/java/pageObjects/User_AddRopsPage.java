@@ -75,6 +75,7 @@ public class User_AddRopsPage extends BasePage {
 
 	public void enterFirstName() {
 	    try {
+	    	wait.until(ExpectedConditions.elementToBeClickable(firstName_InputField));
 	        firstName = TestDataGenerator.getRandomFirstName();
 	        wait.until(ExpectedConditions.visibilityOf(firstName_InputField)).clear();
 	        firstName_InputField.sendKeys(firstName);

@@ -307,25 +307,70 @@ public class User_AddSalesPersonPage extends BasePage {
 		}
 	}
 
+	
+	public void selectDesignation(String designationName) {
+	    try {
+	        // Step 1: Wait for dropdown to be clickable and open it
+	        wait.until(ExpectedConditions.elementToBeClickable(selectDesignation));
+	        selectDesignation.click();
+	        System.out.println("🟢 Opened 'Designation' dropdown...");
+
+	        // Step 2: Wait until all options are visible
+	        wait.until(ExpectedConditions.visibilityOfAllElements(selectDesignationAllOption));
+	        if (selectDesignationAllOption.isEmpty()) {
+	            throw new RuntimeException("❌ No designation options found!");
+	        }
+
+	        // Step 3: Find the option matching the given name (case-insensitive)
+	        WebElement matchingOption = null;
+	        for (WebElement option : selectDesignationAllOption) {
+	            String optionText = option.getText().trim();
+	            if (optionText.equalsIgnoreCase(designationName)) {
+	                matchingOption = option;
+	                break;
+	            }
+	        }
+
+	        // Step 4: Handle if not found
+	        if (matchingOption == null) {
+	            throw new RuntimeException("❌ Designation '" + designationName + "' not found in dropdown!");
+	        }
+
+	        // Step 5: Scroll and click the matched option
+	        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", matchingOption);
+	        wait.until(ExpectedConditions.elementToBeClickable(matchingOption));
+	        matchingOption.click();
+
+	        designation = matchingOption.getText().trim();
+	        System.out.println("✅ Designation Selected: " + designation);
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        throw new RuntimeException("❌ Failed to select designation '" + designationName + "': " + e.getMessage());
+	    }
+	}
+
+	
 	public void selectReportingManager() {
 		try {
 			// Step 1: Open dropdown
 			enterReportingManager.click();
 			System.out.println("🟢 Opened 'Reporting Manager' dropdown...");
-
+			
 			// Step 2: Fluent wait until all options load
 			Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(15))
 					.pollingEvery(Duration.ofMillis(500)).ignoring(NoSuchElementException.class)
 					.ignoring(StaleElementReferenceException.class);
-
+			
 			List<WebElement> allOptions = wait.until(driver -> driver.findElements(By.xpath(
 					"//div[@id='nest-messages_manager_list']//following::div[@class='rc-virtual-list']//div[@aria-selected='false']")));
-
+			
 			if (allOptions.isEmpty()) {
 				System.out.println("❌ No Reporting Manager options found!");
 				return;
 			}
-
+			
+			
 			// Step 3: Print all Reporting Managers
 			System.out.println("👔 Available Reporting Managers:");
 			for (int i = 0; i < allOptions.size(); i++) {
@@ -339,11 +384,11 @@ public class User_AddSalesPersonPage extends BasePage {
 				}
 				System.out.println((i + 1) + ". " + managerName);
 			}
-
+			
 			// Step 4: Select a random manager
 			int randomIndex = new Random().nextInt(allOptions.size());
 			WebElement randomOption = allOptions.get(randomIndex);
-
+			
 			// Step 5: Extract name safely
 			reportingManager = randomOption.getText().trim();
 			if (reportingManager.isEmpty()) {
@@ -353,22 +398,105 @@ public class User_AddSalesPersonPage extends BasePage {
 					reportingManager = "(No visible text found)";
 				}
 			}
-
+			
 			// Step 6: Scroll and click
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", randomOption);
 //	            Thread.sleep(300);
 			randomOption.click();
-
+			
 			// Step 7: Wait until dropdown closes
 			wait.until(ExpectedConditions.invisibilityOf(randomOption));
 			System.out.println("✅ Random Reporting Manager Selected: " + reportingManager);
 			System.out.println("➡️ Dropdown closed successfully.");
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("❌ Failed to select random Reporting Manager: " + e.getMessage());
 		}
 	}
+	
+//	public void selectReportingManager(String managerName) {
+//	    try {
+//	        // Step 1: Click to open dropdown
+//	        enterReportingManager.click();
+//	        System.out.println("🟢 Opened 'Reporting Manager' dropdown...");
+//
+//	        // Step 2: Type manager name
+//	        enterReportingManager.sendKeys(managerName);
+//	        System.out.println("⌨️ Entered Manager Name: " + managerName);
+//
+//	        // Step 3: Wait for suggestions to appear
+//	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+//	                "//div[@id='nest-messages_manager_list']//div[contains(@class,'rc-virtual-list')]")));
+//
+//	        // Step 4: Press Arrow Down + Enter to select the first match
+//	        enterReportingManager.sendKeys(Keys.ARROW_DOWN);
+//	        enterReportingManager.sendKeys(Keys.ENTER);
+//
+//	        System.out.println("✅ Reporting Manager selected successfully!");
+//
+//	    } catch (Exception e) {
+//	        System.out.println("❌ Failed to select Reporting Manager: " + e.getMessage());
+//	        e.printStackTrace();
+//	    }
+//	}
+
+	public void selectReportingManager(String managerName) {
+	    try {
+	        // Step 1: Wait for dropdown to be clickable and open it
+	        wait.until(ExpectedConditions.elementToBeClickable(enterReportingManager));
+	        enterReportingManager.click();
+	        enterReportingManager.sendKeys(managerName);
+	        System.out.println("🟢 Opened 'Reporting Manager' dropdown...");
+
+	        // Step 2: Fluent wait until all options load
+	        Wait<WebDriver> fluentWait = new FluentWait<>(driver)
+	                .withTimeout(Duration.ofSeconds(15))
+	                .pollingEvery(Duration.ofMillis(500))
+	                .ignoring(NoSuchElementException.class)
+	                .ignoring(StaleElementReferenceException.class);
+
+	        List<WebElement> allManagers = fluentWait.until(driver -> driver.findElements(By.xpath(
+	                "//div[@id='nest-messages_manager_list']//following::div[@class='rc-virtual-list']//div[@aria-selected='false']")));
+
+	        if (allManagers.isEmpty()) {
+	            throw new RuntimeException("❌ No Reporting Manager options found!");
+	        }
+
+	        // Step 3: Find option using CONTAINS (case-insensitive)
+	        WebElement matchingManager = null;
+	        for (WebElement option : allManagers) {
+	            String optionText = option.getText().trim();
+	            if (optionText.toLowerCase().contains(managerName.toLowerCase())) {
+	                matchingManager = option;
+	                break;
+	            }
+	        }
+
+	        // Step 4: Handle if not found
+	        if (matchingManager == null) {
+	            throw new RuntimeException("❌ Reporting Manager containing '" + managerName + "' not found in dropdown!");
+	        }
+
+	        // Step 5: Scroll and click
+	        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", matchingManager);
+	        wait.until(ExpectedConditions.elementToBeClickable(matchingManager));
+	        matchingManager.click();
+
+	        reportingManager = matchingManager.getText().trim();
+	        System.out.println("✅ Reporting Manager Selected: " + reportingManager);
+
+	        // Step 6: Wait until dropdown closes (optional)
+	        wait.until(ExpectedConditions.invisibilityOf(matchingManager));
+	        System.out.println("➡️ Dropdown closed successfully.");
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        throw new RuntimeException("❌ Failed to select Reporting Manager '" + managerName + "': " + e.getMessage());
+	    }
+	}
+
 
 	public void addHeadquarterCity() {
 		try {

@@ -1,29 +1,29 @@
 {
   "Brand" : {
-    "BrandName" : "Beer Ferry and Kris",
+    "BrandName" : "Parisian Inc",
     "City" : "Mumbai"
   },
   "Product" : {
-    "ProductName" : "Sleek Iron Knife",
-    "ProductMRP" : "118",
-    "BestBeforeValue" : "8",
+    "ProductName" : "Steel Awesome Plastic Coat c3e14878",
+    "ProductMRP" : "4930",
+    "BestBeforeValue" : "10",
     "ExpiryUnitDropDownOption" : "Years",
-    "productDescValue" : "Product Description For Testing",
-    "ProductCategoryName" : "Food Items",
+    "productDescValue" : "Testing Mediocre Aluminum Wallet - Concrete made with high quality Grocery standards.",
+    "ProductCategoryName" : "Home Care",
     "CheckBoxMustSellValue" : "false",
-    "GST_PercentageValue" : "13",
-    "selectedMeasurementUnitValue" : "lt",
-    "ProductUniqueCode" : "PROD-5830",
-    "ProductUnitWTValue" : "10",
+    "GST_PercentageValue" : "6",
+    "selectedMeasurementUnitValue" : "ml",
+    "ProductUniqueCode" : "PROD-3254",
+    "ProductUnitWTValue" : "40",
     "PackagingUnitValue" : null,
     "ProductCatalogImageValue" : "true",
-    "productSubCategoryName" : "Chocolates & Confectionery",
+    "productSubCategoryName" : "Wall Paints",
     "PackagingUnitContainsValue" : null,
     "ProductImageValue" : "true",
     "Cess_PercentageValue" : "4",
     "CheckBoxFocusedValue" : "false",
     "CheckBoxPromotedValue" : "true",
-    "HSNCodeValue" : "1810"
+    "HSNCodeValue" : "6343"
   },
   "Network" : {
     "CP_Name" : "",

@@ -1,0 +1,21 @@
+<suite name="Parallel Suite" parallel="classes" thread-count="3">
+    <test name="Parallel Test Execution">
+        <classes>
+            <class name="testCases.Tc_User">
+                <methods>
+                    <include name="test_AddMultiple_SalesPerson"/>
+                </methods>
+            </class>
+            <class name="testCases.Tc_User">
+                <methods>
+                    <include name="test_AddMultiple_SalesPerson"/>
+                </methods>
+            </class>
+            <class name="testCases.Tc_User">
+                <methods>
+                    <include name="test_AddMultiple_SalesPerson"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -1,7 +1,6 @@
 package pageObjects;
 
 import java.io.File;
-import java.time.Duration;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -20,7 +19,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utility.BrandUtility;
 import utility.TestDataGenerator;
@@ -232,7 +230,7 @@ public class ProductsPage extends BasePage {
 
 	public void addProductMRP() {
 		Random rand = new Random();
-		int randomMRP = rand.nextInt(961) + 40; // generates value between 40 and 1000 (inclusive)
+		int randomMRP = rand.nextInt(20000 - 10 + 1) + 10; // generates value between 40 and 1000 (inclusive)
 		productNewMRP = String.valueOf(randomMRP);
 		productMRP.sendKeys(productNewMRP);
 	}
@@ -292,7 +290,8 @@ public class ProductsPage extends BasePage {
 		System.out.println("✅ Selected product category: " + productCategoryName);
 	}
 
-	public void addProductSubCategory() {
+	public void addProductSubCategory() throws InterruptedException {
+		Thread.sleep(500);
 		wait.until(ExpectedConditions.elementToBeClickable(productSubCategory));
 		
 		try {
@@ -597,7 +596,7 @@ public class ProductsPage extends BasePage {
 	}
 
 	public void addProduct_Description() {
-		productDescValue = "Product Description For Testing";
+		productDescValue = "Testing "+TestDataGenerator.getRandomProductDescription();
 		product_Description.sendKeys(productDescValue);
 	}
 
@@ -609,6 +608,33 @@ public class ProductsPage extends BasePage {
 		productImageValue = "true";
 	}
 
+	public void uploadRandomProductImage() {
+	    try {
+	        // Universal product image (covers everything)
+	        String imageUrl = "https://loremflickr.com/600/600/product?random=" + System.currentTimeMillis();
+
+	        // Save to temp directory
+	        String fileName = "product_" + System.currentTimeMillis() + ".jpg";
+	        File outputFile = new File(System.getProperty("java.io.tmpdir"), fileName);
+
+	        java.net.URL url = new java.net.URL(imageUrl);
+	        java.nio.file.Files.copy(
+	                url.openStream(),
+	                outputFile.toPath(),
+	                java.nio.file.StandardCopyOption.REPLACE_EXISTING
+	        );
+
+	        // Upload using Selenium
+	        ProductImage.sendKeys(outputFile.getAbsolutePath());
+	        productImageValue = "true";
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
+
+
+	
 	public void uploadProduct_CatalogImage() {
 //		Product_CatalogImage.sendKeys("");
 		File file1 = new File(".\\src\\test\\resources\\Catalog 1.png");
@@ -622,6 +648,44 @@ public class ProductsPage extends BasePage {
 		Product_CatalogImage.sendKeys(path1 + "\n" + path2 + "\n" + path3);
 		productCatalogImageValue = "true";
 	}
+	
+	public void uploadRandomProduct_CatalogImage() {
+	    try {
+	        // random 1 to 3 catalog images
+	        int numberOfImages = 1 + new Random().nextInt(3); 
+
+	        StringBuilder filePaths = new StringBuilder();
+
+	        for (int i = 0; i < numberOfImages; i++) {
+
+	            // random catalog image URL
+	            String imageUrl = "https://loremflickr.com/600/600/catalog?random=" + System.currentTimeMillis() + i;
+
+	            // create temp file
+	            String fileName = "catalog_" + System.currentTimeMillis() + "_" + i + ".jpg";
+	            File outputFile = new File(System.getProperty("java.io.tmpdir"), fileName);
+
+	            // download
+	            java.net.URL url = new java.net.URL(imageUrl);
+	            java.nio.file.Files.copy(
+	                    url.openStream(),
+	                    outputFile.toPath(),
+	                    java.nio.file.StandardCopyOption.REPLACE_EXISTING
+	            );
+
+	            // append file path (for multi-upload)
+	            filePaths.append(outputFile.getAbsolutePath()).append("\n");
+	        }
+
+	        // upload all catalog images at once
+	        Product_CatalogImage.sendKeys(filePaths.toString().trim());
+	        productCatalogImageValue = "true";
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
+
 
 	
 	// ---------------- EDIT METHODS ----------------

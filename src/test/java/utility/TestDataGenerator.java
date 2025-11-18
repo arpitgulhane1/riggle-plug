@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+import java.util.UUID;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
@@ -38,9 +39,15 @@ public class TestDataGenerator {
 	}
 
 	public static String getRandomProductName() {
-		String product = faker.commerce().productName(); // e.g., "Incredible Plastic Shirt"
-		return product.replaceAll("[^a-zA-Z0-9 .\\-]", "");
+	    String adj = faker.commerce().material();        // e.g., "Plastic"
+	    String type = faker.commerce().productName();    // e.g., "Chair"
+	    String uniqueId = UUID.randomUUID().toString().substring(0, 8);
+
+	    return (adj + " " + type + " " + uniqueId)
+	            .replaceAll("[^a-zA-Z0-9 .\\-]", "");
 	}
+
+		
 
 	public static String getRandomBrandName() {
 		String brand = faker.company().name(); // e.g., "Acme Corp"
@@ -161,4 +168,12 @@ public class TestDataGenerator {
 		return first + rest;
 	}
 
+	public static String getRandomProductDescription() {
+	    return faker.commerce().productName() + " - " + faker.commerce().material() + 
+	           " made with high quality " + faker.commerce().department() + " standards.";
+	}
+
+
+	
+	
 }

@@ -102,7 +102,6 @@ public class BrandsPage extends BasePage {
 		waitForElementVisible(addNewBrand, 5);
 		searchBrand.clear();
 		searchBrand.click();
-		String bradName = BrandUtility.readJson("Brand", "BrandName");
 		searchBrand.sendKeys(name);
 //		searchBrand.sendKeys("Tata");
 		

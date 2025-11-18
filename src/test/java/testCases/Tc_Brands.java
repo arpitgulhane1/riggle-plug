@@ -70,7 +70,7 @@ public class Tc_Brands extends BaseClass {
 			 prodPage.addProductUnitWT();
 			 prodPage.selectMeasurementUnitDropDown();
 			 prodPage.uploadProductImage();
-			 prodPage.uploadProduct_CatalogImage();
+			 prodPage.uploadRandomProduct_CatalogImage();
 			 // Add Unit Code
 //	            prodPage.addUnit();
 //	            prodPage.clickOnAddUnitButton();
@@ -112,12 +112,13 @@ public class Tc_Brands extends BaseClass {
 	            
 	            homep.clickOnBrandsMenu();
 
-//	            bpage.setBrandName(testBrandName); // Inject brand name to page
-//	            bpage.setBrandName("Tesla"); // Remove after test run
+//	            bpage.searchBrandByName("Notebook"); // Remove after test run
+//	            bpage.setBrandName(testBrandName);
 	            bpage.searchBrand();
 	            
 //	            Assert.assertTrue(bpage.isBrandDisplayed(), "❌ Brand not displayed: " + testBrandName);    // check same value which is add as brand 
 	            bpage.clickOnBrandProduct();
+//	            bpage.clickOnBrandProductByName("Notebook");
 	            
 	            int count = 1000; 
 	            
@@ -133,8 +134,10 @@ public class Tc_Brands extends BaseClass {
 	            prodPage.selectExpiryUnitDropDown();
 	            prodPage.addProductUnitWT();
 	            prodPage.selectMeasurementUnitDropDown();
-	            prodPage.uploadProductImage();
+//	            prodPage.uploadProductImage();
+	            prodPage.uploadRandomProductImage();
 	            prodPage.uploadProduct_CatalogImage();
+//	            prodPage.uploadRandomProduct_CatalogImage();
 	            // Add Unit Code
 //	            prodPage.addUnit();
 //	            prodPage.clickOnAddUnitButton();

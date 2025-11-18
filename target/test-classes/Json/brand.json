@@ -1,29 +1,29 @@
 {
   "Brand" : {
-    "BrandName" : "Beer Ferry and Kris",
+    "BrandName" : "Parisian Inc",
     "City" : "Mumbai"
   },
   "Product" : {
-    "ProductName" : "Sleek Iron Knife",
-    "ProductMRP" : "118",
-    "BestBeforeValue" : "8",
+    "ProductName" : "Silk Synergistic Silk Chair aec954aa",
+    "ProductMRP" : "12281",
+    "BestBeforeValue" : "5",
     "ExpiryUnitDropDownOption" : "Years",
-    "productDescValue" : "Product Description For Testing",
-    "ProductCategoryName" : "Food Items",
-    "CheckBoxMustSellValue" : "false",
-    "GST_PercentageValue" : "13",
-    "selectedMeasurementUnitValue" : "lt",
-    "ProductUniqueCode" : "PROD-5830",
-    "ProductUnitWTValue" : "10",
+    "productDescValue" : "Testing Incredible Aluminum Lamp - Marble made with high quality Baby & Music standards.",
+    "ProductCategoryName" : "Aerated Drink",
+    "CheckBoxMustSellValue" : "true",
+    "GST_PercentageValue" : "6",
+    "selectedMeasurementUnitValue" : "gm",
+    "ProductUniqueCode" : "PROD-7743",
+    "ProductUnitWTValue" : "13",
     "PackagingUnitValue" : null,
     "ProductCatalogImageValue" : "true",
-    "productSubCategoryName" : "Chocolates & Confectionery",
+    "productSubCategoryName" : "Drink",
     "PackagingUnitContainsValue" : null,
     "ProductImageValue" : "true",
-    "Cess_PercentageValue" : "4",
+    "Cess_PercentageValue" : "8",
     "CheckBoxFocusedValue" : "false",
     "CheckBoxPromotedValue" : "true",
-    "HSNCodeValue" : "1810"
+    "HSNCodeValue" : "3718"
   },
   "Network" : {
     "CP_Name" : "",

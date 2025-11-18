@@ -61,6 +61,7 @@ public class Tc_User extends BaseClass {
 	}
 
 	@Test
+//    @Test(invocationCount = 3, threadPoolSize = 3)
 	public void test_AddMultiple_SalesPerson() {
 		try {
 			loginToApp();
@@ -68,12 +69,15 @@ public class Tc_User extends BaseClass {
 			User_DashboardPage userDashboardPage = new User_DashboardPage(driver);
 			User_SalesPerson_User salesPersonUserPage = new User_SalesPerson_User(driver);
 			User_AddSalesPersonPage addSalesPersonPage = new User_AddSalesPersonPage(driver);
+
 			homep.clickOnUsersMenu();
 			userDashboardPage.salesPersonMenu();
 
 			int salsePersonCount = 1000;
 
 			for (int i = 1; i <= salsePersonCount; i++) {
+				
+				Thread.sleep(500);
 				salesPersonUserPage.addSalesPerson();
 				addSalesPersonPage.addFirstName();
 				addSalesPersonPage.addLastName();
@@ -83,7 +87,9 @@ public class Tc_User extends BaseClass {
 				addSalesPersonPage.selectBloodGroup();
 				addSalesPersonPage.addDateOfBirth();
 				addSalesPersonPage.selectDesignation();
+//				addSalesPersonPage.selectDesignation("ASM");
 				addSalesPersonPage.selectReportingManager();
+//				addSalesPersonPage.selectReportingManager("arpit saless (ASM)");
 				addSalesPersonPage.addHeadquarterCity();
 				addSalesPersonPage.addAssignCities();
 				addSalesPersonPage.addDateOfJoin();
@@ -96,6 +102,7 @@ public class Tc_User extends BaseClass {
 
 				Assert.assertTrue(addSalesPersonPage.verifySalsePersonCreatedSuccessMessage(),
 						"Salse person created success message not displayed or mismatched!");
+				System.out.println("No === : "+i);
 			}
 
 		} catch (Exception e) {
@@ -239,7 +246,7 @@ public class Tc_User extends BaseClass {
 			homep.clickOnUsersMenu();
 			userRopsPage.ClickOnRopsMenu();
 			
-			int count = 3;
+			int count = 1000;
 
 			for (int i = 1; i <= count; i++) {
 			userRopsPage.addRopsUser();
