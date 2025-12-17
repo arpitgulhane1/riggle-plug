@@ -93,7 +93,7 @@ public class Brand_RateTest extends BaseClass {
 			        bpage.searchBrand();
 			        brand_RatePage.clickOnRate();
 			       
-			     
+			        
 //			        brand_RatePage.clickOnchannelPartner();
 			        brand_RatePage.clickOnEditChannelPartnerName();
 			        brand_RatePage. searchProduct();
@@ -105,5 +105,32 @@ public class Brand_RateTest extends BaseClass {
 				
 			}
 		}
+		
+		
+		@Test
+		public void verifyRateStructureDetails() throws InterruptedException {
+//		    RateStructurePage page = new RateStructurePage(driver);
+			loginToApp();
+			  HomePage homep = new HomePage(driver);
+		        homep.clickOnBrandsMenu();
+		        BrandsPage bpage = new BrandsPage(driver);   
+		        ProductsPage prodPage = new ProductsPage(driver);
+		        Brand_RatePage brand_RatePage = new Brand_RatePage(driver);
+//		        bpage.searchBrandByName("Beer Ferry And Kris"); // 1 rate
+//		        bpage.searchBrandByName("Parisian Inc"); //4 Rate
+		        bpage.searchBrandByName("Amul"); //2 rate
+//		        bpage.searchBrandByName("Adobe"); //3 rate
+		        brand_RatePage.clickOnRate();
+			
+			    
+//		        brand_RatePage.updateAllRateStructures();
+//		        brand_RatePage.updateAllRateStructuresRowWise();
+		        brand_RatePage.updateAllRateStructuresRowWise_IfRateIsZero();
+//		        brand_RatePage.updateAllRateStructures();
+		}
+
+		
+		
+		
 	
 }

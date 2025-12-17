@@ -212,7 +212,7 @@ public class BrandsPage extends BasePage {
 	
 	public void clickOnBrandProductByName(String name) {
 		wait.until(ExpectedConditions.visibilityOf(brandProduct));
-		String bradName = BrandUtility.readJson("Brand", "BrandName");
+//		String bradName = BrandUtility.readJson("Brand", "BrandName");
 		wait.until(driver -> brandAlreadyAdded.getText().trim().equalsIgnoreCase(name.trim()));
 	
 		if (brandAlreadyAdded.getText().equalsIgnoreCase(name)) {
