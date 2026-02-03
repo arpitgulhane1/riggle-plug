@@ -1,9 +1,10 @@
 {
   "Brand" : {
-    "BrandName" : "Parisian Inc",
+    "BrandName" : "Skiles OKon and Fahey",
     "City" : "Mumbai"
   },
   "Product" : {
+<<<<<<< HEAD
     "ProductName" : "Steel Awesome Plastic Coat c3e14878",
     "ProductMRP" : "4930",
     "BestBeforeValue" : "10",
@@ -24,6 +25,28 @@
     "CheckBoxFocusedValue" : "false",
     "CheckBoxPromotedValue" : "true",
     "HSNCodeValue" : "6343"
+=======
+    "ProductName" : "Wooden Lightweight Aluminum Plate b6c4f8ac",
+    "ProductMRP" : "808",
+    "BestBeforeValue" : "7",
+    "ExpiryUnitDropDownOption" : "Months",
+    "productDescValue" : "Testing Incredible Marble Keyboard - Concrete made with high quality Automotive, Baby & Outdoors standards.",
+    "ProductCategoryName" : "Health Products",
+    "CheckBoxMustSellValue" : "true",
+    "GST_PercentageValue" : "8",
+    "selectedMeasurementUnitValue" : "ml",
+    "ProductUniqueCode" : "PROD-2297",
+    "ProductUnitWTValue" : "16",
+    "PackagingUnitValue" : null,
+    "ProductCatalogImageValue" : "true",
+    "productSubCategoryName" : "Whey Isolate",
+    "PackagingUnitContainsValue" : null,
+    "ProductImageValue" : "true",
+    "Cess_PercentageValue" : "4",
+    "CheckBoxFocusedValue" : "true",
+    "CheckBoxPromotedValue" : "true",
+    "HSNCodeValue" : "8805"
+>>>>>>> 386e5e08a2bf74af4d42dbbe0948f4e1c63b1919
   },
   "Network" : {
     "CP_Name" : "",

@@ -3,6 +3,7 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
+<<<<<<< HEAD
       <class name="testCases.Beat_Retailers_Order">
         <methods>
           <include name="loadConfig"/>
@@ -11,6 +12,16 @@
           <include name="setup"/>
         </methods>
       </class> <!-- testCases.Beat_Retailers_Order -->
+=======
+      <class name="testCases.Brand_RateTest">
+        <methods>
+          <include name="loadConfig"/>
+          <include name="tearDown"/>
+          <include name="verifyRateStructureDetails"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- testCases.Brand_RateTest -->
+>>>>>>> 386e5e08a2bf74af4d42dbbe0948f4e1c63b1919
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

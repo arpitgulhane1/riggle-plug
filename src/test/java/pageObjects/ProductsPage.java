@@ -230,7 +230,8 @@ public class ProductsPage extends BasePage {
 
 	public void addProductMRP() {
 		Random rand = new Random();
-		int randomMRP = rand.nextInt(20000 - 10 + 1) + 10; // generates value between 40 and 1000 (inclusive)
+		int randomMRP = rand.nextInt(1999) + 2;  // 2 to 2000
+		// generates value between 40 and 1000 (inclusive)
 		productNewMRP = String.valueOf(randomMRP);
 		productMRP.sendKeys(productNewMRP);
 	}
@@ -250,8 +251,8 @@ public class ProductsPage extends BasePage {
 	public void addProductCategory() {
 		wait.until(ExpectedConditions.elementToBeClickable(productCategory));
 		productCategory.click();
-		
-		waitForMultipleElementsVisible(productCategoryAllOptions, 7);
+		System.out.println("Waiting for all product category "+productCategoryAllOptions.size());
+		waitForMultipleElementsVisible(productCategoryAllOptions, 5);
 		if (productCategoryAllOptions.isEmpty()) {
 			throw new RuntimeException("❌ No product categories available!");
 		}
@@ -407,7 +408,7 @@ public class ProductsPage extends BasePage {
 
 	public void addProductUnitWT() {
 
-		js.executeScript("document.body.style.zoom = '80%'");
+//		js.executeScript("document.body.style.zoom = '80%'");
 		Random random = new Random();
 		int unitWeight = random.nextInt(46) + 5; // generate number between 5 and 50
 		productUnitWTValue = String.valueOf(unitWeight);
@@ -437,6 +438,7 @@ public class ProductsPage extends BasePage {
 	}
 
 	public void clickProductAimCheckboxRandomly() {
+		js.executeScript("document.body.style.zoom = '70%'");
 		List<Runnable> checkboxActions = Arrays.asList(() -> checkBoxMustSell.click(), () -> checkBoxFocused.click(),
 				() -> checkBoxPromoted.click());
 
@@ -640,6 +642,7 @@ public class ProductsPage extends BasePage {
 		File file1 = new File(".\\src\\test\\resources\\Catalog 1.png");
 		File file2 = new File(".\\src\\test\\resources\\Catalog 2.jpeg");
 		File file3 = new File(".\\src\\test\\resources\\Catalog 3.png");
+//		File file3 = new File("C:\\Users\\USER\\Desktop\\1000340183.mp4)");
 
 		String path1 = file1.getAbsolutePath();
 		String path2 = file2.getAbsolutePath();
@@ -651,21 +654,17 @@ public class ProductsPage extends BasePage {
 	
 	public void uploadRandomProduct_CatalogImage() {
 	    try {
-	        // random 1 to 3 catalog images
-	        int numberOfImages = 1 + new Random().nextInt(3); 
-
 	        StringBuilder filePaths = new StringBuilder();
 
-	        for (int i = 0; i < numberOfImages; i++) {
-
-	            // random catalog image URL
+	        // ===========================
+	        // ⭐ Upload 2 Images
+	        // ===========================
+	        for (int i = 0; i < 2; i++) {
 	            String imageUrl = "https://loremflickr.com/600/600/catalog?random=" + System.currentTimeMillis() + i;
+	            String fileName = "catalog_img_" + System.currentTimeMillis() + "_" + i + ".jpg";
 
-	            // create temp file
-	            String fileName = "catalog_" + System.currentTimeMillis() + "_" + i + ".jpg";
 	            File outputFile = new File(System.getProperty("java.io.tmpdir"), fileName);
 
-	            // download
 	            java.net.URL url = new java.net.URL(imageUrl);
 	            java.nio.file.Files.copy(
 	                    url.openStream(),
@@ -673,12 +672,30 @@ public class ProductsPage extends BasePage {
 	                    java.nio.file.StandardCopyOption.REPLACE_EXISTING
 	            );
 
-	            // append file path (for multi-upload)
 	            filePaths.append(outputFile.getAbsolutePath()).append("\n");
 	        }
 
-	        // upload all catalog images at once
-	        Product_CatalogImage.sendKeys(filePaths.toString().trim());
+	        // ===========================
+	        // ⭐ Upload 1 Video
+	        // ===========================
+	        String videoUrl = "https://samplelib.com/lib/preview/mp4/sample-5s.mp4"; // 5 sec sample video
+	        String videoName = "catalog_video_" + System.currentTimeMillis() + ".mp4";
+
+	        File videoFile = new File(System.getProperty("java.io.tmpdir"), videoName);
+
+	        java.net.URL vUrl = new java.net.URL(videoUrl);
+	        java.nio.file.Files.copy(
+	                vUrl.openStream(),
+	                videoFile.toPath(),
+	                java.nio.file.StandardCopyOption.REPLACE_EXISTING
+	        );
+
+	        filePaths.append(videoFile.getAbsolutePath());
+
+	        // ===========================
+	        // ⭐ Upload all 3 files (multi upload)
+	        // ===========================
+	        Product_CatalogImage.sendKeys(filePaths.toString());
 	        productCatalogImageValue = "true";
 
 	    } catch (Exception e) {
