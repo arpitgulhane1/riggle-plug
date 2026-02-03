@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import pageObjects.Brand_RatePage;
+//import pageObjects.Brand_RatePage;
 import pageObjects.HomePage;
 import pageObjects.User_AddChannelPartnerPage;
 import pageObjects.User_AddRopsPage;
@@ -373,5 +373,6 @@ public class Tc_User extends BaseClass {
 		}
 	}
 
+	
 	
 }

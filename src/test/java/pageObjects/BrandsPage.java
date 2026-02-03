@@ -44,7 +44,9 @@ public class BrandsPage extends BasePage {
 	
 	@FindBy(xpath = "//input[@id='nest-messages_cities']")
 	WebElement enterCityName;
-	@FindBy(xpath = "//span[@aria-label='close']") WebElement closeAddBrandTemplate;
+	@FindBy(xpath = "//span[@aria-label='close']") 
+	
+	WebElement closeAddBrandTemplate;
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement saveNewBrand;
 

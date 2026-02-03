@@ -118,7 +118,24 @@ public class User_AddSalesPersonPage extends BasePage {
 	
 	@FindBy(xpath = "//div[@class='ant-form-item-explain-error' and contains(text(), 'Mobile number already exists')]")
 	WebElement errorMessage_MobileNoInputField_OnAddSalsePersonPage;
-
+	
+	@FindBy(xpath ="//div[@id='nest-messages_first_name_help']//div[@class='ant-form-item-explain-error'][contains(text(),'Please enter')]")
+	WebElement pleaseEnterFirstNameError;
+	
+	@FindBy(xpath="//div[contains(text(),'Please enter Last Name')]")
+	WebElement pleaseEnterLastNameError;
+	
+	@FindBy(xpath="//div[contains(text(),'Please enter Mobile Number')]")
+	WebElement pleaseEnterMobileNumberError;
+	
+	@FindBy(xpath="//div[contains(text(),'Please enter Date of Birth')]")
+	WebElement pleaseEnterDateOfBirthError;
+	
+	@FindBy(xpath="//div[contains(text(),'Please enter Designation')]")
+	WebElement pleaseEnterDesignationError;
+	
+	@FindBy(xpath="//div[contains(text(),'Please enter Assign Cities')]")
+	WebElement pleaseEnterAssignCitiesError;
 //	  public void salePersonMenu() {
 //		  salesPersonsMenu.click();
 //	  }
@@ -822,7 +839,7 @@ public class User_AddSalesPersonPage extends BasePage {
 	    return false;
 	}
 
-
+	
 	
 
 }
